@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Skin Condition Log</string>
+    <string name="TakePhoto">Take New Photo</string>
+    <string name="ViewLogs">View Condition Logs</string>
+    <string name="MainViewTitle">Skin Condition Log</string>
+
+</resources>
