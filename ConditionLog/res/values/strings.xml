@@ -4,5 +4,10 @@
     <string name="TakePhoto">Take New Photo</string>
     <string name="ViewLogs">View Condition Logs</string>
     <string name="MainViewTitle">Skin Condition Log</string>
+    <string name="EmptyList">There are no photos in the list.</string>
+    <string name="listNameLabel">Skin Condition Log Name</string>
+    <string name="sortLog">Log</string>
+    <string name="sortTag">Tag</string>
+    <string name="sortLabel">Sort by: </string>
 
 </resources>
