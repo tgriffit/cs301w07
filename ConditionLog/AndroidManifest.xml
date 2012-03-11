@@ -19,6 +19,9 @@
             </intent-filter>
         </activity>
         <activity android:name="ListSelectionView"></activity>
+        <activity android:name="ComparisonView"></activity>
+        <activity android:name="ConditionView"></activity>
+        <activity android:name="PhotoUseSelectionView"></activity>
     </application>
 
 </manifest>
