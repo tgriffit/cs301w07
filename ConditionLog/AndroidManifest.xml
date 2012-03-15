@@ -25,6 +25,7 @@
         <activity android:name="ConditionView"></activity>
         <activity android:name="PhotoUseSelectionView"></activity>
         <activity android:name="NewPhotoView"></activity>
+        <activity android:name="CreateListView"></activity>
     </application>
 
 </manifest>

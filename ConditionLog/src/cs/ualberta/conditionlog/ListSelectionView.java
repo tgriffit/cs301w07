@@ -3,6 +3,7 @@ package cs.ualberta.conditionlog;
 import java.util.ArrayList;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -10,13 +11,15 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
 import android.widget.ListView;
-import android.widget.TextView;
+import android.widget.Toast;
 
 public class ListSelectionView extends Activity {
 	
 	private ArrayList<PhotoList> m_photolists = null;
 	private LogArrayAdapter m_adapter;
 	private ListView listMenu;
+	
+	private static final int CREATE_LOG = 0;
 	
 	@Override
     public void onCreate(Bundle savedInstanceState) {
@@ -29,7 +32,7 @@ public class ListSelectionView extends Activity {
         
         m_adapter = new LogArrayAdapter(this, R.layout.listrow, m_photolists);
         
-        Button tagButton = (Button) findViewById(R.id.TagButton);
+        /*Button tagButton = (Button) findViewById(R.id.TagButton);
         tagButton.setOnClickListener(new View.OnClickListener() {
 
 			public void onClick(View v) {
@@ -48,25 +51,65 @@ public class ListSelectionView extends Activity {
 				updateList();
 				swapButtonState();
 			}
+		});*/
+        
+        Button newLogButton = (Button) findViewById(R.id.NewLogButton);
+        newLogButton.setOnClickListener(new View.OnClickListener() {
+			
+			public void onClick(View v) {
+				startCreateLog();
+			}
 		});
         
         listMenu = (ListView) findViewById(R.id.list);
         listMenu.setAdapter(this.m_adapter);
         listMenu.setOnItemClickListener(new OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-            	Intent intent = getIntent();
             	PhotoList target = m_photolists.get(position);
             	String listname = target.getName();
-            	if (intent != null) {
-	            	intent.putExtra("name", listname);
-	            	setResult(RESULT_OK);
-	            	finish();
-            	}
+        		Context context = getApplicationContext();
+    			Toast toast = Toast.makeText(context, listname, Toast.LENGTH_SHORT);
+    			toast.show();
+            	returnNameFinish(listname);
             }
         });
     }
 	
-    private void swapButtonState() {
+	@Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent intent) {
+        super.onActivityResult(requestCode, resultCode, intent);
+
+        switch(requestCode) {
+        case CREATE_LOG:
+        	String lname = "";
+        	if (resultCode == RESULT_OK) {
+    			lname = intent.getStringExtra("name");
+    			
+    			// debug info
+    			Context context = getApplicationContext();
+    			Toast toast = Toast.makeText(context, 
+    					"name of new log: " + lname, Toast.LENGTH_LONG);
+    			toast.show();
+    			
+    			returnNameFinish(lname);
+        	} 
+            break;
+        }
+    }
+	
+	private void startCreateLog() {
+		Intent i = new Intent(this, CreateListView.class);
+        startActivityForResult(i, CREATE_LOG);
+	}
+	
+	private void returnNameFinish(String name) {
+		Intent intent = new Intent();
+		intent.putExtra("name", name);
+    	setResult(RESULT_OK, intent);
+    	finish();
+	}
+	
+    /*private void swapButtonState() {
     	Button tagButton = (Button) findViewById(R.id.TagButton);
     	Button logButton = (Button) findViewById(R.id.LogButton);
     	 
@@ -86,7 +129,7 @@ public class ListSelectionView extends Activity {
 	    	empty.setVisibility(View.VISIBLE);
 	    }
 	    m_adapter.notifyDataSetChanged();
-	 }
+	 }*/
 	
 	// Create a fake list of PhotoList objects in order to test the ListSelectionView user interface.
 	private void newTestList() {
@@ -100,7 +143,7 @@ public class ListSelectionView extends Activity {
 	}
 	
 	// Create a fake list again, but with slightly different names so as to simulate a tag list
-	private void newTestTagList() {
+	/*private void newTestTagList() {
 		String[] testNames = { "one", "two", "three", "four" };
 		m_photolists = new ArrayList<PhotoList>();
 		PhotoList p;
@@ -108,6 +151,6 @@ public class ListSelectionView extends Activity {
 			p = new PhotoList("tag " + testNames[i]);
 			m_photolists.add(p);
 		}
-	} 
+	} */
 }
 

@@ -10,5 +10,9 @@
     <string name="sortTag">Tag</string>
     <string name="sortLabel">Sort by: </string>
     <string name="newLog">Create New Condition Log</string>
+    <string name="nameHint">Name the new Condition Log</string>
+    <string name="createLog">Create Condition Log</string>
+    <string name="createLogDesc">Please type in the name that you wish to call the new Condition Log. </string>
+    <string name="createLogTitle">New Condition Log</string>
 
 </resources>

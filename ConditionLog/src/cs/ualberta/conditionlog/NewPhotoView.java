@@ -20,8 +20,11 @@ import android.widget.Toast;
 
 public class NewPhotoView extends Activity {
 	
-	private static final int PHOTO_SELECT = 0;
+	private static final int LIST_SELECT = 0;
 	private Bitmap ourBMP;
+	private Button acceptButton;
+	private ImageButton imageButton;
+	private Button cancelButton;
 	
     /** Called when the activity is first created. */
     @Override
@@ -29,15 +32,17 @@ public class NewPhotoView extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.newpic);
         
-        ImageButton imageButton = (ImageButton) findViewById(R.id.TakeAPhoto);
+        imageButton = (ImageButton) findViewById(R.id.TakeAPhoto);
         imageButton.setOnClickListener(new View.OnClickListener() {
 
     		public void onClick(View v) {
     			setBogoPic();
+    			acceptButton.setEnabled(true);
     		}
     	});
         
-        Button acceptButton = (Button) findViewById(R.id.Accept);
+        acceptButton = (Button) findViewById(R.id.Accept);
+        acceptButton.setEnabled(false);
         acceptButton.setOnClickListener(new View.OnClickListener() {
 
     		public void onClick(View v) {
@@ -45,7 +50,7 @@ public class NewPhotoView extends Activity {
     		}
     	});
         
-        Button cancelButton = (Button) findViewById(R.id.Cancel);
+        cancelButton = (Button) findViewById(R.id.Cancel);
         cancelButton.setOnClickListener(new View.OnClickListener() {
 
     		public void onClick(View v) {
@@ -60,14 +65,23 @@ public class NewPhotoView extends Activity {
         super.onActivityResult(requestCode, resultCode, intent);
 
         switch(requestCode) {
-        case PHOTO_SELECT:
+        case LIST_SELECT:
+        	String lname = "";
         	if (resultCode == RESULT_OK) {
-        		// if here then a pic was successfully taken and stored
-        		setResult(RESULT_OK);
+    			lname = intent.getStringExtra("name");
+    			
+    			// debug info
+    			Context context = getApplicationContext();
+    			Toast toast = Toast.makeText(context, 
+    					"photo would have been added to list: " + lname, Toast.LENGTH_LONG);
+    			toast.show();
+    			
+    			// add picture to selected list!
+    			// need storage functions...
+    			
+    			setResult(RESULT_OK);
         		finish();
-        	} else {
-        		cancelBogoPic();
-        	}
+        	} 
             break;
         }
     }
@@ -78,7 +92,7 @@ public class NewPhotoView extends Activity {
 	}
 
 	protected void acceptBogoPic() {
-		Intent intent = new Intent(this, PhotoUseSelectionView.class);
+		Intent intent = new Intent(this, ListSelectionView.class);
 		File filepath = null;
 		try {
 			filepath = getPicturePath(intent);
@@ -90,11 +104,8 @@ public class NewPhotoView extends Activity {
 		if (filepath != null) {
 			saveBMP(filepath, ourBMP);
 			intent.putExtra("filename", filepath.getAbsolutePath());
-			Context context = getApplicationContext();
-			Toast toast = Toast.makeText(context, "starting activity!", Toast.LENGTH_SHORT);
-			toast.show();
 			// start a new SelectionView instance to select where photo goes
-			startActivityForResult(intent, PHOTO_SELECT);
+			startActivityForResult(intent, LIST_SELECT);
 		} 
 		// if the above finish() was not executed then something failed. Return bad result.
 		//setResult(RESULT_CANCELED, intent);

@@ -14,30 +14,36 @@ public final class R {
         public static final int ic_launcher=0x7f020000;
     }
     public static final class id {
-        public static final int Accept=0x7f05000d;
-        public static final int Cancel=0x7f05000e;
-        public static final int LinearLayout2=0x7f05000c;
-        public static final int LogButton=0x7f050002;
-        public static final int MainTitle=0x7f05000a;
-        public static final int NewLogButton=0x7f050005;
-        public static final int TagButton=0x7f050001;
-        public static final int TakeAPhoto=0x7f05000b;
-        public static final int TakePhotoButton=0x7f050009;
-        public static final int ViewLogsButton=0x7f050008;
-        public static final int empty=0x7f050004;
-        public static final int icon=0x7f050006;
-        public static final int list=0x7f050003;
-        public static final int sortLabel=0x7f050000;
-        public static final int toptext=0x7f050007;
+        public static final int Accept=0x7f050012;
+        public static final int Cancel=0x7f050013;
+        public static final int CreateLogButton=0x7f050003;
+        public static final int LinearLayout2=0x7f050011;
+        public static final int LogButton=0x7f050007;
+        public static final int MainTitle=0x7f05000f;
+        public static final int NewLogButton=0x7f05000a;
+        public static final int TagButton=0x7f050006;
+        public static final int TakeAPhoto=0x7f050010;
+        public static final int TakePhotoButton=0x7f05000e;
+        public static final int ViewLogsButton=0x7f05000d;
+        public static final int editName=0x7f050002;
+        public static final int empty=0x7f050009;
+        public static final int icon=0x7f05000b;
+        public static final int linearLayout1=0x7f050001;
+        public static final int list=0x7f050008;
+        public static final int sortLabel=0x7f050005;
+        public static final int textView1=0x7f050000;
+        public static final int textView2=0x7f050004;
+        public static final int toptext=0x7f05000c;
     }
     public static final class layout {
         public static final int comparison=0x7f030000;
         public static final int condition=0x7f030001;
-        public static final int list=0x7f030002;
-        public static final int listrow=0x7f030003;
-        public static final int main=0x7f030004;
-        public static final int newpic=0x7f030005;
-        public static final int photo=0x7f030006;
+        public static final int create=0x7f030002;
+        public static final int list=0x7f030003;
+        public static final int listrow=0x7f030004;
+        public static final int main=0x7f030005;
+        public static final int newpic=0x7f030006;
+        public static final int photo=0x7f030007;
     }
     public static final class string {
         public static final int EmptyList=0x7f040004;
@@ -45,7 +51,11 @@ public final class R {
         public static final int TakePhoto=0x7f040001;
         public static final int ViewLogs=0x7f040002;
         public static final int app_name=0x7f040000;
+        public static final int createLog=0x7f04000b;
+        public static final int createLogDesc=0x7f04000c;
+        public static final int createLogTitle=0x7f04000d;
         public static final int listNameLabel=0x7f040005;
+        public static final int nameHint=0x7f04000a;
         public static final int newLog=0x7f040009;
         public static final int sortLabel=0x7f040008;
         public static final int sortLog=0x7f040006;
