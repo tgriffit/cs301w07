@@ -25,5 +25,6 @@ public class PhotoList {
 	
 	public void sortPhotos() {
 		// implement after naming convention of photo timestamp is decided...
+		// will be implemented as part of the sqlite command that creates the list
 	}
 }
