@@ -1,3 +1,5 @@
+// source: from the class labs
+
 package cs.ualberta.conditionlog;
 
 import android.graphics.Bitmap;

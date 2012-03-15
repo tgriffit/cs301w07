@@ -14,5 +14,6 @@
     <string name="createLog">Create Condition Log</string>
     <string name="createLogDesc">Please type in the name that you wish to call the new Condition Log. </string>
     <string name="createLogTitle">New Condition Log</string>
+    <string name="newPicDesc">Tap the middle to generate a new picture.</string>
 
 </resources>
