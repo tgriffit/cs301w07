@@ -5,6 +5,8 @@
     android:versionName="1.0" >
 
     <uses-sdk android:minSdkVersion="7" />
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
 
     <application
         android:icon="@drawable/ic_launcher"
@@ -22,6 +24,7 @@
         <activity android:name="ComparisonView"></activity>
         <activity android:name="ConditionView"></activity>
         <activity android:name="PhotoUseSelectionView"></activity>
+        <activity android:name="NewPhotoView"></activity>
     </application>
 
 </manifest>

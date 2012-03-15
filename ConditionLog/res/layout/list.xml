@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-   android:orientation="vertical"
-   android:layout_width="fill_parent"
-   android:layout_height="fill_parent"
-   >
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:gravity="bottom|center|top"
+    android:orientation="vertical" >
 
 	<LinearLayout
 	    android:layout_width="fill_parent"
@@ -36,16 +36,22 @@
 		        android:text="@string/sortLog" />
 		</LinearLayout>
 
-	</LinearLayout>
-
+	</LinearLayout>
 <ListView
-    android:id="@+id/android:list"
+    android:id="@+id/list"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    />
+    android:layout_height="355dp" />
+
 <TextView
-    android:id="@+id/android:empty"
+    android:id="@+id/empty"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:text="@string/EmptyList"/>
+    android:layout_height="wrap_content"
+    android:text="@string/EmptyList"
+    android:visibility="invisible" />
+
+<Button
+   android:id="@+id/NewLogButton"
+   android:layout_width="wrap_content"
+   android:layout_height="wrap_content"
+   android:text="@string/newLog" />
 </LinearLayout>

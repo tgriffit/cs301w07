@@ -9,5 +9,6 @@
     <string name="sortLog">Log</string>
     <string name="sortTag">Tag</string>
     <string name="sortLabel">Sort by: </string>
+    <string name="newLog">Create New Condition Log</string>
 
 </resources>

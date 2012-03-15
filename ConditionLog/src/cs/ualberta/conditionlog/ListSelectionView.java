@@ -2,27 +2,32 @@ package cs.ualberta.conditionlog;
 
 import java.util.ArrayList;
 
-import android.app.ListActivity;
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
+import android.widget.ListView;
+import android.widget.TextView;
 
-public class ListSelectionView extends ListActivity {
+public class ListSelectionView extends Activity {
 	
 	private ArrayList<PhotoList> m_photolists = null;
-	private PhotoListAdapter m_adapter;
+	private LogArrayAdapter m_adapter;
+	private ListView listMenu;
 	
 	@Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.list);
-        m_photolists = new ArrayList<PhotoList>();
+       m_photolists = new ArrayList<PhotoList>();
         
         // set the initial data in the ListView
         newTestList();
         
-        m_adapter = new PhotoListAdapter(this, R.layout.listrow, m_photolists);
-        setListAdapter(this.m_adapter);
+        m_adapter = new LogArrayAdapter(this, R.layout.listrow, m_photolists);
         
         Button tagButton = (Button) findViewById(R.id.TagButton);
         tagButton.setOnClickListener(new View.OnClickListener() {
@@ -44,6 +49,21 @@ public class ListSelectionView extends ListActivity {
 				swapButtonState();
 			}
 		});
+        
+        listMenu = (ListView) findViewById(R.id.list);
+        listMenu.setAdapter(this.m_adapter);
+        listMenu.setOnItemClickListener(new OnItemClickListener() {
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            	Intent intent = getIntent();
+            	PhotoList target = m_photolists.get(position);
+            	String listname = target.getName();
+            	if (intent != null) {
+	            	intent.putExtra("name", listname);
+	            	setResult(RESULT_OK);
+	            	finish();
+            	}
+            }
+        });
     }
 	
     private void swapButtonState() {
@@ -55,11 +75,15 @@ public class ListSelectionView extends ListActivity {
     }
 	
 	private void updateList() {
+		TextView empty = (TextView) findViewById(R.id.empty);
 		m_adapter.clear(); // clear old values
 		if(m_photolists != null && m_photolists.size() > 0){
+			empty.setVisibility(View.INVISIBLE);
 	         m_adapter.notifyDataSetChanged();
 	        for(int i=0;i<m_photolists.size();i++)
 	         m_adapter.add(m_photolists.get(i)); // add items to the adapter
+	    } else {
+	    	empty.setVisibility(View.VISIBLE);
 	    }
 	    m_adapter.notifyDataSetChanged();
 	 }
@@ -84,6 +108,6 @@ public class ListSelectionView extends ListActivity {
 			p = new PhotoList("tag " + testNames[i]);
 			m_photolists.add(p);
 		}
-	}
+	} 
 }
 
