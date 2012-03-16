@@ -1,7 +1,10 @@
-/*
- * author: Andrew Neufeld
- * description: View to name and create a new List
- * date: March 14
+/**
+ * 
+ * Creates a new condition
+ * 
+ * @author: Andrew Neufeld
+ * @date: March 14
+ * 
  */
 
 package cs.ualberta.conditionlog;

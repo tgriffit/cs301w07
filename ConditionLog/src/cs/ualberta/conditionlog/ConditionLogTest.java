@@ -1,4 +1,4 @@
-package cs.ualberta.conditionlog.test;
+package cs.ualberta.conditionlog;
 
 import cs.ualberta.conditionlog.*;
 

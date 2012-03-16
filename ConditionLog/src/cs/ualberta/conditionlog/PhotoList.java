@@ -1,6 +1,10 @@
 /**
- * 
- * @author 
+ * This class stores an ArrayList consisting of the filepaths of photos.
+ * There are two classes that extend PhotoList.  Both ConditionList and TagList
+ * use most of PhotoList's methods, but they have different constructors that
+ * load photos from their respective databases.
+ * @author tgriffit
+ * @date March 15, 2012
  *
  */
 
@@ -15,35 +19,37 @@ public class PhotoList {
 	private String name = "";
 	private ArrayList<String> filenames = null;
 	
+	/**
+	 * Constructor that initializes the instance variables.
+	 * @param name - the condition or tag for the list
+	 */
 	PhotoList(String name) {
-		this.setName(name);
+		this.name = name;
 		filenames = new ArrayList<String>();
 	}
 	
+	/**
+	 * Returns the name of the list, ie. the condition or tag it is associated with
+	 * @return - the name as a string
+	 */
 	public String getName() {
 		return name;
 	}
 	
-	public void setName(String name) {
-		this.name = name;
-	}
-	
-	public void addPhoto(String filename) {
-		filenames.add(filename);
-	}
-	
+	/**
+	 * Used to load a list of file names into the ArrayList
+	 * @param filenames - a list containing filepaths to photos
+	 */
 	public void setFilenames(ArrayList<String> filenames) {
 		this.filenames = filenames;
 	}
 	
+	/**
+	 * Returns the number of photos stored in the list
+	 * @return - the size of the ArrayList
+	 */
 	public int getSize() {
 		return filenames.size();
-	}
-	
-	public String[] toArray() {
-		String[] array = new String[filenames.size()];
-		filenames.toArray(array);
-		return array;
 	}
 	
 	/**
