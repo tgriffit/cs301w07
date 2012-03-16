@@ -13,8 +13,9 @@ public class ConditionList extends PhotoList {
 		super(name);
 	}
 	
-	/*
-	 * Loads photos into the list that match the list's condition
+	/**
+	 * Loads all photos associated with a condition into the filenames List.
+	 * @param context - the current context of the application
 	 */
 	public void loadPhotos(Context context) {
 		//Loads each photo that matches the condition name into the list

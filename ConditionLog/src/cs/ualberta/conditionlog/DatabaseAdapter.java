@@ -20,31 +20,37 @@ public class DatabaseAdapter {
 	private DatabaseHelper dbHelper;
 	private SQLiteDatabase db;
 	
-	/*
-	 * Creates the database helper to manage the connection
+	/**
+	 * Constructor for the adapter.  It sets up a DatabaseHelper to maintain the
+	 * database connection.
+	 * @param context - the current application context
 	 */
 	public DatabaseAdapter(Context context) {
 		dbHelper = new DatabaseHelper(context);
 	}
 
-	/*
-	 * Opens a connection to the database
+	/**
+	 * Opens a connection to the database using the DatabaseHelper.  Must be called
+	 * before any other DatabaseAdapter methods can be called.
 	 */
 	public void open() {
 		db = dbHelper.getWritableDatabase();
 	}
 	
-	/*
-	 * Closes the database connection
+	/**
+	 * Closes the connection to the database.  Should always be called when you are
+	 * doing calling DatabaseAdapter methods.
 	 */
 	public void close() {
 		dbHelper.close();
 	}
 	
-	/*
-     * Adds all filenames corresponding to photos of a given condition
+	/**
+	 * Adds all filepaths corresponding to photos of a given condition
      * to an ArrayList, sorted by the date the photo was created
-     */
+	 * @param cond - the condition to search for
+	 * @return An ArrayList containing the filepaths to all photos matching the condition
+	 */
     public ArrayList<String> loadPhotosByCondition(String cond) {
     	ArrayList<String> photoList = new ArrayList<String>();
     	
@@ -66,9 +72,11 @@ public class DatabaseAdapter {
     	return photoList;
     }
     
-    /*
-     * Adds all filenames corresponding to photos with a given tag to an
+    /**
+     * Adds all filepaths corresponding to photos with a given tag to an
      * ArrayList, sorted by the date the photo was created
+     * @param tag - the photo tag to search for
+     * @return An ArrayList containing the filepaths to all photos marked with the tag
      */
     public ArrayList<String> loadPhotosByTag(String tag) {
     	ArrayList<String> photoList = new ArrayList<String>();
@@ -93,9 +101,10 @@ public class DatabaseAdapter {
     	return photoList;
     }
     
-    /*
+    /**
      * Returns a list containing all conditions added to the database so far and a photo
      * from each to use as a thumbnail
+     * @return An ArrayList of ArrayLists, each of which contains a condition and a photo filepath
      */
     public ArrayList<ArrayList<String>> loadConditions() {
     	ArrayList<ArrayList<String>> conds = new ArrayList<ArrayList<String>>();
@@ -106,7 +115,6 @@ public class DatabaseAdapter {
     			            DatabaseHelper.COND_NAME, null, null);
     	
     	c.moveToFirst();
-    	
     	//Add each entry to the list
     	while(!c.isAfterLast()) {
     		//Creates a list containing the tag and a photo filepath, then adds them to the main list
@@ -128,9 +136,11 @@ public class DatabaseAdapter {
     	return conds;
     }
     
-    /*
+    /**
      * Loads every tag that has been added to the database so far and a thumbnail
-     * for each one
+     * for each one.  Assumes that a tag must be associated with a photo, and thus
+     * the photo entry cannot be null
+     * @return An ArrayList of ArrayLists, each of which contains a tag and a photo filepath
      */
     public ArrayList<ArrayList<String>> loadTags() {
     	ArrayList<ArrayList<String>> tags = new ArrayList<ArrayList<String>>();
@@ -158,14 +168,25 @@ public class DatabaseAdapter {
     	return tags;
     }
     
-    /*
-     * Adds a photo to the database
+    /**
+     * Adds a photo to the photos table and to the conditions table with its
+     * associated condition
+     * @param photo - a filepath to a .bmp file
+     * @param cond
      */
-    public void addPhotoToDB(String filename) {
+    public void addPhoto(String photo, String cond) {
+    	addPhotoToDB(photo);
+    	addPhotoToCondition(photo, cond);
+    }
+    
+    /*
+     * Adds a photo to the photos table in the database.
+     */
+    private void addPhotoToDB(String filepath) {
     	
     	//Inserts the new photo into the photos table
     	ContentValues values = new ContentValues();
-    	values.put(DatabaseHelper.PHOTO_FILE, filename);
+    	values.put(DatabaseHelper.PHOTO_FILE, filepath);
     	//Uses the SQLite function date() to set the photo's date to the current time
     	values.put(DatabaseHelper.PHOTO_DATE, "date('now')");
     	
@@ -177,10 +198,10 @@ public class DatabaseAdapter {
     }
     
     /*
-     * Adds a photo to a condition by inserting it into the conditions table
-     * under that condition
+     * Adds a photo to the conditions table, making that photo part of the condition's list.
+     * If the condition does not exist, this creates it.
      */
-    public void addPhotoToCondition(String photo, String cond) {
+    private void addPhotoToCondition(String photo, String cond) {
     	ContentValues values = new ContentValues();
     	values.put(DatabaseHelper.PHOTO_FILE, photo);
     	values.put(DatabaseHelper.COND_NAME, cond);
@@ -202,8 +223,10 @@ public class DatabaseAdapter {
     		throw new SQLException();
     }
 
-    /*
-     * Adds a condition with a null photo
+    /**
+     * Adds a new condition to the conditions table with no associated photo.  The next
+     * photo added to the condition will be added to this line in the table.
+     * @param cond - the condition to create
      */
     public void addCondition(String cond)
     {
@@ -234,9 +257,41 @@ public class DatabaseAdapter {
     	c.moveToFirst();
     	int test = c.getInt(0);
     	
+    	c.close();
+    	
     	if (test > 0)
     		return true;
     	else
     		return false;
+    }
+    
+    /**
+     * Adds a line to the tags table which marks a photo with a certain tag
+     * @param photo - a filepath to a .bmp file
+     * @param tag - the tag to add
+     */
+    public void addTagToPhoto(String photo, String tag) {
+    	ContentValues values = new ContentValues();
+    	//The name of the condition to store the photo under
+    	values.put(DatabaseHelper.TAGS_NAME, tag);
+    	values.put(DatabaseHelper.PHOTO_FILE, photo);
+    	
+    	long insertTest = db.insert(DatabaseHelper.TAGS_TABLE, null, values);
+    	
+    	//If the values can't be inserted into the table, throw an exception
+    	if (insertTest < 0)
+    		throw new SQLException();
+    }
+    
+    /**
+     * Removes all lines associated condition from the conditions table.  The photos
+     * still exist, and can still be associated with tags, but will not be found by
+     * searching for condition.
+     * @param cond - the condition to remove.
+     */
+    public void deleteCondition(String cond) {
+    	String[] args = {cond};
+    	
+    	db.delete(DatabaseHelper.COND_TABLE, DatabaseHelper.COND_NAME + "=?", args);
     }
 }
