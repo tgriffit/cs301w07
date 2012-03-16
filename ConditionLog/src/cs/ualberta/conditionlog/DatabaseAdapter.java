@@ -181,13 +181,21 @@ public class DatabaseAdapter {
      * under that condition
      */
     public void addPhotoToCondition(String photo, String cond) {
-    	//Inserts a tuple representing the relationship in the conditions table
     	ContentValues values = new ContentValues();
     	values.put(DatabaseHelper.PHOTO_FILE, photo);
-    	//Uses the SQLite function date() to set the photo's date to the current time
     	values.put(DatabaseHelper.COND_NAME, cond);
+    	long insertTest;
     	
-    	long insertTest = db.insert(DatabaseHelper.COND_TABLE, null, values);
+    	//Tests if there is a tuple containing the condition but no photo
+    	if (findNullCond(cond)) {
+    		//Place photo in null slot rather than creating a new tuple
+    		String[] arg = {cond};
+    		insertTest = db.update(DatabaseHelper.COND_TABLE, values, 
+    				               DatabaseHelper.COND_NAME + "=? AND " + 
+    				               DatabaseHelper.PHOTO_FILE + "=NULL", arg);
+    	} else {        	
+    		insertTest = db.insert(DatabaseHelper.COND_TABLE, null, values);
+    	}
     	
     	//If the values can't be inserted into the table, throw an exception
     	if (insertTest < 0)
@@ -195,10 +203,40 @@ public class DatabaseAdapter {
     }
 
     /*
-     * Adds a condition with a null 
+     * Adds a condition with a null photo
      */
     public void addCondition(String cond)
     {
+    	//Inserts a tuple representing the relationship in the conditions table
+    	ContentValues values = new ContentValues();
+    	//The name of the condition to store the photo under
+    	values.put(DatabaseHelper.COND_NAME, cond);
+    	values.put(DatabaseHelper.PHOTO_FILE, "NULL");
     	
+    	long insertTest = db.insert(DatabaseHelper.COND_TABLE, null, values);
+    	
+    	//If the values can't be inserted into the table, throw an exception
+    	if (insertTest < 0)
+    		throw new SQLException();
+    }
+    
+    /*
+     * If the conditions table contains a tuple containing the condition and a null
+     * photo, returns true, otherwise returns false
+     */
+    private boolean findNullCond(String cond)
+    {
+    	String[] cols = {"COUNT (*)"};
+    	String[] args = {DatabaseHelper.COND_NAME, cond, DatabaseHelper.PHOTO_FILE}; 
+    	Cursor c = db.query(DatabaseHelper.COND_TABLE, cols, "?=? AND ?=NULL", args, null, null, null);
+    	
+    	//Finds the number of rows with the specified condition and no photo
+    	c.moveToFirst();
+    	int test = c.getInt(0);
+    	
+    	if (test > 0)
+    		return true;
+    	else
+    		return false;
     }
 }
