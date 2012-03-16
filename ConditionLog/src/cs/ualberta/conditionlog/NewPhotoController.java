@@ -12,7 +12,6 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 
-import android.database.SQLException;
 import android.graphics.Bitmap;
 import android.os.Environment;
 import android.text.format.Time;
@@ -60,8 +59,6 @@ public class NewPhotoController {
 		} catch (FileNotFoundException e) {
 			return false;
 		} catch (IOException e) {
-			return false;
-		} catch (SQLException e) {
 			return false;
 		}
 	}

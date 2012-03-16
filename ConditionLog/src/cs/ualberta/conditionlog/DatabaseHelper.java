@@ -34,14 +34,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 	//Creates a table to store the conditions if the table does not already exist
 	private static final String CREATE_COND_TABLE = "CREATE TABLE IF NOT EXISTS " + COND_TABLE + " (" +
 															COND_NAME + " char(50), " +
-															PHOTO_FILE + " int, " +
+															PHOTO_FILE + " char(256), " +
 															"PRIMARY KEY (" + COND_NAME + ", " + PHOTO_FILE + "), " +
 															"FOREIGN KEY (" + PHOTO_FILE + ") REFERENCES " + PHOTO_TABLE + " ON DELETE CASCADE);";
 	
 	//Creates a table to store the tags if the table does not already exist
 	private static final String CREATE_TAGS_TABLE = "CREATE TABLE IF NOT EXISTS " + TAGS_TABLE + " (" +
 															TAGS_NAME + " char(50), " +
-															PHOTO_FILE + " int, " +
+															PHOTO_FILE + " char(256), " +
 															"PRIMARY KEY (" + TAGS_NAME + ", " + PHOTO_FILE + "), " +
 															"FOREIGN KEY (" + PHOTO_FILE + ") REFERENCES " + PHOTO_TABLE + " ON DELETE CASCADE);";
 
