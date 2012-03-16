@@ -1,6 +1,4 @@
-package cs.ualberta.conditionlog.test;
-
-import cs.ualberta.conditionlog.*;
+package cs.ualberta.conditionlog;
 
 import android.app.Instrumentation.ActivityMonitor;
 import android.test.ActivityInstrumentationTestCase2;
