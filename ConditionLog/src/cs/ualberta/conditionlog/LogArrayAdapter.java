@@ -8,14 +8,13 @@ package cs.ualberta.conditionlog;
 import java.util.ArrayList;
 
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 class LogArrayAdapter extends ArrayAdapter<ArrayList<String>> {
 
@@ -40,13 +39,19 @@ class LogArrayAdapter extends ArrayAdapter<ArrayList<String>> {
             TextView tt = (TextView) v.findViewById(R.id.toptext);
             ImageView iv = (ImageView) v.findViewById(R.id.icon);
             String name = item.get(0);
-            String imgpath = item.get(0);
-            Bitmap bmp = BitmapFactory.decodeFile(imgpath);
+            //String imgpath = item.get(1);
+
+            //Drawable bmp = Drawable.createFromPath("@drawable/ic_launcher.png");
+
             if (tt != null) {
-                  tt.setText("Name: " + name);
+                tt.setText("Name: " + name);
             }
             if (iv != null) {
-            	iv.setImageBitmap(bmp);
+            	//iv.setImageBitmap(BitmapFactory.decodeFile(imgpath));
+            	//iv.setBackgroundDrawable(bmp);
+            } else {
+            	Toast toast2 = Toast.makeText(listContext, "Null Drawable!", Toast.LENGTH_LONG);
+                toast2.show();
             }
         }
         return v;

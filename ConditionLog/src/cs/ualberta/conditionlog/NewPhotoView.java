@@ -9,19 +9,23 @@ package cs.ualberta.conditionlog;
 import java.io.File;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.Toast;
 
+/**
+ * This view handles the creation of new photos and then adds them to a condition list.
+ * @author adneufel
+ *
+ */
 public class NewPhotoView extends Activity {
 	
 	private static final int LIST_SELECT = 0;
 	private File bmpFilepath;
+	private Bitmap bmp;
 	private NewPhotoController controller;
 	
     @Override
@@ -59,22 +63,6 @@ public class NewPhotoView extends Activity {
     	});
     }
     
-    private void newBogoPic() {
-		NewPhotoController controller = getController();
-		Bitmap bmp = controller.createBogoPic(400, 300);
-		setBogoPic(bmp);
-		try {
-			File filepath = controller.getPicturePath();
-			setBmpFilepath(filepath);
-			controller.saveBMP(getApplicationContext(), filepath, bmp);
-		} catch (Exception e) {
-			Context context = getApplicationContext();
-			Toast toast = Toast.makeText(context, e.toString(), Toast.LENGTH_SHORT);
-			toast.show();
-			e.printStackTrace();
-		}
-	}
-    
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent intent) {
         super.onActivityResult(requestCode, resultCode, intent);
@@ -83,12 +71,12 @@ public class NewPhotoView extends Activity {
         case LIST_SELECT:
         	String lname = "";
         	File filepath = getBmpFilepath();
+        	
         	if (resultCode == RESULT_OK) {
     			lname = intent.getStringExtra("name");
-    			
     			DatabaseAdapter dbadapter = new DatabaseAdapter(getApplicationContext());
     			dbadapter.open();
-    			dbadapter.addPhotoToCondition(filepath.getAbsolutePath(), lname);
+    			dbadapter.addPhoto(filepath.getAbsolutePath(), lname);
     			dbadapter.close();
     			
     			setResult(RESULT_OK);
@@ -97,6 +85,12 @@ public class NewPhotoView extends Activity {
             break;
         }
     }
+    
+    private void newBogoPic() {
+		NewPhotoController controller = getController();
+		bmp = controller.createBogoPic(400, 300);
+		setBogoPic(bmp);
+	}
 
 	private void cancelBogoPic() {
 		setResult(RESULT_CANCELED);
@@ -105,12 +99,18 @@ public class NewPhotoView extends Activity {
 
 	private void acceptBogoPic() {
 		Intent intent = new Intent(this, ListSelectionView.class);
-		File filepath = getBmpFilepath();
-		if (filepath != null) {
+		NewPhotoController controller = getController();
+		File filepath;
+		try {
+			filepath = controller.getPicturePath();
+			setBmpFilepath(filepath);
+			controller.saveBMP(filepath, bmp);
+			
 			intent.putExtra("filename", filepath.getAbsolutePath());
+			
 			// start a new SelectionView instance to select where photo goes
 			startActivityForResult(intent, LIST_SELECT);
-		} else {
+		} catch (Exception e) {
 			setResult(RESULT_CANCELED);
 			finish();
 		}

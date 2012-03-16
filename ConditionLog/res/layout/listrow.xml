@@ -7,8 +7,7 @@
         android:id="@+id/icon"
         android:layout_width="wrap_content"
         android:layout_height="fill_parent"
-        android:layout_marginRight="6dip"
-        android:src="@drawable/ic_launcher" />
+        android:layout_marginRight="6dip"/>
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="0dip"

@@ -12,12 +12,16 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 
-import android.content.Context;
 import android.database.SQLException;
 import android.graphics.Bitmap;
 import android.os.Environment;
 import android.text.format.Time;
 
+/**
+ * This controller helps NewPhotoView with interacting with the database
+ * @author adneufel
+ *
+ */
 public class NewPhotoController {
 
 	/**
@@ -40,22 +44,16 @@ public class NewPhotoController {
 	 * Save the given Bitmap to the given File filepath. Returns true if
 	 * successful and false if unsuccessful.
 	 * 
-	 * @param filepath
-	 * @param ourBMP
+	 * @param filepath filepath to the picture
+	 * @param ourBMP bitmap of the picture
 	 * @return boolean
 	 */
-	protected boolean saveBMP(Context context, File filepath, Bitmap ourBMP) {
+	protected boolean saveBMP(File filepath, Bitmap ourBMP) {
 		OutputStream out;
 		try {
 			out = new FileOutputStream(filepath);
 			ourBMP.compress(Bitmap.CompressFormat.JPEG, 75, out);
 			out.close();
-
-			// Insert the photo's information into the database
-			DatabaseAdapter dbA = new DatabaseAdapter(context);
-			dbA.open();
-			dbA.addPhotoToDB(filepath.getAbsolutePath());
-			dbA.close();
 			return true;
 
 		} catch (FileNotFoundException e) {

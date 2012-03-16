@@ -9,7 +9,6 @@ package cs.ualberta.conditionlog;
 import java.util.ArrayList;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -17,7 +16,6 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
 import android.widget.ListView;
-import android.widget.Toast;
 
 public class ListSelectionView extends Activity {
 	
@@ -37,8 +35,8 @@ public class ListSelectionView extends Activity {
         dbadapter.open();
         // set the initial data in the ListView
         
-       lists =  dbadapter.loadConditions();
-       dbadapter.close();
+        lists =  dbadapter.loadConditions();
+        dbadapter.close();
         m_adapter = new LogArrayAdapter(this, R.layout.listrow, lists);
         
         // unused and hidden to hide unusable items on the view
@@ -78,9 +76,6 @@ public class ListSelectionView extends Activity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
             	ArrayList<String> target = lists.get(position);
             	String listname = target.get(0);
-        		Context context = getApplicationContext();
-    			Toast toast = Toast.makeText(context, listname, Toast.LENGTH_SHORT);
-    			toast.show();
             	returnNameFinish(listname);
             }
         });
