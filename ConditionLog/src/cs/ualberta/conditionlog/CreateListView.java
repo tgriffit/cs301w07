@@ -15,6 +15,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+/**
+ * @uml.dependency   supplier="cs.ualberta.conditionlog.PhotoUseSelectionView"
+ */
 public class CreateListView extends Activity {
 	private EditText name;
 	private Button newButton;

@@ -18,7 +18,8 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 /**
- * @author   tgriffit
+ * @author     tgriffit
+ * @uml.dependency   supplier="cs.ualberta.conditionlog.ImageAdapter"
  */
 public class ConditionView extends Activity {
 	private String name;

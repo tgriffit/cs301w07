@@ -12,6 +12,10 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+/**
+ * @uml.dependency   supplier="cs.ualberta.conditionlog.PhotoUseSelectionView"
+ * @uml.dependency   supplier="cs.ualberta.conditionlog.ListSelectionView"
+ */
 public class MainView extends Activity {
 	
 	static final int NEW_PHOTO = 0;
@@ -92,5 +96,29 @@ public class MainView extends Activity {
 		Intent i = new Intent(this, ConditionView.class);
 		i.putExtra("name", name);
         startActivityForResult(i, LIST_SELECT);
+	}
+
+	/**
+	 * @uml.property  name="newPhotoView"
+	 * @uml.associationEnd  inverse="mainView:cs.ualberta.conditionlog.NewPhotoView"
+	 */
+	private NewPhotoView newPhotoView;
+
+	/**
+	 * Getter of the property <tt>newPhotoView</tt>
+	 * @return  Returns the newPhotoView.
+	 * @uml.property  name="newPhotoView"
+	 */
+	public NewPhotoView getNewPhotoView() {
+		return newPhotoView;
+	}
+
+	/**
+	 * Setter of the property <tt>newPhotoView</tt>
+	 * @param newPhotoView  The newPhotoView to set.
+	 * @uml.property  name="newPhotoView"
+	 */
+	public void setNewPhotoView(NewPhotoView newPhotoView) {
+		this.newPhotoView = newPhotoView;
 	}
 }

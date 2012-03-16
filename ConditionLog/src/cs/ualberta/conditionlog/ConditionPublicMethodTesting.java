@@ -48,16 +48,6 @@ public class ConditionPublicMethodTesting {
 		
 	}
 	
-	/**
-	 * PhotoListAdapter
-	 */
-	
-	@Test
-	public void testPhotoListAdapter(){
-		PhotoListAdapter adapter = new PhotoListAdapter(null, 0, null);
-		assert(adapter.getView(0, null, null) != null);
-	}
-	
 	/*(
 	 * LogArrayAdapter
 	 */

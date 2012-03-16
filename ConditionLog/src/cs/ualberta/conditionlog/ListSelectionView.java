@@ -19,7 +19,8 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 /**
- * @author   tgriffit
+ * @author     tgriffit
+ * @uml.dependency   supplier="cs.ualberta.conditionlog.CreateListView"
  */
 public class ListSelectionView extends Activity {
 	

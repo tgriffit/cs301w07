@@ -16,7 +16,10 @@ import android.graphics.Bitmap;
 import android.os.Environment;
 import android.text.format.Time;
 
-public class NewPhotoController {
+/**
+ * @uml.dependency   supplier="cs.ualberta.conditionlog.BogoPicGen"
+ */
+public class NewPhotoController extends BogoPicGen {
 
 	/**
 	 * Returns a created Bitmap of width x height. This is a wrapper function

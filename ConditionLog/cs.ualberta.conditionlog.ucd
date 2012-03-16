@@ -1,0 +1,336 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<editmodel:ClassDiagramEditModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:editmodel="editmodel.xmi" xmlns:options="options.xmi" size="1168,1191" id="cs.ualberta.conditionlog" metadata="uml2-1.0" initialized="true" scrolledX="163" scrolledY="482" tag="1000" key="32303037303533312D3130303020436F6E646974696F6E4C6F672F7467726966666974">
+  <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.11/@sourceConnections.0" name="BogoPicGen" location="840,450" size="131,67" id="cs.ualberta.conditionlog/BogoPicGen" runTimeClassModel="generateBitmap(II)">
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="108,18">
+      <children xsi:type="editmodel:MethodEditModel" name="generateBitmap" id="cs.ualberta.conditionlog/BogoPicGen#generateBitmap(II)"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" name="ComparisonView" location="26,1080" size="155,67" id="cs.ualberta.conditionlog/ComparisonView" runTimeClassModel="onCreate(Landroid.os.Bundle;)">
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="74,18">
+      <children xsi:type="editmodel:MethodEditModel" name="onCreate" id="cs.ualberta.conditionlog/ComparisonView#onCreate(Landroid.os.Bundle;)"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.10/@sourceConnections.0" name="ConditionLogTest" location="416,45" size="160,103" id="cs.ualberta.conditionlog/ConditionLogTest" runTimeClassModel="ConditionLogTest(),testOpenCamera(),testGeneratePicture()">
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="127,54">
+      <children xsi:type="editmodel:MethodEditModel" name="ConditionLogTest" id="cs.ualberta.conditionlog/ConditionLogTest#ConditionLogTest()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="testGeneratePicture" id="cs.ualberta.conditionlog/ConditionLogTest#testGeneratePicture()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="testOpenCamera" id="cs.ualberta.conditionlog/ConditionLogTest#testOpenCamera()"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" name="ConditionPublicMethodTesting" location="345,996" size="251,175" id="cs.ualberta.conditionlog/ConditionPublicMethodTesting" runTimeClassModel="testNewPhotoControllerGet(),testDatabaseHelper(),testMainVeiw(),testPhotoList(),testLogArrayAdapter(),testDatabaseAdapter(),testListSelectionView()">
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="161,126">
+      <children xsi:type="editmodel:MethodEditModel" name="testDatabaseAdapter" id="cs.ualberta.conditionlog/ConditionPublicMethodTesting#testDatabaseAdapter()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="testDatabaseHelper" id="cs.ualberta.conditionlog/ConditionPublicMethodTesting#testDatabaseHelper()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="testListSelectionView" id="cs.ualberta.conditionlog/ConditionPublicMethodTesting#testListSelectionView()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="testLogArrayAdapter" id="cs.ualberta.conditionlog/ConditionPublicMethodTesting#testLogArrayAdapter()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="testMainVeiw" id="cs.ualberta.conditionlog/ConditionPublicMethodTesting#testMainVeiw()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="testNewPhotoControllerGet" id="cs.ualberta.conditionlog/ConditionPublicMethodTesting#testNewPhotoControllerGet()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="testPhotoList" id="cs.ualberta.conditionlog/ConditionPublicMethodTesting#testPhotoList()"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.14/@sourceConnections.1 //@children.13/@sourceConnections.0" name="ConditionView" location="195,645" size="140,67" id="cs.ualberta.conditionlog/ConditionView" runTimeClassModel="onCreate(Landroid.os.Bundle;)">
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="74,18">
+      <children xsi:type="editmodel:MethodEditModel" name="onCreate" id="cs.ualberta.conditionlog/ConditionView#onCreate(Landroid.os.Bundle;)"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="cs.ualberta.conditionlog/ConditionView-Standard::Instantiate->cs.ualberta.conditionlog/ImageAdapter" source="//@children.4" target="//@children.7" targetEnd="//@children.4/@sourceConnections.0/@children.1" label="//@children.4/@sourceConnections.0/@children.2" sourceEnd="//@children.4/@sourceConnections.0/@children.0" connectionRouterKind="Manual">
+      <children xsi:type="editmodel:AssociationEndEditModel" location="69,67" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="84,0"/>
+      <children xsi:type="editmodel:WireLabelEditModel" name="«Instantiate»" size="65,10" anchorKind="MiddlePart"/>
+    </sourceConnections>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.13/@sourceConnections.1 //@children.8/@sourceConnections.1" name="CreateListView" location="450,711" size="144,67" id="cs.ualberta.conditionlog/CreateListView" runTimeClassModel="onCreate(Landroid.os.Bundle;)">
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="74,18">
+      <children xsi:type="editmodel:MethodEditModel" name="onCreate" id="cs.ualberta.conditionlog/CreateListView#onCreate(Landroid.os.Bundle;)"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" name="DatabaseAdapter" location="660,924" size="163,247" id="cs.ualberta.conditionlog/DatabaseAdapter" runTimeClassModel="loadPhotosByTag(Ljava.lang.String;),addTag(Ljava.lang.String;Ljava.lang.String;),deleteCondition(Ljava.lang.String;),loadTags(),close(),open(),addCondition(Ljava.lang.String;),loadPhotosByCondition(Ljava.lang.String;),addPhoto(Ljava.lang.String;Ljava.lang.String;),loadConditions(),DatabaseAdapter(Landroid.content.Context;)">
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="140,198">
+      <children xsi:type="editmodel:MethodEditModel" name="DatabaseAdapter" id="cs.ualberta.conditionlog/DatabaseAdapter#DatabaseAdapter(Landroid.content.Context;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="addCondition" id="cs.ualberta.conditionlog/DatabaseAdapter#addCondition(Ljava.lang.String;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="addPhoto" id="cs.ualberta.conditionlog/DatabaseAdapter#addPhoto(Ljava.lang.String;Ljava.lang.String;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="addTag" id="cs.ualberta.conditionlog/DatabaseAdapter#addTag(Ljava.lang.String;Ljava.lang.String;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="close" id="cs.ualberta.conditionlog/DatabaseAdapter#close()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="deleteCondition" id="cs.ualberta.conditionlog/DatabaseAdapter#deleteCondition(Ljava.lang.String;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="loadConditions" id="cs.ualberta.conditionlog/DatabaseAdapter#loadConditions()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="loadPhotosByCondition" id="cs.ualberta.conditionlog/DatabaseAdapter#loadPhotosByCondition(Ljava.lang.String;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="loadPhotosByTag" id="cs.ualberta.conditionlog/DatabaseAdapter#loadPhotosByTag(Ljava.lang.String;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="loadTags" id="cs.ualberta.conditionlog/DatabaseAdapter#loadTags()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="open" id="cs.ualberta.conditionlog/DatabaseAdapter#open()"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <sourceConnections xsi:type="editmodel:AssociationEditModel" autoLocated="true" id="cs.ualberta.conditionlog/DatabaseHelper@dbHelper+cs.ualberta.conditionlog/DatabaseAdapter@" source="//@children.6" target="//@children.17" targetEnd="//@children.6/@sourceConnections.0/@children.2" label="//@children.6/@sourceConnections.0/@children.0" sourceEnd="//@children.6/@sourceConnections.0/@children.1" connectionRouterKind="Manhattan">
+      <children xsi:type="editmodel:WireLabelEditModel" size="0,10" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="163,114" id="cs.ualberta.conditionlog/DatabaseHelper@dbHelper+cs.ualberta.conditionlog/DatabaseAdapter@|cs.ualberta.conditionlog/DatabaseAdapter#" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" name="dbHelper" location="0,114" id="cs.ualberta.conditionlog/DatabaseHelper@dbHelper+cs.ualberta.conditionlog/DatabaseAdapter@|cs.ualberta.conditionlog/DatabaseHelper#dbHelper" multiplicityLabel="//@children.6/@sourceConnections.0/@children.2/@children.1" roleLabel="//@children.6/@sourceConnections.0/@children.2/@children.0" aggregationKind="Aggregration" navigable="true">
+        <children xsi:type="editmodel:LabelEditModel" name=" - dbHelper" location="840,1021" size="53,10" anchorKind="LastPart"/>
+        <children xsi:type="editmodel:LabelEditModel" name="0..1" location="875,1045" size="18,10" anchorKind="LastPart"/>
+      </children>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:AssociationEditModel" autoLocated="true" id="cs.ualberta.conditionlog/DatabaseAdapter@dbadapter+cs.ualberta.conditionlog/PhotoUseSelectionView@" source="//@children.6" target="//@children.13" targetEnd="//@children.6/@sourceConnections.1/@children.2" label="//@children.6/@sourceConnections.1/@children.0" sourceEnd="//@children.6/@sourceConnections.1/@children.1" connectionRouterKind="Manhattan">
+      <children xsi:type="editmodel:WireLabelEditModel" size="0,10" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" name="dbadapter" location="0,10" id="cs.ualberta.conditionlog/DatabaseAdapter@dbadapter+cs.ualberta.conditionlog/PhotoUseSelectionView@|cs.ualberta.conditionlog/DatabaseAdapter#dbadapter" attachSource="true" multiplicityLabel="//@children.6/@sourceConnections.1/@children.1/@children.1" roleLabel="//@children.6/@sourceConnections.1/@children.1/@children.0" navigable="true">
+        <children xsi:type="editmodel:LabelEditModel" name=" ~ dbadapter" location="589,941" size="64,10" anchorKind="FirstPart"/>
+        <children xsi:type="editmodel:LabelEditModel" name="0..1" location="635,917" size="18,10" anchorKind="FirstPart"/>
+      </children>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="192,67" id="cs.ualberta.conditionlog/DatabaseAdapter@dbadapter+cs.ualberta.conditionlog/PhotoUseSelectionView@|cs.ualberta.conditionlog/PhotoUseSelectionView#"/>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:AssociationEditModel" autoLocated="true" id="cs.ualberta.conditionlog/DatabaseAdapter@dbadapter+cs.ualberta.conditionlog/ListSelectionView@" source="//@children.6" target="//@children.8" targetEnd="//@children.6/@sourceConnections.2/@children.2" label="//@children.6/@sourceConnections.2/@children.0" sourceEnd="//@children.6/@sourceConnections.2/@children.1" connectionRouterKind="Manhattan">
+      <children xsi:type="editmodel:WireLabelEditModel" size="0,10" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" name="dbadapter" location="20,0" id="cs.ualberta.conditionlog/DatabaseAdapter@dbadapter+cs.ualberta.conditionlog/ListSelectionView@|cs.ualberta.conditionlog/DatabaseAdapter#dbadapter" attachSource="true" multiplicityLabel="//@children.6/@sourceConnections.2/@children.1/@children.1" roleLabel="//@children.6/@sourceConnections.2/@children.1/@children.0" navigable="true">
+        <children xsi:type="editmodel:LabelEditModel" name=" ~ dbadapter" location="687,907" size="64,10" anchorKind="FirstPart"/>
+        <children xsi:type="editmodel:LabelEditModel" name="0..1" location="655,907" size="18,10" anchorKind="FirstPart"/>
+      </children>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="140,67" id="cs.ualberta.conditionlog/DatabaseAdapter@dbadapter+cs.ualberta.conditionlog/ListSelectionView@|cs.ualberta.conditionlog/ListSelectionView#" roleLabel="//@children.6/@sourceConnections.2/@children.2/@children.0">
+        <children xsi:type="editmodel:LabelEditModel" location="673,539" size="0,10" anchorKind="LastPart"/>
+      </children>
+    </sourceConnections>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.4/@sourceConnections.0" name="ImageAdapter" location="180,780" size="182,175" id="cs.ualberta.conditionlog/ImageAdapter" runTimeClassModel="ImageAdapter(Landroid.content.Context;[Landroid.graphics.Bitmap;),getView(ILandroid.view.View;Landroid.view.ViewGroup;),getItem(I),getCount(),bmps,getItemId(I),mGalleryItemBackground">
+    <children xsi:type="editmodel:CompartmentEditModel" size="159,36">
+      <children xsi:type="editmodel:AttributeEditModel" name="bmps" id="cs.ualberta.conditionlog/ImageAdapter#bmps"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="mGalleryItemBackground" id="cs.ualberta.conditionlog/ImageAdapter#mGalleryItemBackground"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="98,90">
+      <children xsi:type="editmodel:MethodEditModel" name="ImageAdapter" id="cs.ualberta.conditionlog/ImageAdapter#ImageAdapter(Landroid.content.Context;[Landroid.graphics.Bitmap;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getCount" id="cs.ualberta.conditionlog/ImageAdapter#getCount()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getItem" id="cs.ualberta.conditionlog/ImageAdapter#getItem(I)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getItemId" id="cs.ualberta.conditionlog/ImageAdapter#getItemId(I)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getView" id="cs.ualberta.conditionlog/ImageAdapter#getView(ILandroid.view.View;Landroid.view.ViewGroup;)"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.6/@sourceConnections.2 //@children.10/@sourceConnections.3" name="ListSelectionView" location="540,465" size="162,67" id="cs.ualberta.conditionlog/ListSelectionView" runTimeClassModel="onCreate(Landroid.os.Bundle;)">
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="74,18">
+      <children xsi:type="editmodel:MethodEditModel" name="onCreate" id="cs.ualberta.conditionlog/ListSelectionView#onCreate(Landroid.os.Bundle;)"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <sourceConnections xsi:type="editmodel:AssociationEditModel" autoLocated="true" id="cs.ualberta.conditionlog/LogArrayAdapter@m_adapter+cs.ualberta.conditionlog/ListSelectionView@" source="//@children.8" target="//@children.9" targetEnd="//@children.8/@sourceConnections.0/@children.2" label="//@children.8/@sourceConnections.0/@children.0" sourceEnd="//@children.8/@sourceConnections.0/@children.1" connectionRouterKind="Manhattan">
+      <children xsi:type="editmodel:WireLabelEditModel" size="0,10" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="152,67" id="cs.ualberta.conditionlog/LogArrayAdapter@m_adapter+cs.ualberta.conditionlog/ListSelectionView@|cs.ualberta.conditionlog/ListSelectionView#" attachSource="true" roleLabel="//@children.8/@sourceConnections.0/@children.1/@children.0">
+        <children xsi:type="editmodel:LabelEditModel" location="685,539" size="0,10" anchorKind="FirstPart"/>
+      </children>
+      <children xsi:type="editmodel:AssociationEndEditModel" name="m_adapter" location="0,10" id="cs.ualberta.conditionlog/LogArrayAdapter@m_adapter+cs.ualberta.conditionlog/ListSelectionView@|cs.ualberta.conditionlog/LogArrayAdapter#m_adapter" multiplicityLabel="//@children.8/@sourceConnections.0/@children.2/@children.1" roleLabel="//@children.8/@sourceConnections.0/@children.2/@children.0" navigable="true">
+        <children xsi:type="editmodel:LabelEditModel" name=" - m_adapter" location="633,653" size="61,10" anchorKind="LastPart"/>
+        <children xsi:type="editmodel:LabelEditModel" name="0..1" location="660,627" size="18,10" automaticRelocationAllowed="false" locationOnWireFromSource="-27.0" distanceFromWire="14.0" anchorKind="LastPart"/>
+      </children>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="cs.ualberta.conditionlog/ListSelectionView->cs.ualberta.conditionlog/CreateListView" source="//@children.8" target="//@children.5" targetEnd="//@children.8/@sourceConnections.1/@children.1" label="//@children.8/@sourceConnections.1/@children.2" sourceEnd="//@children.8/@sourceConnections.1/@children.0" connectionRouterKind="Manual">
+      <children xsi:type="editmodel:AssociationEndEditModel" location="26,67" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="116,0"/>
+      <children xsi:type="editmodel:WireLabelEditModel" size="0,10" anchorKind="MiddlePart"/>
+    </sourceConnections>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.8/@sourceConnections.0" name="LogArrayAdapter" location="701,636" size="159,85" id="cs.ualberta.conditionlog/LogArrayAdapter" runTimeClassModel="LogArrayAdapter(Landroid.content.Context;ILjava.util.ArrayList;),getView(ILandroid.view.View;Landroid.view.ViewGroup;)">
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="110,36">
+      <children xsi:type="editmodel:MethodEditModel" name="LogArrayAdapter" id="cs.ualberta.conditionlog/LogArrayAdapter#LogArrayAdapter(Landroid.content.Context;ILjava.util.ArrayList;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getView" id="cs.ualberta.conditionlog/LogArrayAdapter#getView(ILandroid.view.View;Landroid.view.ViewGroup;)"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <sourceConnections xsi:type="editmodel:AssociationEditModel" autoLocated="true" id="cs.ualberta.conditionlog/LogArrayAdapter@m_adapter+cs.ualberta.conditionlog/PhotoUseSelectionView@" source="//@children.9" target="//@children.13" targetEnd="//@children.9/@sourceConnections.0/@children.2" label="//@children.9/@sourceConnections.0/@children.0" sourceEnd="//@children.9/@sourceConnections.0/@children.1" connectionRouterKind="Manhattan">
+      <children xsi:type="editmodel:WireLabelEditModel" size="0,10" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" name="m_adapter" location="0,10" id="cs.ualberta.conditionlog/LogArrayAdapter@m_adapter+cs.ualberta.conditionlog/PhotoUseSelectionView@|cs.ualberta.conditionlog/LogArrayAdapter#m_adapter" attachSource="true" multiplicityLabel="//@children.9/@sourceConnections.0/@children.1/@children.1" roleLabel="//@children.9/@sourceConnections.0/@children.1/@children.0" navigable="true">
+        <children xsi:type="editmodel:LabelEditModel" name=" - m_adapter" location="595,644" size="61,10" automaticRelocationAllowed="false" locationOnWireFromSource="-63.00000000000001" distanceFromWire="3.9999999999998863" anchorKind="FirstPart"/>
+        <children xsi:type="editmodel:LabelEditModel" name="0..1" location="701,614" size="18,10" automaticRelocationAllowed="false" locationOnWireFromSource="-148.0" distanceFromWire="-26.00000000000007" anchorKind="FirstPart"/>
+      </children>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="192,67" id="cs.ualberta.conditionlog/LogArrayAdapter@m_adapter+cs.ualberta.conditionlog/PhotoUseSelectionView@|cs.ualberta.conditionlog/PhotoUseSelectionView#"/>
+    </sourceConnections>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" name="MainView" location="405,270" size="149,121" id="cs.ualberta.conditionlog/MainView" runTimeClassModel="lIST_SELECT,onCreate(Landroid.os.Bundle;),rESULT_NOSELECT,nEW_PHOTO">
+    <children xsi:type="editmodel:CompartmentEditModel" size="126,54">
+      <children xsi:type="editmodel:AttributeEditModel" name="lIST_SELECT" id="cs.ualberta.conditionlog/MainView#lIST_SELECT"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="nEW_PHOTO" id="cs.ualberta.conditionlog/MainView#nEW_PHOTO"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="rESULT_NOSELECT" id="cs.ualberta.conditionlog/MainView#rESULT_NOSELECT"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="74,18">
+      <children xsi:type="editmodel:MethodEditModel" name="onCreate" id="cs.ualberta.conditionlog/MainView#onCreate(Landroid.os.Bundle;)"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <sourceConnections xsi:type="editmodel:AssociationEditModel" autoLocated="true" id="cs.ualberta.conditionlog/MainView@thisActivity+cs.ualberta.conditionlog/ConditionLogTest@" source="//@children.10" target="//@children.2" targetEnd="//@children.10/@sourceConnections.0/@children.2" label="//@children.10/@sourceConnections.0/@children.0" sourceEnd="//@children.10/@sourceConnections.0/@children.1" connectionRouterKind="Manhattan">
+      <children xsi:type="editmodel:WireLabelEditModel" size="0,10" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" name="thisActivity" location="79,0" id="cs.ualberta.conditionlog/MainView@thisActivity+cs.ualberta.conditionlog/ConditionLogTest@|cs.ualberta.conditionlog/MainView#thisActivity" attachSource="true" multiplicityLabel="//@children.10/@sourceConnections.0/@children.1/@children.1" roleLabel="//@children.10/@sourceConnections.0/@children.1/@children.0" navigable="true">
+        <children xsi:type="editmodel:LabelEditModel" name=" - thisActivity" location="491,253" size="62,10" anchorKind="FirstPart"/>
+        <children xsi:type="editmodel:LabelEditModel" name="0..1" location="459,253" size="18,10" anchorKind="FirstPart"/>
+      </children>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="68,103" id="cs.ualberta.conditionlog/MainView@thisActivity+cs.ualberta.conditionlog/ConditionLogTest@|cs.ualberta.conditionlog/ConditionLogTest#" roleLabel="//@children.10/@sourceConnections.0/@children.2/@children.0">
+        <children xsi:type="editmodel:LabelEditModel" location="477,155" size="0,10" anchorKind="LastPart"/>
+      </children>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:AssociationEditModel" autoLocated="true" id="cs.ualberta.conditionlog/NewPhotoView@newPhotoView+cs.ualberta.conditionlog/MainView@mainView" source="//@children.10" target="//@children.12" targetEnd="//@children.10/@sourceConnections.1/@children.1" label="//@children.10/@sourceConnections.1/@children.2" sourceEnd="//@children.10/@sourceConnections.1/@children.0" connectionRouterKind="Manhattan">
+      <children xsi:type="editmodel:AssociationEndEditModel" name="mainView" location="149,60" id="cs.ualberta.conditionlog/NewPhotoView@newPhotoView+cs.ualberta.conditionlog/MainView@mainView|cs.ualberta.conditionlog/MainView#mainView" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" name="newPhotoView" location="0,33" id="cs.ualberta.conditionlog/NewPhotoView@newPhotoView+cs.ualberta.conditionlog/MainView@mainView|cs.ualberta.conditionlog/NewPhotoView#newPhotoView" multiplicityLabel="//@children.10/@sourceConnections.1/@children.1/@children.1" roleLabel="//@children.10/@sourceConnections.1/@children.1/@children.0" navigable="true">
+        <children xsi:type="editmodel:LabelEditModel" name=" - newPhotoView" location="576,313" size="77,10" anchorKind="LastPart"/>
+        <children xsi:type="editmodel:LabelEditModel" name="0..1" location="635,337" size="18,10" anchorKind="LastPart"/>
+      </children>
+      <children xsi:type="editmodel:WireLabelEditModel" size="0,10" anchorKind="MiddlePart"/>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="cs.ualberta.conditionlog/MainView->cs.ualberta.conditionlog/PhotoUseSelectionView" source="//@children.10" target="//@children.13" targetEnd="//@children.10/@sourceConnections.2/@children.1" label="//@children.10/@sourceConnections.2/@children.2" sourceEnd="//@children.10/@sourceConnections.2/@children.0" connectionRouterKind="Manual">
+      <children xsi:type="editmodel:AssociationEndEditModel" location="13,121" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="187,0"/>
+      <children xsi:type="editmodel:WireLabelEditModel" size="0,10" anchorKind="MiddlePart"/>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="cs.ualberta.conditionlog/MainView->cs.ualberta.conditionlog/ListSelectionView" source="//@children.10" target="//@children.8" targetEnd="//@children.10/@sourceConnections.3/@children.1" label="//@children.10/@sourceConnections.3/@children.2" sourceEnd="//@children.10/@sourceConnections.3/@children.0" connectionRouterKind="Manual">
+      <children xsi:type="editmodel:AssociationEndEditModel" location="141,121" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="6,0"/>
+      <children xsi:type="editmodel:WireLabelEditModel" size="0,10" anchorKind="MiddlePart"/>
+    </sourceConnections>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.12/@sourceConnections.0" name="NewPhotoController" location="855,316" size="179,29" id="cs.ualberta.conditionlog/NewPhotoController" runTimeClassModel="">
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="cs.ualberta.conditionlog/NewPhotoController-Standard::Call->cs.ualberta.conditionlog/BogoPicGen" source="//@children.11" target="//@children.0" targetEnd="//@children.11/@sourceConnections.0/@children.1" label="//@children.11/@sourceConnections.0/@children.2" sourceEnd="//@children.11/@sourceConnections.0/@children.0" connectionRouterKind="Manual">
+      <children xsi:type="editmodel:AssociationEndEditModel" location="57,29" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="72,0"/>
+      <children xsi:type="editmodel:WireLabelEditModel" name="«Call»" size="30,10" anchorKind="MiddlePart"/>
+    </sourceConnections>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.10/@sourceConnections.1" name="NewPhotoView" location="660,297" size="143,67" id="cs.ualberta.conditionlog/NewPhotoView" runTimeClassModel="onCreate(Landroid.os.Bundle;)">
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="74,18">
+      <children xsi:type="editmodel:MethodEditModel" name="onCreate" id="cs.ualberta.conditionlog/NewPhotoView#onCreate(Landroid.os.Bundle;)"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <sourceConnections xsi:type="editmodel:AssociationEditModel" autoLocated="true" id="cs.ualberta.conditionlog/NewPhotoController@controller+cs.ualberta.conditionlog/NewPhotoView@" source="//@children.12" target="//@children.11" targetEnd="//@children.12/@sourceConnections.0/@children.2" label="//@children.12/@sourceConnections.0/@children.0" sourceEnd="//@children.12/@sourceConnections.0/@children.1" connectionRouterKind="Manhattan">
+      <children xsi:type="editmodel:WireLabelEditModel" size="0,10" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="143,33" id="cs.ualberta.conditionlog/NewPhotoController@controller+cs.ualberta.conditionlog/NewPhotoView@|cs.ualberta.conditionlog/NewPhotoView#" attachSource="true" roleLabel="//@children.12/@sourceConnections.0/@children.1/@children.0">
+        <children xsi:type="editmodel:LabelEditModel" location="810,313" size="0,10" anchorKind="FirstPart"/>
+      </children>
+      <children xsi:type="editmodel:AssociationEndEditModel" name="controller" location="0,14" id="cs.ualberta.conditionlog/NewPhotoController@controller+cs.ualberta.conditionlog/NewPhotoView@|cs.ualberta.conditionlog/NewPhotoController#controller" multiplicityLabel="//@children.12/@sourceConnections.0/@children.2/@children.1" roleLabel="//@children.12/@sourceConnections.0/@children.2/@children.0" navigable="true">
+        <children xsi:type="editmodel:LabelEditModel" name=" - controller" location="792,313" size="56,10" anchorKind="LastPart"/>
+        <children xsi:type="editmodel:LabelEditModel" name="0..1" location="830,337" size="18,10" anchorKind="LastPart"/>
+      </children>
+    </sourceConnections>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.6/@sourceConnections.1 //@children.9/@sourceConnections.0 //@children.10/@sourceConnections.2" name="PhotoUseSelectionView" location="231,465" size="202,67" id="cs.ualberta.conditionlog/PhotoUseSelectionView" runTimeClassModel="onCreate(Landroid.os.Bundle;)">
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="74,18">
+      <children xsi:type="editmodel:MethodEditModel" name="onCreate" id="cs.ualberta.conditionlog/PhotoUseSelectionView#onCreate(Landroid.os.Bundle;)"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="cs.ualberta.conditionlog/PhotoUseSelectionView->cs.ualberta.conditionlog/ConditionView" source="//@children.13" target="//@children.4" targetEnd="//@children.13/@sourceConnections.0/@children.1" label="//@children.13/@sourceConnections.0/@children.2" sourceEnd="//@children.13/@sourceConnections.0/@children.0" connectionRouterKind="Manual">
+      <children xsi:type="editmodel:AssociationEndEditModel" location="51,67" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="87,0"/>
+      <children xsi:type="editmodel:WireLabelEditModel" size="0,10" anchorKind="MiddlePart"/>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" id="cs.ualberta.conditionlog/PhotoUseSelectionView->cs.ualberta.conditionlog/CreateListView" source="//@children.13" target="//@children.5" targetEnd="//@children.13/@sourceConnections.1/@children.1" label="//@children.13/@sourceConnections.1/@children.2" sourceEnd="//@children.13/@sourceConnections.1/@children.0" connectionRouterKind="Manhattan">
+      <children xsi:type="editmodel:AssociationEndEditModel" location="175,67" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="47,0"/>
+      <children xsi:type="editmodel:WireLabelEditModel" size="0,10" anchorKind="MiddlePart"/>
+    </sourceConnections>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" name="ConditionList" location="17,306" size="133,67" id="cs.ualberta.conditionlog/ConditionList" runTimeClassModel="ConditionList(Ljava.lang.String;Landroid.content.Context;)">
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="93,18">
+      <children xsi:type="editmodel:MethodEditModel" name="ConditionList" id="cs.ualberta.conditionlog/ConditionList#ConditionList(Ljava.lang.String;Landroid.content.Context;)"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <sourceConnections xsi:type="editmodel:GeneralizationEditModel" targetConnections="//@children.15/@sourceConnections.0" autoLocated="true" id="cs.ualberta.conditionlog/PhotoList&lt;-cs.ualberta.conditionlog/ConditionList" source="//@children.14" target="//@children.16" targetEnd="//@children.14/@sourceConnections.0/@children.1" sourceEnd="//@children.14/@sourceConnections.0/@children.0" connectionRouterKind="GeneralizationManhattan">
+      <children xsi:type="editmodel:AssociationEndEditModel" location="66,0" anchorKind="FixedAtEdge" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="91,139" anchorKind="FixedAtEdge"/>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:AssociationEditModel" id="cs.ualberta.conditionlog/ConditionList@clist+cs.ualberta.conditionlog/ConditionView@" source="//@children.14" target="//@children.4" targetEnd="//@children.14/@sourceConnections.1/@children.2" label="//@children.14/@sourceConnections.1/@children.0" sourceEnd="//@children.14/@sourceConnections.1/@children.1" connectionRouterKind="Manhattan">
+      <children xsi:type="editmodel:WireLabelEditModel" size="0,10" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" name="clist" location="123,67" id="cs.ualberta.conditionlog/ConditionList@clist+cs.ualberta.conditionlog/ConditionView@|cs.ualberta.conditionlog/ConditionList#clist" attachSource="true" multiplicityLabel="//@children.14/@sourceConnections.1/@children.1/@children.1" roleLabel="//@children.14/@sourceConnections.1/@children.1/@children.0" navigable="true">
+        <children xsi:type="editmodel:LabelEditModel" name=" - clist" location="104,380" size="29,10" anchorKind="FirstPart"/>
+        <children xsi:type="editmodel:LabelEditModel" name="0..1" location="147,380" size="18,10" anchorKind="FirstPart"/>
+      </children>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="0,29" id="cs.ualberta.conditionlog/ConditionList@clist+cs.ualberta.conditionlog/ConditionView@|cs.ualberta.conditionlog/ConditionView#" roleLabel="//@children.14/@sourceConnections.1/@children.2/@children.0">
+        <children xsi:type="editmodel:LabelEditModel" location="188,657" size="0,10" anchorKind="LastPart"/>
+      </children>
+    </sourceConnections>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" name="TagList" location="180,306" size="90,67" id="cs.ualberta.conditionlog/TagList" runTimeClassModel="TagList(Ljava.lang.String;Landroid.content.Context;)">
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="64,18">
+      <children xsi:type="editmodel:MethodEditModel" name="TagList" id="cs.ualberta.conditionlog/TagList#TagList(Ljava.lang.String;Landroid.content.Context;)"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <sourceConnections xsi:type="editmodel:GeneralizationEditModel" autoLocated="true" id="cs.ualberta.conditionlog/PhotoList&lt;-cs.ualberta.conditionlog/TagList" source="//@children.15" target="//@children.14/@sourceConnections.0" targetEnd="//@children.15/@sourceConnections.0/@children.1" sourceEnd="//@children.15/@sourceConnections.0/@children.0" connectionRouterKind="GeneralizationManhattan">
+      <children xsi:type="editmodel:AssociationEndEditModel" location="45,0" anchorKind="FixedAtEdge" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel"/>
+    </sourceConnections>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.14/@sourceConnections.0" name="PhotoList" location="60,105" size="182,139" id="cs.ualberta.conditionlog/PhotoList" runTimeClassModel="toBmp(),getSize(),PhotoList(Ljava.lang.String;),filenames,name">
+    <children xsi:type="editmodel:CompartmentEditModel" size="159,36">
+      <children xsi:type="editmodel:AttributeEditModel" name="filenames" id="cs.ualberta.conditionlog/PhotoList#filenames"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="name" id="cs.ualberta.conditionlog/PhotoList#name"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="74,54">
+      <children xsi:type="editmodel:MethodEditModel" name="PhotoList" id="cs.ualberta.conditionlog/PhotoList#PhotoList(Ljava.lang.String;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getSize" id="cs.ualberta.conditionlog/PhotoList#getSize()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="toBmp" id="cs.ualberta.conditionlog/PhotoList#toBmp()"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.6/@sourceConnections.0" name="DatabaseHelper" location="900,924" size="151,229" id="cs.ualberta.conditionlog/DatabaseHelper">
+    <children xsi:type="editmodel:CompartmentEditModel" size="119,126">
+      <children xsi:type="editmodel:AttributeEditModel" name="cOND_NAME" id="cs.ualberta.conditionlog/DatabaseHelper#cOND_NAME"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="cOND_TABLE" id="cs.ualberta.conditionlog/DatabaseHelper#cOND_TABLE"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="pHOTO_DATE" id="cs.ualberta.conditionlog/DatabaseHelper#pHOTO_DATE"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="pHOTO_FILE" id="cs.ualberta.conditionlog/DatabaseHelper#pHOTO_FILE"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="pHOTO_TABLE" id="cs.ualberta.conditionlog/DatabaseHelper#pHOTO_TABLE"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="tAGS_NAME" id="cs.ualberta.conditionlog/DatabaseHelper#tAGS_NAME"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="tAGS_TABLE" id="cs.ualberta.conditionlog/DatabaseHelper#tAGS_TABLE"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="108,54">
+      <children xsi:type="editmodel:MethodEditModel" name="DatabaseHelper" id="cs.ualberta.conditionlog/DatabaseHelper#DatabaseHelper(Landroid.content.Context;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="onCreate" id="cs.ualberta.conditionlog/DatabaseHelper#onCreate(Landroid.database.sqlite.SQLiteDatabase;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="onUpgrade" id="cs.ualberta.conditionlog/DatabaseHelper#onUpgrade(Landroid.database.sqlite.SQLiteDatabase;II)"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
+  </children>
+  <children xsi:type="editmodel:LabelObjectEditModel" name="Not implemented" location="60,1065" size="84,10" fontInfo="Sans-8-0"/>
+  <children xsi:type="editmodel:LabelObjectEditModel" name="This class interacts with all public methods" location="367,987" size="208,10" fontInfo="Sans-8-0"/>
+  <children xsi:type="editmodel:LabelObjectEditModel" name="Tags are not implemented yet" location="198,381" size="145,10" fontInfo="Sans-8-0"/>
+  <children xsi:type="editmodel:LabelObjectEditModel" name="A controller class for the database" location="675,885" size="166,10" fontInfo="Sans-8-0"/>
+  <children xsi:type="editmodel:LabelObjectEditModel" name="Part of the database model" location="895,900" size="131,10" fontInfo="Sans-8-0"/>
+  <children xsi:type="editmodel:LabelObjectEditModel" name="A model class for generating pictures" location="865,511" size="180,10" fontInfo="Sans-8-0"/>
+  <children xsi:type="editmodel:LabelObjectEditModel" name="A controller class for picture generation" location="859,297" size="192,10" fontInfo="Sans-8-0"/>
+  <children xsi:type="editmodel:LabelObjectEditModel" name="Controller class for image management" location="105,954" size="191,10" fontInfo="Sans-8-0"/>
+  <children xsi:type="editmodel:LabelObjectEditModel" name="A controller class for handling lists" location="734,720" size="167,10" fontInfo="Sans-8-0"/>
+  <children xsi:type="editmodel:LabelObjectEditModel" name="A view for choosing the name of a list" location="445,772" size="180,10" fontInfo="Sans-8-0"/>
+  <children xsi:type="editmodel:LabelObjectEditModel" name="View for selecting a list of photos to view" location="568,450" size="197,10" fontInfo="Sans-8-0"/>
+  <children xsi:type="editmodel:LabelObjectEditModel" name="A view for finding which view to place a photo in" location="156,450" size="230,10" fontInfo="Sans-8-0"/>
+  <children xsi:type="editmodel:LabelObjectEditModel" name="Tests several of the UI elements in the main view" location="503,150" size="236,10" fontInfo="Sans-8-0"/>
+  <children xsi:type="editmodel:LabelObjectEditModel" name="The initial view" location="373,255" size="73,10" fontInfo="Sans-8-0"/>
+  <children xsi:type="editmodel:LabelObjectEditModel" name="A view allowing the user to take a photo" location="635,285" size="193,10" fontInfo="Sans-8-0"/>
+  <diagramOptions xsi:type="options:ClassDiagramOptions" properties="wireOptions=1;Product=eUML2" autoName="false"/>
+  <boardSetting snapToGeometry="true" gridEnabled="true" gridSpacing="15,15" gridOrigin="0,0" rulerUnit="pixel" gridVisibility="false">
+    <leftRuler/>
+    <topRuler/>
+  </boardSetting>
+  <classDiagramPreferences xsi:type="editmodel:UMLClassDiagramPreference" showPopupBars="true" showConnectionHandles="true" attributeSorter="Natural" methodSorter="Natural" showClassStereotype="true" showPackageStereotype="true" showDependencyStereotype="true" showInterfaceStereotype="true" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
+</editmodel:ClassDiagramEditModel>

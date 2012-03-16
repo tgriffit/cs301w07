@@ -17,7 +17,9 @@ import android.widget.Button;
 import android.widget.ListView;
 
 /**
- * @author   tgriffit
+ * @author         tgriffit
+ * @uml.dependency   supplier="cs.ualberta.conditionlog.CreateListView"
+ * @uml.dependency   supplier="cs.ualberta.conditionlog.ConditionView"
  */
 public class PhotoUseSelectionView extends Activity {
 	

@@ -35,9 +35,9 @@ import android.database.sqlite.SQLiteDatabase;
  */
 public class DatabaseAdapter {
 	
-	/**
-	 * @uml.property  name="dbHelper"
-	 * @uml.associationEnd  
+	/** 
+	 * @uml.property name="dbHelper"
+	 * @uml.associationEnd aggregation="shared"
 	 */
 	private DatabaseHelper dbHelper;
 	private SQLiteDatabase db;
