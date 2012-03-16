@@ -8,6 +8,9 @@ package cs.ualberta.conditionlog;
 
 import java.util.ArrayList;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+
 public class PhotoList {
 	private String name = "";
 	private ArrayList<String> filenames = null;
@@ -31,6 +34,25 @@ public class PhotoList {
 	
 	public void setFilenames(ArrayList<String> filenames) {
 		this.filenames = filenames;
+	}
+	
+	public int getSize() {
+		return filenames.size();
+	}
+	
+	/**
+	 * Loads the image associated with each filename into an array of bitmaps.
+	 * @return - an array containing one bitmap for each filename in the list
+	 */
+	public Bitmap[] toBmp() {
+		Bitmap[] bmps = new Bitmap[filenames.size()];
+		
+		//Iterates through the list of filenames and loads each bmp
+		for (int i = 0; i < filenames.size(); i++) {
+			bmps[i] = BitmapFactory.decodeFile(filenames.get(i));
+		}
+		
+		return bmps;
 	}
 	
 }
