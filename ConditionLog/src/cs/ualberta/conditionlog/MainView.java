@@ -16,6 +16,8 @@ public class MainView extends Activity {
 	
 	static final int NEW_PHOTO = 0;
 	static final int LIST_SELECT = 1;
+	static final int PHOTO_USE = 2;
+	static final int RESULT_NOSELECT = 20;
 	
 	@Override
     public void onCreate(Bundle savedInstanceState) {
@@ -56,8 +58,14 @@ public class MainView extends Activity {
         		String lname = intent.getStringExtra("name");
         		// start a ConditionView concerning this list
         		startConditionView(lname);
+        	} else if (resultCode == RESULT_NOSELECT){
+        		startListSelectView();
         	}
         	break;
+        case PHOTO_USE:
+        	if (resultCode == RESULT_OK) {
+        		
+        	}
         }
     }
 	

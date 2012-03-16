@@ -32,8 +32,9 @@ public final class R {
         public static final int icon=0x7f05000e;
         public static final int linearLayout1=0x7f050002;
         public static final int list=0x7f05000b;
+        public static final int listTitle=0x7f050008;
         public static final int relativeLayout1=0x7f050000;
-        public static final int sortLabel=0x7f050008;
+        public static final int sortLabel=0x7f050017;
         public static final int textView1=0x7f050004;
         public static final int textView2=0x7f050007;
         public static final int toptext=0x7f05000f;

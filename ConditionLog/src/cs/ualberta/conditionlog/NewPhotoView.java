@@ -23,7 +23,7 @@ import android.widget.ImageButton;
  */
 public class NewPhotoView extends Activity {
 	
-	private static final int LIST_SELECT = 0;
+	private static final int PHOTO_USE = 0;
 	private File bmpFilepath;
 	private Bitmap bmp;
 	private NewPhotoController controller;
@@ -68,7 +68,7 @@ public class NewPhotoView extends Activity {
         super.onActivityResult(requestCode, resultCode, intent);
 
         switch(requestCode) {
-        case LIST_SELECT:
+        case PHOTO_USE:
         	String lname = "";
         	File filepath = getBmpFilepath();
         	
@@ -88,7 +88,7 @@ public class NewPhotoView extends Activity {
     
     private void newBogoPic() {
 		NewPhotoController controller = getController();
-		bmp = controller.createBogoPic(300, 500);
+		bmp = controller.createBogoPic(400, 400);
 		setBogoPic(bmp);
 	}
 
@@ -98,7 +98,7 @@ public class NewPhotoView extends Activity {
 	}
 
 	private void acceptBogoPic() {
-		Intent intent = new Intent(this, ListSelectionView.class);
+		Intent intent = new Intent(this, PhotoUseSelectionView.class);
 		NewPhotoController controller = getController();
 		File filepath;
 		try {
@@ -109,7 +109,7 @@ public class NewPhotoView extends Activity {
 			intent.putExtra("filename", filepath.getAbsolutePath());
 			
 			// start a new SelectionView instance to select where photo goes
-			startActivityForResult(intent, LIST_SELECT);
+			startActivityForResult(intent, PHOTO_USE);
 		} catch (Exception e) {
 			setResult(RESULT_CANCELED);
 			finish();
