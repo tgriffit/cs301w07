@@ -1,3 +1,10 @@
+/**
+ * This class creates a view that allows the user to compare two photos side
+ * by side.  It is not currently implemented.
+ * @author
+ * @date March 15, 2012
+ */
+
 package cs.ualberta.conditionlog;
 
 import android.app.Activity;
