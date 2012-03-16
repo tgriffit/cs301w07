@@ -17,8 +17,15 @@ import android.widget.Gallery;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+/**
+ * @author   tgriffit
+ */
 public class ConditionView extends Activity {
 	private String name;
+	/**
+	 * @uml.property  name="clist"
+	 * @uml.associationEnd  
+	 */
 	private ConditionList clist;
 	private Bitmap[] bmps;
 	

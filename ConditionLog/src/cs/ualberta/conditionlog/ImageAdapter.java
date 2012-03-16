@@ -8,12 +8,21 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Gallery;
 import android.widget.ImageView;
-
+/**
+ * 
+ * @author Jack
+ *	an adapter for images for the gallery
+ */
 public class ImageAdapter extends BaseAdapter {
     int mGalleryItemBackground;
     private Context mContext;
     Bitmap[] bmps;
 
+    /**
+     *  constructor for the image adapter
+     * @param c		the context
+     * @param bmps	a Bitmap[]
+     */
     public ImageAdapter(Context c, Bitmap[] bmps) {
         mContext = c;
         this.bmps = bmps;
@@ -23,10 +32,16 @@ public class ImageAdapter extends BaseAdapter {
         attr.recycle();
     }
 
+    /**
+     * @return the length of the bitmap[]
+     */
     public int getCount() {
         return bmps.length;
     }
 
+    /**
+     * @return the position argument
+     */
     public Object getItem(int position) {
         return position;
     }
@@ -35,6 +50,9 @@ public class ImageAdapter extends BaseAdapter {
         return position;
     }
 
+    /**
+     * returns the imageView
+     */
     public View getView(int position, View convertView, ViewGroup parent) {
         ImageView imageView = new ImageView(mContext);
 

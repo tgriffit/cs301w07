@@ -1,14 +1,18 @@
 package cs.ualberta.conditionlog;
 
-import cs.ualberta.conditionlog.*;
-
 import android.app.Instrumentation.ActivityMonitor;
 import android.test.ActivityInstrumentationTestCase2;
 import android.widget.Button;
-
+/**
+ * @author   Jack  a class to test some ativities in the ConditionLog
+ */
 public class ConditionLogTest extends ActivityInstrumentationTestCase2<MainView> {
 
 	protected static final int INITIAL_POSITION = 0;
+	/**
+	 * @uml.property  name="thisActivity"
+	 * @uml.associationEnd  
+	 */
 	private MainView thisActivity;
 	private Button thisButton;
 	private ActivityMonitor activityMonitor;

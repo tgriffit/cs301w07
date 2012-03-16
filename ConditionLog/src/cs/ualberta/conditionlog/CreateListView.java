@@ -1,10 +1,7 @@
 /**
- * 
- * Creates a new condition
- * 
- * @author: Andrew Neufeld
- * @date: March 14
- * 
+ * author: Andrew Neufeld
+ * description: View to name and create a new List
+ * date: March 14
  */
 
 package cs.ualberta.conditionlog;
@@ -23,6 +20,10 @@ public class CreateListView extends Activity {
 	private Button newButton;
 	
 	@Override
+	/**
+	 * on create, creates the buttons and their listeners
+	 * creates a database adapter to be used
+	 */
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.create);
@@ -56,17 +57,29 @@ public class CreateListView extends Activity {
 	    updateButtonState();
     }
 	
+	/**
+	 * enables the button
+	 */
 	private void updateButtonState() {
 		boolean enabled = checkForText(name);
 		newButton.setEnabled(enabled);
 	}
 	
+	/**
+	 * checks if the edit text is empty
+	 * @param edit	text to check
+	 * @return 	true or false
+	 */
 	private boolean checkForText(EditText edit) {
 		if (!edit.getText().toString().equals("")) { return true; }
 	    return false;
 	}
 	
-	// Small subclass that has only one function: to watch to see if the EditText box has any characters in it.
+	/**
+	 *  Small subclass that has only one function: to watch to see if the EditText box has any characters in it.
+	 * @author Jack
+	 *
+	 */
 	private class LocalTextWatcher implements TextWatcher {
 	    public void afterTextChanged(Editable s) {
 	    	updateButtonState();

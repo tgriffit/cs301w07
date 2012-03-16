@@ -7,18 +7,32 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
-
+/**
+ * 
+ * @author Jack
+ *
+ *an adapter for the Photo List
+ */
 class PhotoListAdapter extends ArrayAdapter<PhotoList> {
 
     private ArrayList<PhotoList> items;
     private Context listContext;
 
+    /**
+     * Constructor for the PhotoListAdapter
+     * @param context 
+     * @param textViewResourceId to be sent to super
+     * @param items 	an ArrayList<PhotoList>
+     */
     public PhotoListAdapter(Context context, int textViewResourceId, ArrayList<PhotoList> items) {
         super(context, textViewResourceId, items);
         listContext = context;
         this.items = items;
     }
 
+    /**
+     * Returns the view
+     */
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         View v = convertView;

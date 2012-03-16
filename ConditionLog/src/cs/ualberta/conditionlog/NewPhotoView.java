@@ -18,14 +18,20 @@ import android.widget.ImageButton;
 
 /**
  * This view handles the creation of new photos and then adds them to a condition list.
- * @author adneufel
- *
+ * @author   adneufel
  */
 public class NewPhotoView extends Activity {
 	
 	private static final int PHOTO_USE = 0;
+	/**
+	 * @uml.property  name="bmpFilepath"
+	 */
 	private File bmpFilepath;
 	private Bitmap bmp;
+	/**
+	 * @uml.property  name="controller"
+	 * @uml.associationEnd  
+	 */
 	private NewPhotoController controller;
 	
     @Override
@@ -121,18 +127,34 @@ public class NewPhotoView extends Activity {
 		imageButton.setImageBitmap(bmp);
 	}
 	
+	/**
+	 * @param  file
+	 * @uml.property  name="bmpFilepath"
+	 */
 	private void setBmpFilepath(File file) {
 		this.bmpFilepath = file;
 	}
 	
+	/**
+	 * @return
+	 * @uml.property  name="bmpFilepath"
+	 */
 	private File getBmpFilepath() {
 		return this.bmpFilepath;
 	}
 	
+	/**
+	 * @param  cntrl
+	 * @uml.property  name="controller"
+	 */
 	private void setController(NewPhotoController cntrl) {
 		this.controller = cntrl;
 	}
 	
+	/**
+	 * @return
+	 * @uml.property  name="controller"
+	 */
 	private NewPhotoController getController() {
 		return this.controller;
 	}

@@ -1,4 +1,4 @@
-/*
+/**
  * author: from lab class, created here by Andrew Neufeld
  * description: Class to generate a random picture
  * date: March 14

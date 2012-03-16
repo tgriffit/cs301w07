@@ -16,11 +16,22 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
 import android.widget.ListView;
 
+/**
+ * @author   tgriffit
+ */
 public class PhotoUseSelectionView extends Activity {
 	
 	private ArrayList<ArrayList<String>> lists;
+	/**
+	 * @uml.property  name="m_adapter"
+	 * @uml.associationEnd  
+	 */
 	private LogArrayAdapter m_adapter;
 	private ListView listMenu;
+	/**
+	 * @uml.property  name="dbadapter"
+	 * @uml.associationEnd  
+	 */
 	DatabaseAdapter dbadapter;
 	
 	private static final int CREATE_LOG = 0;

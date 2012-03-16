@@ -16,6 +16,7 @@
  * To delete a condition, use deleteCondition(String condition)
  * 
  * @author tgriffit
+ * @date March 15, 2012
  *
  */
 
@@ -29,8 +30,15 @@ import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 
+/**
+ * @author   tgriffit
+ */
 public class DatabaseAdapter {
 	
+	/**
+	 * @uml.property  name="dbHelper"
+	 * @uml.associationEnd  
+	 */
 	private DatabaseHelper dbHelper;
 	private SQLiteDatabase db;
 	

@@ -15,7 +15,13 @@ import java.util.ArrayList;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 
+/**
+ * @author   tgriffit
+ */
 public class PhotoList {
+	/**
+	 * @uml.property  name="name"
+	 */
 	private String name = "";
 	private ArrayList<String> filenames = null;
 	
@@ -30,7 +36,8 @@ public class PhotoList {
 	
 	/**
 	 * Returns the name of the list, ie. the condition or tag it is associated with
-	 * @return - the name as a string
+	 * @return   - the name as a string
+	 * @uml.property  name="name"
 	 */
 	public String getName() {
 		return name;
@@ -38,7 +45,8 @@ public class PhotoList {
 	
 	/**
 	 * Used to load a list of file names into the ArrayList
-	 * @param filenames - a list containing filepaths to photos
+	 * @param filenames   - a list containing filepaths to photos
+	 * @uml.property  name="filenames"
 	 */
 	public void setFilenames(ArrayList<String> filenames) {
 		this.filenames = filenames;

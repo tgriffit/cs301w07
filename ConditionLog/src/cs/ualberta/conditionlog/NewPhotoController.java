@@ -1,4 +1,4 @@
-/*
+/**
  * author: Andrew Neufeld
  * description: View to create a new image and then select a list to add it to. Uses Method Wrapper design pattern
  * date: March 14
@@ -16,11 +16,6 @@ import android.graphics.Bitmap;
 import android.os.Environment;
 import android.text.format.Time;
 
-/**
- * This controller helps NewPhotoView with interacting with the database
- * @author adneufel
- *
- */
 public class NewPhotoController {
 
 	/**

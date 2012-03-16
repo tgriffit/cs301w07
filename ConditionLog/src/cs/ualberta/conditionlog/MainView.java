@@ -1,4 +1,4 @@
-/*
+/**
  * author: Andrew Neufeld
  * description: Main opening start view
  * date: March 10
@@ -16,10 +16,12 @@ public class MainView extends Activity {
 	
 	static final int NEW_PHOTO = 0;
 	static final int LIST_SELECT = 1;
-	static final int PHOTO_USE = 2;
-	static final int RESULT_NOSELECT = 20;
+	static final int RESULT_NOSELECT = 2;
 	
 	@Override
+	/**
+	 * adds the buttons to the main view, sets listeners
+	 */
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
@@ -43,6 +45,9 @@ public class MainView extends Activity {
     }
 	
 	@Override
+	/**
+	 * on result, checks if a picture was taken or a list was selected and responds accordingly
+	 */
     protected void onActivityResult(int requestCode, int resultCode, Intent intent) {
         super.onActivityResult(requestCode, resultCode, intent);
 
@@ -58,30 +63,31 @@ public class MainView extends Activity {
         		String lname = intent.getStringExtra("name");
         		// start a ConditionView concerning this list
         		startConditionView(lname);
-        	} else if (resultCode == RESULT_NOSELECT){
-        		startListSelectView();
         	}
         	break;
-        case PHOTO_USE:
-        	if (resultCode == RESULT_OK) {
-        		
-        	}
         }
     }
 	
-	// create a NewPhotoView instance
+	/**
+	 * starts a new Photo view
+	 */
 	private void startNewPhotoView() {
 		Intent i = new Intent(this, NewPhotoView.class);
         startActivityForResult(i, NEW_PHOTO);
 	}
 	
-	// create a ListSelectionView instance
+	/**
+	 * create a ListSelectionView instance
+	 */
 	private void startListSelectView() {
 		Intent i = new Intent(this, ListSelectionView.class);
         startActivityForResult(i, LIST_SELECT);
 	}
 	
-	// create a ConditonView instance to view selected list
+	/**
+	 * create a ConditonView instance to view selected list
+	 * @param name	a name to be passed to the condition view for which condition
+	 */
 	private void startConditionView(String name) {
 		Intent i = new Intent(this, ConditionView.class);
 		i.putExtra("name", name);

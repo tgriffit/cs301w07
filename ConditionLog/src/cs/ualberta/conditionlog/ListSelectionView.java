@@ -18,11 +18,22 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
+/**
+ * @author   tgriffit
+ */
 public class ListSelectionView extends Activity {
 	
 	private ArrayList<ArrayList<String>> lists;
+	/**
+	 * @uml.property  name="m_adapter"
+	 * @uml.associationEnd  
+	 */
 	private LogArrayAdapter m_adapter;
 	private ListView listMenu;
+	/**
+	 * @uml.property  name="dbadapter"
+	 * @uml.associationEnd  
+	 */
 	DatabaseAdapter dbadapter;
 	
 	private static final int CREATE_LOG = 0;

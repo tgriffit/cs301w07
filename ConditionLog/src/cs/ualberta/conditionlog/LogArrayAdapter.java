@@ -1,4 +1,4 @@
-/*
+/**
  * author: Andrew Neufeld
  * description: An adapter for item list data of the ListSelectionView class. Uses the Adapter design pattern.
  * date: March 14
@@ -22,6 +22,12 @@ class LogArrayAdapter extends ArrayAdapter<ArrayList<String>> {
     private ArrayList<ArrayList<String>> items;
     private Context listContext;
 
+    /**
+     * 
+     * @param context				the context for the adapter
+     * @param textViewResourceId	id for the text view to be passed to super
+     * @param items 				an ArrayList<ArrayList<String>>
+     */
     public LogArrayAdapter(Context context, int textViewResourceId, ArrayList<ArrayList<String>> items) {
         super(context, textViewResourceId, items);
         listContext = context;
@@ -29,6 +35,9 @@ class LogArrayAdapter extends ArrayAdapter<ArrayList<String>> {
     }
 
     @Override
+    /**
+     * returns the view
+     */
     public View getView(int position, View convertView, ViewGroup parent) {
         View v = convertView;
         if (v == null) {
