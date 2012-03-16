@@ -1,3 +1,9 @@
+/*
+ * author: Andrew Neufeld
+ * description: Main opening start view
+ * date: March 10
+ */
+
 package cs.ualberta.conditionlog;
 
 import android.app.Activity;

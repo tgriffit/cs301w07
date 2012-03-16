@@ -1,3 +1,9 @@
+/*
+ * author: Andrew Neufeld
+ * description: View to select or create a list, returns name of list
+ * date: March 14
+ */
+
 package cs.ualberta.conditionlog;
 
 import java.util.ArrayList;

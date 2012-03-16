@@ -1,3 +1,9 @@
+/*
+ * author: Andrew Neufeld
+ * description: View to name and create a new List
+ * date: March 14
+ */
+
 package cs.ualberta.conditionlog;
 
 import android.app.Activity;
@@ -42,7 +48,6 @@ public class CreateListView extends Activity {
 	    updateButtonState();
     }
 	
-	
 	private void updateButtonState() {
 		boolean enabled = checkForText(name);
 		newButton.setEnabled(enabled);
@@ -53,6 +58,7 @@ public class CreateListView extends Activity {
 	    return false;
 	}
 	
+	// Small subclass that has only one function: to watch to see if the EditText box has any characters in it.
 	private class LocalTextWatcher implements TextWatcher {
 	    public void afterTextChanged(Editable s) {
 	    	updateButtonState();

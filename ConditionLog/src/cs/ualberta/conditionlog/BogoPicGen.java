@@ -1,3 +1,9 @@
+/*
+ * author: from lab class, created here by Andrew Neufeld
+ * description: Class to generate a random picture
+ * date: March 14
+ */
+
 package cs.ualberta.conditionlog;
 
 import android.graphics.Bitmap;
@@ -5,6 +11,13 @@ import android.graphics.Color;
 
 public class BogoPicGen {
 	
+	/**
+	 * Returns a randomly generated Bitmap image of given width and height
+	 * @param width
+	 * @param height
+	 * @return Bitmap
+	 * @see Bitmap
+	 */
 	public static Bitmap generateBitmap(int width, int height) {
 		// Algorithms based on:
 		// http://countercomplex.blogspot.com/2011/10/some-deep-analysis-of-one-line-music.html
