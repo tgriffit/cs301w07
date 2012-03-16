@@ -34,8 +34,13 @@ public class CreateListView extends Activity {
 				
 				String nameText = name.getText().toString();
 				
-				// create the log here!
+				// create the log in the database
+				DatabaseAdapter dbadapter = new DatabaseAdapter(getApplicationContext());
+				dbadapter.open();
+				dbadapter.addCondition(nameText);
+				dbadapter.close();
 				
+				// pass the name of the log back to ListSelectionView
 				Intent intent = new Intent();
 				intent.putExtra("name", nameText);
 				setResult(RESULT_OK, intent);

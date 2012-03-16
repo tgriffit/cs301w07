@@ -21,9 +21,10 @@ import android.widget.Toast;
 
 public class ListSelectionView extends Activity {
 	
-	private ArrayList<PhotoList> m_photolists = null;
+	private ArrayList<ArrayList<String>> lists;
 	private LogArrayAdapter m_adapter;
 	private ListView listMenu;
+	DatabaseAdapter dbadapter;
 	
 	private static final int CREATE_LOG = 0;
 	
@@ -31,12 +32,16 @@ public class ListSelectionView extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.list);
-       m_photolists = new ArrayList<PhotoList>();
         
+        dbadapter = new DatabaseAdapter(getApplicationContext());
+        dbadapter.open();
         // set the initial data in the ListView
-        newTestList();
         
-        m_adapter = new LogArrayAdapter(this, R.layout.listrow, m_photolists);
+       lists =  dbadapter.loadConditions();
+       dbadapter.close();
+        m_adapter = new LogArrayAdapter(this, R.layout.listrow, lists);
+        
+        // unused and hidden to hide unusable items on the view
         
         /*Button tagButton = (Button) findViewById(R.id.TagButton);
         tagButton.setOnClickListener(new View.OnClickListener() {
@@ -71,8 +76,8 @@ public class ListSelectionView extends Activity {
         listMenu.setAdapter(this.m_adapter);
         listMenu.setOnItemClickListener(new OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-            	PhotoList target = m_photolists.get(position);
-            	String listname = target.getName();
+            	ArrayList<String> target = lists.get(position);
+            	String listname = target.get(0);
         		Context context = getApplicationContext();
     			Toast toast = Toast.makeText(context, listname, Toast.LENGTH_SHORT);
     			toast.show();
@@ -91,23 +96,20 @@ public class ListSelectionView extends Activity {
         	if (resultCode == RESULT_OK) {
     			lname = intent.getStringExtra("name");
     			
-    			// debug info
-    			Context context = getApplicationContext();
-    			Toast toast = Toast.makeText(context, 
-    					"name of new log: " + lname, Toast.LENGTH_LONG);
-    			toast.show();
-    			
+    			// return the selected lists name to NewPhotoView
     			returnNameFinish(lname);
         	} 
             break;
         }
     }
 	
+	// create a new activity of CreateListView
 	private void startCreateLog() {
 		Intent i = new Intent(this, CreateListView.class);
         startActivityForResult(i, CREATE_LOG);
 	}
 	
+	// return and pass the selected name through an intent
 	private void returnNameFinish(String name) {
 		Intent intent = new Intent();
 		intent.putExtra("name", name);
@@ -115,6 +117,7 @@ public class ListSelectionView extends Activity {
     	finish();
 	}
 	
+	// unused - for use with tags
     /*private void swapButtonState() {
     	Button tagButton = (Button) findViewById(R.id.TagButton);
     	Button logButton = (Button) findViewById(R.id.LogButton);
@@ -123,7 +126,8 @@ public class ListSelectionView extends Activity {
     	logButton.setEnabled(!logButton.isEnabled());
     }
 	
-	private void updateList() {
+    // unused - for use with tags and switching between log view and tag view on the list
+	/*private void updateList() {
 		TextView empty = (TextView) findViewById(R.id.empty);
 		m_adapter.clear(); // clear old values
 		if(m_photolists != null && m_photolists.size() > 0){
@@ -137,26 +141,5 @@ public class ListSelectionView extends Activity {
 	    m_adapter.notifyDataSetChanged();
 	 }*/
 	
-	// Create a fake list of PhotoList objects in order to test the ListSelectionView user interface.
-	private void newTestList() {
-		String[] testNames = { "one", "two", "three", "four" };
-		m_photolists = new ArrayList<PhotoList>();
-		PhotoList p;
-		for (int i = 0; i < testNames.length; i++) {
-			p = new PhotoList(testNames[i]);
-			m_photolists.add(p);
-		}
-	}
-	
-	// Create a fake list again, but with slightly different names so as to simulate a tag list
-	/*private void newTestTagList() {
-		String[] testNames = { "one", "two", "three", "four" };
-		m_photolists = new ArrayList<PhotoList>();
-		PhotoList p;
-		for (int i = 0; i < testNames.length; i++) {
-			p = new PhotoList("tag " + testNames[i]);
-			m_photolists.add(p);
-		}
-	} */
 }
 
