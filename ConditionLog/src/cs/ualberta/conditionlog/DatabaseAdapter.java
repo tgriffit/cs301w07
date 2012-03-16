@@ -28,7 +28,6 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
-import android.widget.Toast;
 
 public class DatabaseAdapter {
 	
@@ -70,18 +69,10 @@ public class DatabaseAdapter {
     	ArrayList<String> photoList = new ArrayList<String>();
     	
     	//Default query commands do not like selecting from multiple tables, so use rawQuery
-<<<<<<< HEAD
+
     	String q = "SELECT "+DatabaseHelper.PHOTO_FILE+" " +
     			   "FROM "+DatabaseHelper.COND_TABLE+" INNER JOIN "+DatabaseHelper.PHOTO_TABLE+" USING ("+DatabaseHelper.PHOTO_FILE+") " +
     			   "WHERE "+DatabaseHelper.COND_NAME+"='"+cond+"' ORDER BY "+DatabaseHelper.PHOTO_DATE+" ASC";
-    	String[] args = {/*DatabaseHelper.PHOTO_TABLE + "." + */DatabaseHelper.PHOTO_FILE,
-    	                 DatabaseHelper.COND_TABLE, DatabaseHelper.PHOTO_TABLE, DatabaseHelper.PHOTO_FILE, 
-=======
-    	String q = "SELECT ? FROM ?, ? WHERE ?='?' ORDER BY ? ASC";
-    	String[] args = {DatabaseHelper.PHOTO_TABLE + "." + DatabaseHelper.PHOTO_FILE,
-    	                 DatabaseHelper.PHOTO_TABLE, DatabaseHelper.COND_TABLE,
->>>>>>> b03acfe2f6742c71d3fdd7ad458c5387fc20d86a
-    	                 DatabaseHelper.COND_NAME, cond, DatabaseHelper.PHOTO_DATE};
     	
     	Cursor c = db.rawQuery(q, null);
     	c.moveToFirst();
