@@ -2,6 +2,7 @@ package cs.ualberta.conditionlog;
 
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.graphics.Bitmap;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -11,10 +12,11 @@ import android.widget.ImageView;
 public class ImageAdapter extends BaseAdapter {
     int mGalleryItemBackground;
     private Context mContext;
+    Bitmap[] bmps;
 
-    public ImageAdapter(Context c, PhotoList list) {
+    public ImageAdapter(Context c, Bitmap[] bmps) {
         mContext = c;
-        
+        this.bmps = bmps;
         TypedArray attr = mContext.obtainStyledAttributes(R.styleable.HelloGallery);
         mGalleryItemBackground = attr.getResourceId(
                 R.styleable.HelloGallery_android_galleryItemBackground, 0);
@@ -22,7 +24,7 @@ public class ImageAdapter extends BaseAdapter {
     }
 
     public int getCount() {
-        return 0;
+        return bmps.length;
     }
 
     public Object getItem(int position) {
@@ -36,7 +38,7 @@ public class ImageAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         ImageView imageView = new ImageView(mContext);
 
-        //imageView.setImageResource(mImageIds[position]);
+        imageView.setImageBitmap(bmps[position]);
         imageView.setLayoutParams(new Gallery.LayoutParams(150, 100));
         imageView.setScaleType(ImageView.ScaleType.FIT_XY);
         imageView.setBackgroundResource(mGalleryItemBackground);

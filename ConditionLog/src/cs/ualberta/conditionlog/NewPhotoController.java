@@ -35,7 +35,7 @@ public class NewPhotoController {
 	 * @see Bitmap
 	 */
 	protected Bitmap createBogoPic(int width, int height) {
-		Bitmap bmp = BogoPicGen.generateBitmap(400, 300);
+		Bitmap bmp = BogoPicGen.generateBitmap(width, height);
 		return bmp;
 	}
 
@@ -51,7 +51,7 @@ public class NewPhotoController {
 		OutputStream out;
 		try {
 			out = new FileOutputStream(filepath);
-			ourBMP.compress(Bitmap.CompressFormat.JPEG, 75, out);
+			ourBMP.compress(Bitmap.CompressFormat.PNG, 100, out);
 			out.flush();
 			out.close();
 			return true;

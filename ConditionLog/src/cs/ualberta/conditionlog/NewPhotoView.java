@@ -88,7 +88,7 @@ public class NewPhotoView extends Activity {
     
     private void newBogoPic() {
 		NewPhotoController controller = getController();
-		bmp = controller.createBogoPic(280, 300);
+		bmp = controller.createBogoPic(1000, 1000);
 		setBogoPic(bmp);
 	}
 
