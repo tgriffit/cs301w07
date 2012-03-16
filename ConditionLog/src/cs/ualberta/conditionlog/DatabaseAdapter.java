@@ -69,7 +69,7 @@ public class DatabaseAdapter {
     	ArrayList<String> photoList = new ArrayList<String>();
     	
     	//Default query commands do not like selecting from multiple tables, so use rawQuery
-    	String q = "SELECT ? FROM ?, ? WHERE ?=? ORDER BY ? ASC";
+    	String q = "SELECT ? FROM ?, ? WHERE ?='?' ORDER BY ? ASC";
     	String[] args = {DatabaseHelper.PHOTO_TABLE + "." + DatabaseHelper.PHOTO_FILE,
     	                 DatabaseHelper.PHOTO_TABLE, DatabaseHelper.COND_TABLE,
     	                 DatabaseHelper.COND_NAME, cond, DatabaseHelper.PHOTO_DATE};
