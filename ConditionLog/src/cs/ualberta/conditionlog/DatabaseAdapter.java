@@ -11,8 +11,21 @@ import android.database.sqlite.SQLiteDatabase;
 /**
  * 
  * This class acts as an interface for manipulating the database.
- * If you want to use it, create a DatabaseAdapter object, then call open() on it.
- * When you no longer need access to the database, call close() on the object.
+ * 
+ * After creating a DatabaseAdapter object, call open() on it before using it or you will
+ * get Null Pointer Exceptions.
+ * Once you are done with the DatabaseAdapter, call close() on it.
+ * 
+ * To add a condition to the database use addCondition(String condition)
+ * To add a photo to the database use addPhoto(String filepath, String condition)
+ * To get a list of all conditions use loadConditions()
+ * To get a list of all tags use loadTags()
+ * To get a list of all photos of a condition use loadPhotosByCondition(String condition)
+ * To get a list of all photos with a tag use loadPhotosByTag(String tag)
+ * To add a tag to a photo use addTag(String filepath, String tag)
+ * To delete a condition, use deleteCondition(String condition)
+ * 
+ * @author tgriffit
  *
  */
 public class DatabaseAdapter {
@@ -234,7 +247,6 @@ public class DatabaseAdapter {
     	ContentValues values = new ContentValues();
     	//The name of the condition to store the photo under
     	values.put(DatabaseHelper.COND_NAME, cond);
-    	values.put(DatabaseHelper.PHOTO_FILE, "NULL");
     	
     	long insertTest = db.insert(DatabaseHelper.COND_TABLE, null, values);
     	
@@ -270,7 +282,7 @@ public class DatabaseAdapter {
      * @param photo - a filepath to a .bmp file
      * @param tag - the tag to add
      */
-    public void addTagToPhoto(String photo, String tag) {
+    public void addTag(String photo, String tag) {
     	ContentValues values = new ContentValues();
     	//The name of the condition to store the photo under
     	values.put(DatabaseHelper.TAGS_NAME, tag);
