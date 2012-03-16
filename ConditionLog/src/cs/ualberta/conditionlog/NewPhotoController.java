@@ -53,6 +53,7 @@ public class NewPhotoController {
 		try {
 			out = new FileOutputStream(filepath);
 			ourBMP.compress(Bitmap.CompressFormat.JPEG, 75, out);
+			out.flush();
 			out.close();
 			return true;
 
