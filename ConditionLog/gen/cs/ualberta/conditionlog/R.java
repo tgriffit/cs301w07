@@ -14,26 +14,27 @@ public final class R {
         public static final int ic_launcher=0x7f020000;
     }
     public static final class id {
-        public static final int Accept=0x7f050012;
-        public static final int Cancel=0x7f050013;
-        public static final int CreateLogButton=0x7f050003;
-        public static final int LinearLayout2=0x7f050011;
-        public static final int LogButton=0x7f050007;
-        public static final int MainTitle=0x7f05000f;
-        public static final int NewLogButton=0x7f05000a;
-        public static final int TagButton=0x7f050006;
-        public static final int TakeAPhoto=0x7f050010;
-        public static final int TakePhotoButton=0x7f05000e;
-        public static final int ViewLogsButton=0x7f05000d;
-        public static final int editName=0x7f050002;
-        public static final int empty=0x7f050009;
-        public static final int icon=0x7f05000b;
-        public static final int linearLayout1=0x7f050001;
-        public static final int list=0x7f050008;
-        public static final int sortLabel=0x7f050005;
-        public static final int textView1=0x7f050000;
-        public static final int textView2=0x7f050004;
-        public static final int toptext=0x7f05000c;
+        public static final int Accept=0x7f050013;
+        public static final int Cancel=0x7f050014;
+        public static final int CreateLogButton=0x7f050004;
+        public static final int LinearLayout2=0x7f050012;
+        public static final int LogButton=0x7f050008;
+        public static final int MainTitle=0x7f050010;
+        public static final int NewLogButton=0x7f05000b;
+        public static final int TagButton=0x7f050007;
+        public static final int TakeAPhoto=0x7f050011;
+        public static final int TakePhotoButton=0x7f05000f;
+        public static final int ViewLogsButton=0x7f05000e;
+        public static final int editName=0x7f050003;
+        public static final int empty=0x7f05000a;
+        public static final int gallery=0x7f050000;
+        public static final int icon=0x7f05000c;
+        public static final int linearLayout1=0x7f050002;
+        public static final int list=0x7f050009;
+        public static final int sortLabel=0x7f050006;
+        public static final int textView1=0x7f050001;
+        public static final int textView2=0x7f050005;
+        public static final int toptext=0x7f05000d;
     }
     public static final class layout {
         public static final int comparison=0x7f030000;
@@ -62,4 +63,25 @@ public final class R {
         public static final int sortLog=0x7f040006;
         public static final int sortTag=0x7f040007;
     }
+    public static final class styleable {
+        /** Attributes that can be used with a HelloGallery.
+           <p>Includes the following attributes:</p>
+           <table>
+           <colgroup align="left" />
+           <colgroup align="left" />
+           <tr><th>Attribute</th><th>Description</th></tr>
+           <tr><td><code>{@link #HelloGallery_android_galleryItemBackground cs.ualberta.conditionlog:android_galleryItemBackground}</code></td><td></td></tr>
+           </table>
+           @see #HelloGallery_android_galleryItemBackground
+         */
+        public static final int[] HelloGallery = {
+            0x0101004c
+        };
+        /**
+          <p>This symbol is the offset where the {@link cs.ualberta.conditionlog.R.attr#android_galleryItemBackground}
+          attribute's value can be found in the {@link #HelloGallery} array.
+          @attr name android:android_galleryItemBackground
+        */
+        public static final int HelloGallery_android_galleryItemBackground = 0;
+    };
 }
