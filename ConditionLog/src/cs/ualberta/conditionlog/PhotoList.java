@@ -40,6 +40,12 @@ public class PhotoList {
 		return filenames.size();
 	}
 	
+	public String[] toArray() {
+		String[] array = new String[filenames.size()];
+		filenames.toArray(array);
+		return array;
+	}
+	
 	/**
 	 * Loads the image associated with each filename into an array of bitmaps.
 	 * @return - an array containing one bitmap for each filename in the list

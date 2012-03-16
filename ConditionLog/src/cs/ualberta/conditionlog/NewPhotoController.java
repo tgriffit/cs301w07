@@ -12,7 +12,6 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 
-import android.database.SQLException;
 import android.graphics.Bitmap;
 import android.os.Environment;
 import android.text.format.Time;
@@ -36,7 +35,7 @@ public class NewPhotoController {
 	 * @see Bitmap
 	 */
 	protected Bitmap createBogoPic(int width, int height) {
-		Bitmap bmp = BogoPicGen.generateBitmap(400, 300);
+		Bitmap bmp = BogoPicGen.generateBitmap(width, height);
 		return bmp;
 	}
 
@@ -52,7 +51,7 @@ public class NewPhotoController {
 		OutputStream out;
 		try {
 			out = new FileOutputStream(filepath);
-			ourBMP.compress(Bitmap.CompressFormat.JPEG, 75, out);
+			ourBMP.compress(Bitmap.CompressFormat.PNG, 100, out);
 			out.flush();
 			out.close();
 			return true;
@@ -60,8 +59,6 @@ public class NewPhotoController {
 		} catch (FileNotFoundException e) {
 			return false;
 		} catch (IOException e) {
-			return false;
-		} catch (SQLException e) {
 			return false;
 		}
 	}

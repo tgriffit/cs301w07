@@ -8,6 +8,7 @@ package cs.ualberta.conditionlog;
 import java.util.ArrayList;
 
 import android.content.Context;
+import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -39,7 +40,7 @@ class LogArrayAdapter extends ArrayAdapter<ArrayList<String>> {
             TextView tt = (TextView) v.findViewById(R.id.toptext);
             ImageView iv = (ImageView) v.findViewById(R.id.icon);
             String name = item.get(0);
-            //String imgpath = item.get(1);
+            String imgpath = item.get(1);
 
             //Drawable bmp = Drawable.createFromPath("@drawable/ic_launcher.png");
 
@@ -47,7 +48,7 @@ class LogArrayAdapter extends ArrayAdapter<ArrayList<String>> {
                 tt.setText("Name: " + name);
             }
             if (iv != null) {
-            	//iv.setImageBitmap(BitmapFactory.decodeFile(imgpath));
+            	iv.setImageBitmap(BitmapFactory.decodeFile(imgpath));
             	//iv.setBackgroundDrawable(bmp);
             } else {
             	Toast toast2 = Toast.makeText(listContext, "Null Drawable!", Toast.LENGTH_LONG);
