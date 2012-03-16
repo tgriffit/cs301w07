@@ -1,6 +1,6 @@
 /*
  * author: Andrew Neufeld
- * description: An adapter for item list data of the ListSelectionView class
+ * description: An adapter for item list data of the ListSelectionView class. Uses the Adapter design pattern.
  * date: March 14
  */
 

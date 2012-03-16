@@ -24,7 +24,6 @@ public class NewPhotoView extends Activity {
 	private File bmpFilepath;
 	private NewPhotoController controller;
 	
-    /** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,7 +59,7 @@ public class NewPhotoView extends Activity {
     	});
     }
     
-    protected void newBogoPic() {
+    private void newBogoPic() {
 		NewPhotoController controller = getController();
 		Bitmap bmp = controller.createBogoPic(400, 300);
 		setBogoPic(bmp);
@@ -103,12 +102,12 @@ public class NewPhotoView extends Activity {
         }
     }
 
-	protected void cancelBogoPic() {
+	private void cancelBogoPic() {
 		setResult(RESULT_CANCELED);
 		finish();
 	}
 
-	protected void acceptBogoPic() {
+	private void acceptBogoPic() {
 		Intent intent = new Intent(this, ListSelectionView.class);
 		File filepath = getBmpFilepath();
 		if (filepath != null) {
@@ -121,7 +120,7 @@ public class NewPhotoView extends Activity {
 		}
 	}
 	
-	protected void setBogoPic(Bitmap bmp) {
+	private void setBogoPic(Bitmap bmp) {
 		ImageButton imageButton = (ImageButton) findViewById(R.id.TakeAPhoto);
 		imageButton.setImageBitmap(bmp);
 	}

@@ -1,6 +1,6 @@
 /*
  * author: Andrew Neufeld
- * description: View to create a new image and then select a list to add it to
+ * description: View to create a new image and then select a list to add it to. Uses Method Wrapper design pattern
  * date: March 14
  */
 
@@ -18,12 +18,25 @@ import android.text.format.Time;
 
 public class NewPhotoController {
 	
-	// Wrapper for the static method in BogoPicGen
+	/**
+	 * Returns a created Bitmap of width x height. This is a wrapper function 
+	 * for the BogoPicGen and it's static method to create an image
+	 * @param width		the to-be-created image width size
+	 * @param height	the to-be-created image height size
+	 * @return Bitmap
+	 * @see Bitmap
+	 */
 	protected Bitmap createBogoPic(int width, int height) {
 		Bitmap bmp = BogoPicGen.generateBitmap(400,300);
 		return bmp;
 	}
 	
+	/**
+	 * Same the given Bitmap to the given File filepath. Returns true if successful and false if unsuccessful.
+	 * @param filepath
+	 * @param ourBMP
+	 * @return boolean
+	 */
 	protected boolean saveBMP(File filepath, Bitmap ourBMP) {
 		OutputStream out;
 		try {
@@ -38,6 +51,11 @@ public class NewPhotoController {
 		}
 	}
 	
+	/**
+	 * Returns a File with a filepath that is created from the current time.
+	 * @return File
+	 * @throws Exception
+	 */
 	protected File getPicturePath() throws Exception {
 		Time now = new Time();
 		now.setToNow();
