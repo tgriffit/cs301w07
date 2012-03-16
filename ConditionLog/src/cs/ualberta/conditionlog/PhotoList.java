@@ -1,8 +1,12 @@
+/**
+ * 
+ * @author 
+ *
+ */
+
 package cs.ualberta.conditionlog;
 
 import java.util.ArrayList;
-
-import android.content.Context;
 
 public class PhotoList {
 	private String name = "";
@@ -25,16 +29,8 @@ public class PhotoList {
 		filenames.add(filename);
 	}
 	
-	/*
-	 * Loads the photos associated to the list.  ConditionList and TagList use different
-	 * methods to do this, since the tags and conditions are stored in different tables
-	 */
-	public void loadPhotos(Context context) {
-		
+	public void setFilenames(ArrayList<String> filenames) {
+		this.filenames = filenames;
 	}
 	
-	public void sortPhotos() {
-		// implement after naming convention of photo timestamp is decided...
-		// will be implemented as part of the sqlite command that creates the list
-	}
 }

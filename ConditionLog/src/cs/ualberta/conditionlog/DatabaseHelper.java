@@ -1,3 +1,9 @@
+/**
+ * Controls the ConditionLog's database, allowing connections to be made with it.
+ * @author tgriffit
+ * @date March 15, 2012
+ */
+
 package cs.ualberta.conditionlog;
 
 import android.content.Context;
@@ -40,14 +46,19 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 															"FOREIGN KEY (" + PHOTO_FILE + ") REFERENCES " + PHOTO_TABLE + " ON DELETE CASCADE);";
 
 
-	/*
+	/**
 	 * Calls the default super constructor and requests the default
 	 * cursor factory.
+	 * @param context - the current application context
 	 */
 	public DatabaseHelper(Context context) {
 		super(context, DB_NAME, null, DATABASE_VERSION);
 	}
 
+	/**
+	 * Overrides the default onCreate.  When the DatabaseHelper is created it
+	 * creates all of the tables used if they do not already exist.
+	 */
 	@Override
     public void onCreate(SQLiteDatabase db) {
 		//Creates each table if they do not already exist
@@ -56,6 +67,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL(CREATE_TAGS_TABLE);
     }
 
+	/**
+	 * Overrides the default onUpgrade.  If the database version is changed, all the tables
+	 * are dropped and re-created.
+	 */
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
     	//Drops the old tables

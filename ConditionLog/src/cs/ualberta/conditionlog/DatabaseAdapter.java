@@ -1,13 +1,3 @@
-package cs.ualberta.conditionlog;
-
-import java.util.ArrayList;
-
-import android.content.ContentValues;
-import android.content.Context;
-import android.database.Cursor;
-import android.database.SQLException;
-import android.database.sqlite.SQLiteDatabase;
-
 /**
  * 
  * This class acts as an interface for manipulating the database.
@@ -28,6 +18,17 @@ import android.database.sqlite.SQLiteDatabase;
  * @author tgriffit
  *
  */
+
+package cs.ualberta.conditionlog;
+
+import java.util.ArrayList;
+
+import android.content.ContentValues;
+import android.content.Context;
+import android.database.Cursor;
+import android.database.SQLException;
+import android.database.sqlite.SQLiteDatabase;
+
 public class DatabaseAdapter {
 	
 	private DatabaseHelper dbHelper;
