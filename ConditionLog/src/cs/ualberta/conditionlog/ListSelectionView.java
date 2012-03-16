@@ -1,14 +1,14 @@
-/*
- * author: Andrew Neufeld
- * description: View to select or create a list, returns name of list
- * date: March 14
+/**
+ * This view class allows a view to be selected and viewed, or allows a condition list to be created.
+ * @author adneufel
+ * @date March 15th
  */
-
 package cs.ualberta.conditionlog;
 
 import java.util.ArrayList;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -16,6 +16,7 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.Toast;
 
 public class ListSelectionView extends Activity {
 	
@@ -33,8 +34,7 @@ public class ListSelectionView extends Activity {
         
         dbadapter = new DatabaseAdapter(getApplicationContext());
         dbadapter.open();
-        // set the initial data in the ListView
-        
+        // load the initial data for the list
         lists =  dbadapter.loadConditions();
         dbadapter.close();
         m_adapter = new LogArrayAdapter(this, R.layout.listrow, lists);
@@ -62,6 +62,7 @@ public class ListSelectionView extends Activity {
 			}
 		});*/
         
+        // initialize the new log button
         Button newLogButton = (Button) findViewById(R.id.NewLogButton);
         newLogButton.setOnClickListener(new View.OnClickListener() {
 			
@@ -70,13 +71,26 @@ public class ListSelectionView extends Activity {
 			}
 		});
         
+        // initialize the list view 
         listMenu = (ListView) findViewById(R.id.list);
+        // set the adapter that will be used by the list view
         listMenu.setAdapter(this.m_adapter);
         listMenu.setOnItemClickListener(new OnItemClickListener() {
+        	// on list selection return the list name if the list has photos in it. If not, toast a message and do nothing.
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
             	ArrayList<String> target = lists.get(position);
+            	// target.get(0) is the name, target.get(1) is a filepath to a thumbnail image
             	String listname = target.get(0);
-            	returnNameFinish(listname);
+            	Context context = getApplicationContext();
+            	// load the condition list named listname
+            	ConditionList list = new ConditionList(listname, context);
+            	if (list.getSize() > 0) {
+            		// send the lsit name back to the parent activity
+            		returnNameFinish(listname);
+            	} else {
+            		Toast toast = Toast.makeText(context, "No photos in that list to view.", Toast.LENGTH_LONG);
+            		toast.show();
+            	}
             }
         });
     }
@@ -91,7 +105,7 @@ public class ListSelectionView extends Activity {
         	if (resultCode == RESULT_OK) {
     			lname = intent.getStringExtra("name");
     			
-    			// return the selected lists name to NewPhotoView
+    			// return the name of the newly created condition list to the parent activity
     			returnNameFinish(lname);
         	} 
             break;
@@ -107,6 +121,7 @@ public class ListSelectionView extends Activity {
 	// return and pass the selected name through an intent
 	private void returnNameFinish(String name) {
 		Intent intent = new Intent();
+		// pass the name value inside the intent
 		intent.putExtra("name", name);
     	setResult(RESULT_OK, intent);
     	finish();

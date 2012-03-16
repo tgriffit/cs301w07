@@ -1,3 +1,9 @@
+/**
+ * This view is a gallery view of the Condition list. 
+ * It shows a large zoomed in image of the photo selected from the upper portion.
+ * @author adneufel
+ * @date March 15th
+ */
 package cs.ualberta.conditionlog;
 
 import android.app.Activity;
@@ -14,8 +20,7 @@ import android.widget.Toast;
 public class ConditionView extends Activity {
 	private String name;
 	private ConditionList clist;
-	//Bitmap bmp = BogoPicGen.generateBitmap(1000, 1000);
-	private Bitmap[] bmps;// = { bmp, bmp, bmp, bmp, bmp, bmp, bmp};
+	private Bitmap[] bmps;
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -25,24 +30,32 @@ public class ConditionView extends Activity {
 	    Intent intent = getIntent();
 	    this.name = intent.getStringExtra("name");
 	    
+	    // load a condition list of name
 	    clist = new ConditionList(name, this);
+	    // get an array of Bitmaps from the condition list
 	    bmps = clist.toBmp();
-	    String[] test = clist.toArray();
-	    
-	    for (int i = 0; i < test.length; i++) {
-	    	Toast toast = Toast.makeText(this, test[i], Toast.LENGTH_LONG);
-	    	toast.show();
-	    }
 	    
 	    ImageView iv = (ImageView) findViewById(R.id.galleryImage);
-	    iv.setImageBitmap(bmps[0]);
+	    if (bmps.length > 0) {
+	    	// if there is images in the condition list set the first as a thumbnail
+	    	iv.setImageBitmap(bmps[0]);
+	    } else {
+		    // if there is no images in the condition list state so and return accordingly
+	    	Toast toast = Toast.makeText(getApplicationContext(), "No photos to view in that list.", Toast.LENGTH_LONG);
+	    	toast.show();
+	    	setResult(MainView.RESULT_NOSELECT);
+	    	finish();
+	    }
 	    
+	    // initialize the gallery view
 	    Gallery gallery = (Gallery) findViewById(R.id.gallery);
+	    // create and set the gallery adapter of images from clist
 	    gallery.setAdapter(new ImageAdapter(this, bmps));
 
 	    gallery.setOnItemClickListener(new OnItemClickListener() {
 	        public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
-	            ImageView iv = (ImageView) findViewById(R.id.galleryImage);
+	            // set the current gallery item image from the bitmap array
+	        	ImageView iv = (ImageView) findViewById(R.id.galleryImage);
 	            iv.setImageBitmap(bmps[position]);
 	        }
 	    });

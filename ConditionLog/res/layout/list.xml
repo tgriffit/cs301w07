@@ -13,10 +13,10 @@
 	    android:padding="10dip" >
 
 	    <TextView
-	        android:id="@+id/sortLabel"
+	        android:id="@+id/listTitle"
 	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
-	        android:text="@string/sortLabel" />
+	        android:text="Select a list:" />
 		<LinearLayout 
 		    android:orientation="horizontal"
 		    android:layout_width="fill_parent"
