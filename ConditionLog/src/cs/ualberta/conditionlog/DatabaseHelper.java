@@ -1,10 +1,7 @@
 package cs.ualberta.conditionlog;
 
-import java.util.ArrayList;
-
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteDatabase.CursorFactory;
 import android.database.sqlite.SQLiteOpenHelper;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
@@ -17,7 +14,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 	public static final String PHOTO_TABLE = "_photo";
 	public static final String PHOTO_FILE = "_filename";
 	public static final String PHOTO_DATE = "_date_created";
-	public static final String PHOTO_ID = "_pid";
 	public static final String COND_TABLE = "_conditions";
 	public static final String COND_NAME = "_condition";
 	public static final String TAGS_TABLE = "_tags";
@@ -27,22 +23,21 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 	private static final String CREATE_PHOTO_TABLE = "CREATE TABLE IF NOT EXISTS "+ PHOTO_TABLE +" (" +
 															PHOTO_FILE + " char(256), " +
 															PHOTO_DATE + " date, " +
-															PHOTO_ID +" int, " +
-															"PRIMARY KEY (" + PHOTO_ID + "));";
+															"PRIMARY KEY (" + PHOTO_FILE + "));";
 	
 	//Creates a table to store the conditions if the table does not already exist
 	private static final String CREATE_COND_TABLE = "CREATE TABLE IF NOT EXISTS " + COND_TABLE + " (" +
 															COND_NAME + " char(50), " +
-															PHOTO_ID + " int, " +
-															"PRIMARY KEY (" + COND_NAME + ", " + PHOTO_ID + "), " +
-															"FOREIGN KEY (" + PHOTO_ID + ") REFERENCES " + PHOTO_TABLE + ");";
+															PHOTO_FILE + " int, " +
+															"PRIMARY KEY (" + COND_NAME + ", " + PHOTO_FILE + "), " +
+															"FOREIGN KEY (" + PHOTO_FILE + ") REFERENCES " + PHOTO_TABLE + " ON DELETE CASCADE);";
 	
 	//Creates a table to store the tags if the table does not already exist
 	private static final String CREATE_TAGS_TABLE = "CREATE TABLE IF NOT EXISTS " + TAGS_TABLE + " (" +
 															TAGS_NAME + " char(50), " +
-															PHOTO_ID + " int, " +
-															"PRIMARY KEY (" + TAGS_NAME + ", " + PHOTO_ID + "), " +
-															"FOREIGN KEY (" + PHOTO_ID + ") REFERENCES " + PHOTO_TABLE + ");";
+															PHOTO_FILE + " int, " +
+															"PRIMARY KEY (" + TAGS_NAME + ", " + PHOTO_FILE + "), " +
+															"FOREIGN KEY (" + PHOTO_FILE + ") REFERENCES " + PHOTO_TABLE + " ON DELETE CASCADE);";
 
 
 	/*
@@ -64,14 +59,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
     	//Drops the old tables
-    	db.execSQL("DROP TABLE photos");
-    	db.execSQL("DROP TABLE conditions;");
-    	db.execSQL("DROP TABLE tags;");
+    	db.execSQL("DROP TABLE IF EXISTS " + PHOTO_TABLE +";");
+    	db.execSQL("DROP TABLE IF EXISTS " + COND_TABLE +";");
+    	db.execSQL("DROP TABLE IF EXISTS " + TAGS_TABLE +";");
     	
-    	//Re-creates the tables
-    	db.execSQL(CREATE_PHOTO_TABLE);
-        db.execSQL(CREATE_COND_TABLE);
-        db.execSQL(CREATE_TAGS_TABLE);
+    	onCreate(db);
     }
 
 }

@@ -9,6 +9,7 @@ import java.io.OutputStream;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.database.SQLException;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.os.Environment;
@@ -118,9 +119,18 @@ public class NewPhotoView extends Activity {
 				out = new FileOutputStream(filepath);
 				ourBMP.compress(Bitmap.CompressFormat.JPEG, 75, out);
 				out.close();
+				
+				//Insert the photo's information into the database
+				DatabaseAdapter dbA = new DatabaseAdapter(getApplicationContext());
+				dbA.open();
+				dbA.addPhotoToDB(filepath.getAbsolutePath());
+				dbA.close();
+				
 			} catch (FileNotFoundException e) {
 				setResult(RESULT_CANCELED);
 			} catch (IOException e) {
+				setResult(RESULT_CANCELED);
+			} catch (SQLException e) {
 				setResult(RESULT_CANCELED);
 			}
 			

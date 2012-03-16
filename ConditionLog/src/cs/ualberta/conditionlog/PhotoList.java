@@ -2,6 +2,8 @@ package cs.ualberta.conditionlog;
 
 import java.util.ArrayList;
 
+import android.content.Context;
+
 public class PhotoList {
 	private String name = "";
 	private ArrayList<String> filenames = null;
@@ -21,6 +23,14 @@ public class PhotoList {
 	
 	public void addPhoto(String filename) {
 		filenames.add(filename);
+	}
+	
+	/*
+	 * Loads the photos associated to the list.  ConditionList and TagList use different
+	 * methods to do this, since the tags and conditions are stored in different tables
+	 */
+	public void loadPhotos(Context context) {
+		
 	}
 	
 	public void sortPhotos() {
