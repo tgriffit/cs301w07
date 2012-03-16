@@ -18,13 +18,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 	private static final int DATABASE_VERSION = 2;
 	
 	//Names of tables and columns so that table values can change without affecting code
-	public static final String PHOTO_TABLE = "photo";
-	public static final String PHOTO_FILE = "filename";
-	public static final String PHOTO_DATE = "date_created";
-	public static final String COND_TABLE = "conditions";
-	public static final String COND_NAME = "condition";
-	public static final String TAGS_TABLE = "tags";
-	public static final String TAGS_NAME = "tag";
+	public static final String PHOTO_TABLE = "_photo";
+	public static final String PHOTO_FILE = "_filename";
+	public static final String PHOTO_DATE = "_date_created";
+	public static final String COND_TABLE = "_conditions";
+	public static final String COND_NAME = "_condition";
+	public static final String TAGS_TABLE = "_tags";
+	public static final String TAGS_NAME = "_tag";
 	
 	//Creates a table to store photos if the table does not already exist
 	private static final String CREATE_PHOTO_TABLE = "CREATE TABLE IF NOT EXISTS "+ PHOTO_TABLE +" (" +

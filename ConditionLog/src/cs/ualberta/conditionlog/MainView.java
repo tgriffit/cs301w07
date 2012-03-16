@@ -22,6 +22,7 @@ public class MainView extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
         
+        
         Button takePhotoButton = (Button) findViewById(R.id.TakePhotoButton);
     	takePhotoButton.setOnClickListener(new View.OnClickListener() {
 

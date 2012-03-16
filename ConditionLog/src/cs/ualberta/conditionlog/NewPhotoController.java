@@ -72,10 +72,10 @@ public class NewPhotoController {
 	protected File getPicturePath() throws Exception {
 		Time now = new Time();
 		now.setToNow();
-		String timestamp = now.format("%y-%m-%d-%T"); // YY-MM-DD-H:M:S format
+		String timestamp = now.format("%y-%m-%d-%H-%M-%S"); // YY-MM-DD-H:M:S format
 														// 24-hour clock time
 		File extBaseDir = Environment.getExternalStorageDirectory();
-		File file = new File(extBaseDir.getAbsoluteFile() + "/SkinConditionLog");
+		File file = new File(extBaseDir.getAbsolutePath() + "/SkinConditionLog");
 		if (!file.exists()) {
 			if (!file.mkdirs()) {
 				throw new Exception(
@@ -83,7 +83,7 @@ public class NewPhotoController {
 								+ file.getAbsolutePath());
 			}
 		}
-		File filepath = new File(file.getAbsoluteFile() + "/" + timestamp);
+		File filepath = new File(file.getAbsolutePath() + "/" + timestamp);
 		return filepath;
 	}
 }
