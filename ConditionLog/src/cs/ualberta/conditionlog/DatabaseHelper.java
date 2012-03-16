@@ -66,7 +66,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL(CREATE_PHOTO_TABLE);
         db.execSQL(CREATE_COND_TABLE);
         db.execSQL(CREATE_TAGS_TABLE);
-        
     }
 
 	/**
