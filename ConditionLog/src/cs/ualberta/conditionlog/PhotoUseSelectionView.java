@@ -1,3 +1,9 @@
+/*
+ * author: Andrew Neufeld
+ * description: unused currently
+ * date: March 7
+ */
+
 package cs.ualberta.conditionlog;
 
 import android.app.Activity;

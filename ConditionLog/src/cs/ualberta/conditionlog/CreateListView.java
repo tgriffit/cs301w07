@@ -1,3 +1,9 @@
+/*
+ * author: Andrew Neufeld
+ * description: View to name and create a new List
+ * date: March 14
+ */
+
 package cs.ualberta.conditionlog;
 
 import android.app.Activity;

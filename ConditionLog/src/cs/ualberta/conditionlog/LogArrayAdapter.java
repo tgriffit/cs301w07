@@ -1,3 +1,9 @@
+/*
+ * author: Andrew Neufeld
+ * description: An adapter for item list data of the ListSelectionView class
+ * date: March 14
+ */
+
 package cs.ualberta.conditionlog;
 import java.util.ArrayList;
 

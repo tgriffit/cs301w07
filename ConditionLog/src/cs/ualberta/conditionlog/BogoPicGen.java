@@ -1,4 +1,8 @@
-// source: from the class labs
+/*
+ * author: from lab class
+ * description: Class to generate a random picture
+ * date: March 14
+ */
 
 package cs.ualberta.conditionlog;
 

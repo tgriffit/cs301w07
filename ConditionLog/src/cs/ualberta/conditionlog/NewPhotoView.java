@@ -1,3 +1,9 @@
+/*
+ * author: Andrew Neufeld
+ * description: View to capture new photo and delegate what list to add it to.
+ * date: March 14
+ */
+
 package cs.ualberta.conditionlog;
 
 import java.io.File;
