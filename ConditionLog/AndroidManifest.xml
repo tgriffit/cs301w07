@@ -12,7 +12,7 @@
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name" >
         <activity
-            android:name=".MainView"
+            android:name=".view.MainView"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -20,12 +20,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="ListSelectionView"></activity>
-        <activity android:name="ComparisonView"></activity>
-        <activity android:name="ConditionView"></activity>
-        <activity android:name="PhotoUseSelectionView"></activity>
-        <activity android:name="NewPhotoView"></activity>
-        <activity android:name="CreateListView"></activity>
+        <activity android:name=".view.ListSelectionView"></activity>
+        <activity android:name=".view.ComparisonView"></activity>
+        <activity android:name=".view.ConditionView"></activity>
+        <activity android:name=".view.NewPhotoView"></activity>
+        <activity android:name=".view.PhotoUseSelectionView"></activity>
+        <activity android:name=".view.CreateListView"></activity>
     </application>
 
 </manifest>
