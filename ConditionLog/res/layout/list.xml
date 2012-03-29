@@ -12,29 +12,37 @@
 	    android:orientation="horizontal"
 	    android:padding="10dip" >
 
-	    <TextView
-	        android:id="@+id/listTitle"
-	        android:layout_width="wrap_content"
-	        android:layout_height="wrap_content"
-	        android:text="Select a list:" />
+		<TextView
+		    android:id="@+id/listTitle"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:text="@string/sortBy" />
+
 		<LinearLayout 
 		    android:orientation="horizontal"
 		    android:layout_width="fill_parent"
-		    android:layout_height="wrap_content"
-		    android:visibility="invisible">
+		    android:layout_height="wrap_content">
 		    <Button
 		        android:id="@+id/TagButton"
 		        android:layout_width="wrap_content"
 		        android:layout_height="40dp"
-		        android:layout_weight="0.5"
+		        android:layout_weight="0.25"
 		        android:text="@string/sortTag" />
 	
 		    <Button
 		        android:id="@+id/LogButton"
 		        android:layout_width="wrap_content"
 		        android:layout_height="40dip"
-		        android:layout_weight="0.5"
+		        android:layout_weight="0.25"
 		        android:text="@string/sortLog" />
+
+		    <Button
+		        android:id="@+id/TimestampButton"
+		        android:layout_width="wrap_content"
+		        android:layout_height="40dip"
+		        android:layout_weight="0.25"
+		        android:text="@string/sortTime" />
+
 		</LinearLayout>
 
 	</LinearLayout>

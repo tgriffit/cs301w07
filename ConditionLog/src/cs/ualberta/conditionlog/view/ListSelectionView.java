@@ -16,11 +16,12 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 import cs.ualberta.conditionlog.R;
 import cs.ualberta.conditionlog.controller.ListArrayAdapter;
-import cs.ualberta.conditionlog.model.DatabaseAdapter;
 import cs.ualberta.conditionlog.model.ConditionList;
+import cs.ualberta.conditionlog.model.DatabaseAdapter;
 
 /**
  * @author     tgriffit
@@ -57,11 +58,11 @@ public class ListSelectionView extends Activity {
         
         // unused and hidden to hide unusable items on the view
         
-        /*Button tagButton = (Button) findViewById(R.id.TagButton);
+        Button tagButton = (Button) findViewById(R.id.TagButton);
         tagButton.setOnClickListener(new View.OnClickListener() {
 
 			public void onClick(View v) {
-				newTestTagList(); // change to tag list
+				//newTestTagList(); // change to tag list
 				updateList();
 				swapButtonState();
 			}
@@ -72,11 +73,11 @@ public class ListSelectionView extends Activity {
         logButton.setOnClickListener(new View.OnClickListener() {
 			
 			public void onClick(View v) {
-				newTestList(); // change to log list
+				//newTestList(); // change to log list
 				updateList();
 				swapButtonState();
 			}
-		});*/
+		});
         
         // initialize the new log button
         Button newLogButton = (Button) findViewById(R.id.NewLogButton);
@@ -101,7 +102,7 @@ public class ListSelectionView extends Activity {
             	// load the condition list named listname
             	ConditionList list = new ConditionList(listname, context);
             	if (list.getSize() > 0) {
-            		// send the lsit name back to the parent activity
+            		// send the list name back to the parent activity
             		returnNameFinish(listname);
             	} else {
             		Toast toast = Toast.makeText(context, "No photos in that list to view.", Toast.LENGTH_LONG);
@@ -144,7 +145,7 @@ public class ListSelectionView extends Activity {
 	}
 	
 	// unused - for use with tags
-    /*private void swapButtonState() {
+    private void swapButtonState() {
     	Button tagButton = (Button) findViewById(R.id.TagButton);
     	Button logButton = (Button) findViewById(R.id.LogButton);
     	 
@@ -153,19 +154,19 @@ public class ListSelectionView extends Activity {
     }
 	
     // unused - for use with tags and switching between log view and tag view on the list
-	/*private void updateList() {
+	private void updateList() {
 		TextView empty = (TextView) findViewById(R.id.empty);
 		m_adapter.clear(); // clear old values
-		if(m_photolists != null && m_photolists.size() > 0){
+		if(lists != null && lists.size() > 0){
 			empty.setVisibility(View.INVISIBLE);
 	         m_adapter.notifyDataSetChanged();
-	        for(int i=0;i<m_photolists.size();i++)
-	         m_adapter.add(m_photolists.get(i)); // add items to the adapter
+	        for(int i=0;i < lists.size();i++)
+	         m_adapter.add(lists.get(i)); // add items to the adapter
 	    } else {
 	    	empty.setVisibility(View.VISIBLE);
 	    }
 	    m_adapter.notifyDataSetChanged();
-	 }*/
-	
+	 }
+
 }
 
