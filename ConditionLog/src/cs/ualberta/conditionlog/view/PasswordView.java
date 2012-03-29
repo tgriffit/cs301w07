@@ -12,15 +12,21 @@ import android.widget.Toast;
 import cs.ualberta.conditionlog.R;
 import cs.ualberta.conditionlog.controller.PasswordManager;
 
+/**
+ * This is the view for querying the user for either a new password or to enter a set password
+ * @author     rleung
+ */
+
 public class PasswordView extends Activity{
 
-  private EditText password;
+  	private EditText password;
 	private Button newButton;
 	private boolean passwordSet;
 
 	@Override
 	/**
 	 * on create, creates the buttons and their listeners
+	 * checks for a set password and loads appropriate layout
 	 */
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -94,6 +100,9 @@ public class PasswordView extends Activity{
 		}
 	}
 	
+	/**
+	 * pops up a toast notification indicating a wrong password
+	 */
 	private void wrongPasswordPopup() {
 		Context context = getApplicationContext();
 		String text = "Wrong Password, Try Again >:)";
