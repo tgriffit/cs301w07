@@ -1,4 +1,13 @@
-package cs.ualberta.conditionlog.controller;
+package cs.ualberta.conditionlog.model;
+
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
+
+import javax.crypto.CipherOutputStream;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -15,8 +24,27 @@ public class FileController {
 	 * Encrypts the bmp and saves it.
 	 * @param bmp - an image to save
 	 */
-	public void save(Bitmap bmp) {
+	public boolean saveBMP(File filepath, Bitmap ourBMP) {
+		OutputStream out;
+		CipherOutputStream outEncrypted;
+		try {
+			out = new FileOutputStream(filepath);
+			ourBMP.compress(Bitmap.CompressFormat.PNG, 100, out);
+			
+			EncryptionHelper encrypt = new EncryptionHelper();
+			out = encrypt.getEncryptionStream(out);
+			out.flush();
+			out.close();
+
+		} catch (FileNotFoundException e) {
+			return false;
+		} catch (IOException e) {
+			return false;
+		}
 		
+		
+		
+		return true;
 	}
 	
 	/**

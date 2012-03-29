@@ -12,7 +12,6 @@ package cs.ualberta.conditionlog.model;
 
 import java.util.ArrayList;
 
-import cs.ualberta.conditionlog.controller.FileController;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;

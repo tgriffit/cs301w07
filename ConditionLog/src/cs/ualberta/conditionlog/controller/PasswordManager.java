@@ -27,11 +27,10 @@ public class PasswordManager {
 		//load password hash from db
 		String dbHash = "";
 		
-		EncryptionHelper encrypt = new EncryptionHelper();
-		String encHash = encrypt.generatePasswordHash(pass);
+		String encHash = EncryptionHelper.generatePasswordHash(pass);
 		
 		if (dbHash.equals(encHash)) {
-			encrypt.init(pass);
+			EncryptionHelper.init(pass);
 			return true;
 		}
 		

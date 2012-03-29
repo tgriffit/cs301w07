@@ -316,7 +316,24 @@ public class DatabaseAdapter {
     	db.delete(DatabaseHelper.COND_TABLE, DatabaseHelper.COND_NAME + "=?", args);
     }
     
-    public void deletePhoto(String filename) {
+    /**
+     * Removes all lines associated with a tag from the tags table.
+     * @param tag
+     */
+    public void deleteTag(String tag) {
+    	String[] args = {tag};
     	
+    	db.delete(DatabaseHelper.TAGS_TABLE, DatabaseHelper.TAGS_NAME + "=?", args);
+    }
+    
+    /**
+     * Deletes a photo from the photos table and removes all instances of it from
+     * the conditions and tags tables.
+     * @param filename
+     */
+    public void deletePhoto(String filename) {
+    	String[] args = {filename};
+    	
+    	db.delete(DatabaseHelper.PHOTO_TABLE, DatabaseHelper.PHOTO_FILE + "=?", args);
     }
 }
