@@ -1,5 +1,109 @@
 package cs.ualberta.conditionlog.view;
 
-public class PasswordView {
+import android.app.Activity;
+import android.content.Context;
+import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
+import cs.ualberta.conditionlog.R;
+import cs.ualberta.conditionlog.controller.PasswordManager;
+
+public class PasswordView extends Activity{
+
+  private EditText password;
+	private Button newButton;
+	private boolean passwordSet;
+
+	@Override
+	/**
+	 * on create, creates the buttons and their listeners
+	 */
+	public void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		passwordSet = PasswordManager.checkIfPasswordSet();
+		
+		if (passwordSet) {
+			setContentView(R.layout.enterpassword);
+			password = (EditText) findViewById(R.id.enteredPassword);
+			newButton = (Button) findViewById(R.id.acceptEnteredPassword);
+		} else {
+			setContentView(R.layout.newpassword);
+			password = (EditText) findViewById(R.id.newPassword);
+			newButton = (Button) findViewById(R.id.acceptNewPassword);
+		}
+		
+		newButton.setEnabled(false);
+		newButton.setOnClickListener(new View.OnClickListener() {
+
+			public void onClick(View v) {
+
+				String passwordText = password.getText().toString();
+
+				if (passwordSet) {
+					while (!PasswordManager.testPassword(passwordText)) {
+						wrongPasswordPopup();
+					}
+				} else {
+					PasswordManager.setPassword(passwordText);
+				}
+				finish();
+			}
+		});
+
+		LocalTextWatcher watcher = new LocalTextWatcher();
+		password.addTextChangedListener(watcher);
+		updateButtonState();
+	}
+
+	/**
+	 * enables the button
+	 */
+	private void updateButtonState() {
+		boolean enabled = checkForText(password);
+		newButton.setEnabled(enabled);
+	}
+
+	/**
+	 * checks if the edit text is empty
+	 * @param edit text to check
+	 * @return 	true or false
+	 */
+	private boolean checkForText(EditText edit) {
+		if (!edit.getText().toString().equals("")) { return true; }
+		return false;
+	}
+
+	/**
+	 *  Small subclass that has only one function: to watch to see if the EditText box has any characters in it.
+	 * @author Jack
+	 *
+	 */
+	private class LocalTextWatcher implements TextWatcher {
+		public void afterTextChanged(Editable s) {
+			updateButtonState();
+		}
+
+		public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+		}
+
+		public void onTextChanged(CharSequence s, int start, int before, int count) {
+		}
+	}
+	
+	private void wrongPasswordPopup() {
+		Context context = getApplicationContext();
+		String text = "Wrong Password, Try Again >:)";
+		int duration = Toast.LENGTH_SHORT;
+
+		Toast toast = Toast.makeText(context, text, duration);
+		toast.show();
+	}
+
+
+
 
 }
