@@ -12,6 +12,8 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 
+import cs.ualberta.conditionlog.model.EncryptionHelper;
+
 import android.graphics.Bitmap;
 import android.os.Environment;
 import android.text.format.Time;
@@ -50,6 +52,11 @@ public class NewPhotoController extends BogoPicGen {
 		try {
 			out = new FileOutputStream(filepath);
 			ourBMP.compress(Bitmap.CompressFormat.PNG, 100, out);
+			
+			//Encrypts the output stream
+			EncryptionHelper encrypt = new EncryptionHelper();
+			out = encrypt.getEncryptionStream(out);
+			
 			out.flush();
 			out.close();
 			return true;
