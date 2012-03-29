@@ -14,7 +14,7 @@ public class PasswordManager {
 	 * Checks whether or not a password has been saved in the database
 	 * @return true if a password has been specified or false if not
 	 */
-	public boolean checkIfPasswordSet() {
+	public static boolean checkIfPasswordSet() {
 		return true;
 	}
 	
@@ -23,7 +23,7 @@ public class PasswordManager {
 	 * @param pass
 	 * @return true if the password is correct or false if it isn't
 	 */
-	public boolean testPassword(String pass) {
+	public static boolean testPassword(String pass) {
 		//load password hash from db
 		String dbHash = "";
 		
@@ -31,7 +31,7 @@ public class PasswordManager {
 		String encHash = encrypt.generatePasswordHash(pass);
 		
 		if (dbHash.equals(encHash)) {
-			encrypt.generatePhotoHash(pass);
+			encrypt.init(pass);
 			return true;
 		}
 		
@@ -42,12 +42,12 @@ public class PasswordManager {
 	 * Saves a hashed password in the database.
 	 * @param pass
 	 */
-	public void setPassword(String pass) {
-		EncryptionHelper encrypt = new EncryptionHelper();
-		String hash = encrypt.generatePasswordHash(pass);
+	public static void setPassword(String pass) {
+		String hash = EncryptionHelper.generatePasswordHash(pass);
 		
 		//save hash to db
 		
+		EncryptionHelper.init(pass);
 		
 	}
 }
