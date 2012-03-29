@@ -12,6 +12,8 @@ package cs.ualberta.conditionlog.model;
 
 import java.util.ArrayList;
 
+import cs.ualberta.conditionlog.controller.FileController;
+
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 
@@ -66,10 +68,11 @@ public class PhotoList {
 	 */
 	public Bitmap[] toBmp() {
 		Bitmap[] bmps = new Bitmap[filenames.size()];
+		FileController fController = new FileController();
 		
 		//Iterates through the list of filenames and loads each bmp
 		for (int i = 0; i < filenames.size(); i++) {
-			bmps[i] = BitmapFactory.decodeFile(filenames.get(i));
+			bmps[i] = fController.load(filenames.get(i));
 		}
 		
 		return bmps;

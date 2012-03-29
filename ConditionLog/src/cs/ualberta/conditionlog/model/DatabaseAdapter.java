@@ -315,4 +315,8 @@ public class DatabaseAdapter {
     	
     	db.delete(DatabaseHelper.COND_TABLE, DatabaseHelper.COND_NAME + "=?", args);
     }
+    
+    public void deletePhoto(String filename) {
+    	
+    }
 }
