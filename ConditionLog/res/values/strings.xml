@@ -15,5 +15,7 @@
     <string name="createLogDesc">Please type in the name that you wish to call the new Condition Log. </string>
     <string name="createLogTitle">New Condition Log</string>
     <string name="newPicDesc">Tap the middle to generate a new picture.</string>
+    <string name="newPassword">Please enter a password:</string>
+    <string name="enterPassword">Please enter your password:</string>
 
 </resources>
