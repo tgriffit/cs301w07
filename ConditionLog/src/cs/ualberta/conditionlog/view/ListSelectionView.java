@@ -52,18 +52,7 @@ public class ListSelectionView extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.list);
 		
-		dbadapter = new DatabaseAdapter(getApplicationContext());
-		dbadapter.open();
-		// load the initial data for the list
-		condLists = dbadapter.loadConditions();
-		tagLists = dbadapter.loadTags();
-		dbadapter.close();
-
-		condAdapter = new ListArrayAdapter(this, R.layout.listrow, condLists);
-		tagAdapter = new ListArrayAdapter(this, R.layout.listrow, tagLists);
-		
-		// set the currently focused list
-		currentLists = condLists;
+		updateLists();
 		
 		Button tagButton = (Button) findViewById(R.id.TagButton);
 		tagButton.setOnClickListener(new View.OnClickListener() {
@@ -103,8 +92,6 @@ public class ListSelectionView extends Activity {
 
 		// initialize the list view
 		listMenu = (ListView) findViewById(R.id.list);
-		// set the adapter that will be used by the list view
-		listMenu.setAdapter(this.condAdapter);
 		listMenu.setOnItemClickListener(new OnItemClickListener() {
 			// on list selection return the list name if the list has photos in
 			// it. If not, toast a message and do nothing.
@@ -118,8 +105,8 @@ public class ListSelectionView extends Activity {
 				// load the condition list named listname
 				ConditionList list = new ConditionList(listname, context);
 				if (list.getSize() > 0) {
-					// send the list name back to the parent activity
-					returnNameFinish(listname);
+					// start new activity to view the selected condition
+					viewList(listname);
 				} else {
 					Toast toast = Toast.makeText(context,
 							"No photos in that list to view.",
@@ -137,12 +124,9 @@ public class ListSelectionView extends Activity {
 
 		switch (requestCode) {
 		case CREATE_LOG:
-			String lname = "";
+			// on good result update the cond list!
 			if (resultCode == RESULT_OK) {
-				lname = intent.getStringExtra("name");
-				// return the name of the newly created condition list to the
-				// parent activity
-				returnNameFinish(lname);
+				updateLists();
 			}
 			break;
 		}
@@ -154,13 +138,30 @@ public class ListSelectionView extends Activity {
 		startActivityForResult(i, CREATE_LOG);
 	}
 
-	// return and pass the selected name through an intent
-	private void returnNameFinish(String name) {
-		Intent intent = new Intent();
-		// pass the name value inside the intent
-		intent.putExtra("name", name);
-		setResult(RESULT_OK, intent);
-		finish();
+	private void viewList(String lname) {
+		Intent i = new Intent(this, ConditionView.class);
+		i.putExtra("name", lname);
+		startActivity(i);
+	}
+	
+	private void updateLists() {
+		dbadapter = new DatabaseAdapter(getApplicationContext());
+		dbadapter.open();
+		// load the initial data for the list
+		condLists = dbadapter.loadConditions();
+		tagLists = dbadapter.loadTags();
+		dbadapter.close();
+
+		condAdapter = new ListArrayAdapter(this, R.layout.listrow, condLists);
+		tagAdapter = new ListArrayAdapter(this, R.layout.listrow, tagLists);
+		
+		// get the listMenu view
+		listMenu = (ListView) findViewById(R.id.list);
+		// set the adapter that will be used by the list view
+		listMenu.setAdapter(this.condAdapter);
+		
+		// set the currently focused list
+		currentLists = condLists;
 	}
 
 	// unused - for use with tags

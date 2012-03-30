@@ -7,7 +7,6 @@
 package cs.ualberta.conditionlog.view;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -49,10 +48,7 @@ public class CreateListView extends Activity {
 				dbadapter.addCondition(nameText);
 				dbadapter.close();
 				
-				// pass the name of the log back to ListSelectionView
-				Intent intent = new Intent();
-				intent.putExtra("name", nameText);
-				setResult(RESULT_OK, intent);
+				setResult(RESULT_OK);
 				finish();
 			}
 		});

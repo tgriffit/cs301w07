@@ -20,8 +20,7 @@ import cs.ualberta.conditionlog.R;
 public class MainView extends Activity {
 	
 	static final int NEW_PHOTO = 0;
-	static final int LIST_SELECT = 1;
-	static final int RESULT_NOSELECT = 2;
+	static final int RESULT_NOSELECT = 1;
 	
 	@Override
 	/**
@@ -61,14 +60,6 @@ public class MainView extends Activity {
         		// if here then a pic was successfully taken, and stored in a condition list
         	}
             break;
-        case LIST_SELECT:
-        	if (resultCode == RESULT_OK) {
-        		// if here then a list was selected
-        		String lname = intent.getStringExtra("name");
-        		// start a ConditionView concerning this list
-        		startConditionView(lname);
-        	}
-        	break;
         }
     }
 	
@@ -85,17 +76,7 @@ public class MainView extends Activity {
 	 */
 	private void startListSelectView() {
 		Intent i = new Intent(this, ListSelectionView.class);
-        startActivityForResult(i, LIST_SELECT);
-	}
-	
-	/**
-	 * create a ConditonView instance to view selected list
-	 * @param name	a name to be passed to the condition view for which condition
-	 */
-	private void startConditionView(String name) {
-		Intent i = new Intent(this, ConditionView.class);
-		i.putExtra("name", name);
-        startActivityForResult(i, LIST_SELECT);
+        startActivity(i);
 	}
 
 	/**

@@ -85,6 +85,10 @@ public class PhotoUseSelectionView extends Activity {
 			
         	// on click this button will create a new activity that can be used to name and create a new list
 			public void onClick(View v) {
+				// save the tags
+				String[] tags = tagBox.getText().toString().split("\\s+");
+				PhotoUseListController.savePhotoTags(getApplicationContext(), picFile, tags);
+				// and then start the CreateLog activity
 				startCreateLog();
 			}
 		});
