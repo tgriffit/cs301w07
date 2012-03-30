@@ -22,7 +22,9 @@
 
 package cs.ualberta.conditionlog.model;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -205,12 +207,16 @@ public class DatabaseAdapter {
      * Adds a photo to the photos table in the database.
      */
     private void addPhotoToDB(String filepath) {
+    	SimpleDateFormat format = new SimpleDateFormat("d MMM yyyy HH:mm:ss");
+    	Date date = new Date();
     	
     	//Inserts the new photo into the photos table
     	ContentValues values = new ContentValues();
     	values.put(DatabaseHelper.PHOTO_FILE, filepath);
     	//Uses the SQLite function date() to set the photo's date to the current time
     	values.put(DatabaseHelper.PHOTO_DATE, "date('now')");
+    	//Enters the date as a pre-formatted string because it's much easier than dealing with sql date formatting
+    	values.put(DatabaseHelper.PHOTO_DATE_FORMATTED, format.format(date));
     	
     	long insertTest = db.insert(DatabaseHelper.PHOTO_TABLE, null, values);
     	
@@ -327,13 +333,149 @@ public class DatabaseAdapter {
     }
     
     /**
+     * Removes a condition from the given photo.  There is a database trigger to ensure
+     * that this will not completely delete the condition.
+     * @param filename
+     * @param cond
+     */
+    public void deleteConditionFromPhoto(String filename, String cond) {
+    	String[] args = {filename, cond};
+    	
+    	db.delete(DatabaseHelper.COND_TABLE, DatabaseHelper.COND_NAME + "=? AND " + DatabaseHelper.PHOTO_FILE + "=?", args);
+    }
+    
+    /**
+     * Removes a tag from the given photo.  If no more photos have that tag,
+     * the tag no longer exists.
+     * @param filename
+     * @param tag
+     */
+    public void deleteTagFromPhoto(String filename, String tag) {
+    	String[] args = {filename, tag};
+    	
+    	db.delete(DatabaseHelper.TAGS_TABLE, DatabaseHelper.TAGS_NAME + "=? AND " + DatabaseHelper.PHOTO_FILE + "=?", args);
+    }
+    
+    /**
      * Deletes a photo from the photos table and removes all instances of it from
-     * the conditions and tags tables.
+     * the conditions and tags tables.  There is a trigger in the database that
+     * prevents a condition from being deleted when its last photo is deleted.
      * @param filename
      */
     public void deletePhoto(String filename) {
+    	deleteMatchingCondition(filename);
+    	
     	String[] args = {filename};
     	
     	db.delete(DatabaseHelper.PHOTO_TABLE, DatabaseHelper.PHOTO_FILE + "=?", args);
+    }
+    
+    private void deleteMatchingCondition(String filename) {
+    	
+    	String query = "SELECT " + DatabaseHelper.COND_NAME + ", COUNT(*) as c " +
+    				   "FROM " + DatabaseHelper.COND_TABLE + " " +
+    				   "WHERE " + DatabaseHelper.COND_NAME + " IN " +
+    				  		"(SELECT " + DatabaseHelper.COND_NAME + " " + 
+    				  		"FROM " + DatabaseHelper.COND_TABLE + " " +
+    				  		"WHERE " + DatabaseHelper.COND_NAME + " = '" + filename + "') " +
+    				   "GROUP BY " + DatabaseHelper.COND_NAME;
+    	
+    	Cursor c = db.rawQuery(query, null);
+    	
+    	c.moveToFirst();
+    	
+    	while (!c.isAfterLast()) {
+    		//If there is more than one row for that condition, delete the row
+    		if (c.getInt(1) > 1)
+    			deleteConditionFromPhoto(filename, c.getString(0));
+    		//Otherwise, leave the condition in the table with a null photo
+    		else {
+    			ContentValues values = new ContentValues();
+    	    	values.put(DatabaseHelper.COND_NAME, c.getString(0));
+    	    	String[] args = {filename, c.getString(0)};
+    	    	
+    	    	db.update(DatabaseHelper.COND_TABLE, values, DatabaseHelper.COND_NAME + "=? AND " + DatabaseHelper.PHOTO_FILE + "=?", args);
+    		}
+    		
+    		c.moveToNext();
+    	}
+    	
+    	c.close();
+    }
+    
+    /**
+     * Retrieves the stored password hash.
+     * @return the password hash or an empty string if the table is empty
+     */
+    public String getPasswordHash() {
+    	String[] cols = {DatabaseHelper.PASS};
+    	String hash = "";
+    	
+    	Cursor c = db.query(DatabaseHelper.PASS_TABLE, cols, null, null, null, null, null);
+    	
+    	if (c.moveToFirst()) {
+    		hash = c.getString(0);
+    	}
+    	
+    	c.close();
+    	
+    	return hash;
+    }
+    
+    /**
+     * Adds the given password hash to the database
+     * @param hash
+     */
+    public void setPasswordHash(String hash) {
+    	ContentValues values = new ContentValues();
+    	
+    	values.put(DatabaseHelper.PASS, hash);
+    	
+    	db.insert(DatabaseHelper.PASS_TABLE, null, values);
+    }
+    
+    /**
+     * Finds the filenames of every photo in the database sorted by time
+     * @return an ArrayList of filename strings
+     */
+    public ArrayList<String> loadPhotosByTime() {
+    	ArrayList<String> photoList = new ArrayList<String>();
+    	
+    	String[] args = {DatabaseHelper.PHOTO_FILE};
+    	
+    	Cursor c = db.query(DatabaseHelper.PHOTO_TABLE, args, null, null, null, null,
+    			            DatabaseHelper.PHOTO_DATE + " ASC");
+    	
+    	c.moveToFirst();
+    	while(!c.isAfterLast()) {
+    		photoList.add(c.getString(0));
+    		c.moveToNext();
+    	}
+    	
+    	c.close();
+    	
+    	return photoList;
+    }
+    
+    /**
+     * Finds the timestamp for a given photo
+     * @param filename
+     * @return the timestamp as a string
+     */
+    public String getPhotoTimestamp(String filename) {
+    	String[] cols = {DatabaseHelper.PHOTO_DATE_FORMATTED};
+    	String[] args = {filename};
+    	
+    	Cursor c = db.query(DatabaseHelper.PHOTO_TABLE, cols, DatabaseHelper.PHOTO_FILE + "=?", args,
+    			            null, null, null);
+    	
+    	String date = "";
+    	
+    	if (c.moveToFirst())
+    		date = c.getString(0);
+    	
+    	c.close();
+    	
+    	return date;
     }
 }

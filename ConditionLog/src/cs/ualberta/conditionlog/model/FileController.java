@@ -21,33 +21,6 @@ import android.graphics.BitmapFactory;
 public class FileController {
 
 	/**
-	 * Encrypts the bmp and saves it.
-	 * @param bmp - an image to save
-	 */
-	public boolean saveBMP(File filepath, Bitmap ourBMP) {
-		OutputStream out;
-		CipherOutputStream outEncrypted;
-		try {
-			out = new FileOutputStream(filepath);
-			ourBMP.compress(Bitmap.CompressFormat.PNG, 100, out);
-			
-			EncryptionHelper encrypt = new EncryptionHelper();
-			out = encrypt.getEncryptionStream(out);
-			out.flush();
-			out.close();
-
-		} catch (FileNotFoundException e) {
-			return false;
-		} catch (IOException e) {
-			return false;
-		}
-		
-		
-		
-		return true;
-	}
-	
-	/**
 	 * Loads the given file and decrypts it.
 	 * @param filename - the path to the file
 	 */
