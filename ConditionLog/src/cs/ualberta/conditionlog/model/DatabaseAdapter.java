@@ -205,11 +205,7 @@ public class DatabaseAdapter {
     	//Enters the date as a pre-formatted string because it's much easier than dealing with sql date formatting
     	values.put(DatabaseHelper.PHOTO_DATE_FORMATTED, format.format(date));
     	
-    	long insertTest = db.insert(DatabaseHelper.PHOTO_TABLE, null, values);
-    	
-    	//If the values can't be inserted into the table, throw an exception
-    	if (insertTest < 0)
-    		throw new SQLException();
+    	db.insert(DatabaseHelper.PHOTO_TABLE, null, values);
     }
     
     /*
@@ -220,22 +216,20 @@ public class DatabaseAdapter {
     	ContentValues values = new ContentValues();
     	values.put(DatabaseHelper.PHOTO_FILE, photo);
     	values.put(DatabaseHelper.COND_NAME, cond);
-    	long insertTest;
-    	
-    	//Tests if there is a tuple containing the condition but no photo
-    	if (findNullCond(cond)) {
-    		//Place photo in null slot rather than creating a new tuple
-    		String[] arg = {cond};
-    		insertTest = db.update(DatabaseHelper.COND_TABLE, values, 
-    				               DatabaseHelper.COND_NAME + "=? AND " + 
-    				               DatabaseHelper.PHOTO_FILE + "=NULL", arg);
-    	} else {        	
-    		insertTest = db.insert(DatabaseHelper.COND_TABLE, null, values);
+    	try {
+    		//Tests if there is a tuple containing the condition but no photo
+    		if (findNullCond(cond)) {
+    			//Place photo in null slot rather than creating a new tuple
+    			String[] arg = {cond};
+    			db.update(DatabaseHelper.COND_TABLE, values, 
+    								   DatabaseHelper.COND_NAME + "=? AND " + 
+    								   DatabaseHelper.PHOTO_FILE + "=NULL", arg);
+    		} else {        	
+    			db.insert(DatabaseHelper.COND_TABLE, null, values);
+    		}
+    	} catch (SQLException e) {
+    		//Exceptions are caused by primary key violations.  When that happens, they should be ignored.
     	}
-    	
-    	//If the values can't be inserted into the table, throw an exception
-    	if (insertTest < 0)
-    		throw new SQLException();
     }
 
     /**
@@ -250,11 +244,11 @@ public class DatabaseAdapter {
     	//The name of the condition to store the photo under
     	values.put(DatabaseHelper.COND_NAME, cond);
     	
-    	long insertTest = db.insert(DatabaseHelper.COND_TABLE, null, values);
-    	
-    	//If the values can't be inserted into the table, throw an exception
-    	if (insertTest < 0)
-    		throw new SQLException();
+    	try {
+    		db.insert(DatabaseHelper.COND_TABLE, null, values);
+    	} catch (SQLException e) {
+    		//Exceptions are caused by primary key violations.  When that happens, they should be ignored.
+    	}
     }
     
     /*
@@ -290,11 +284,11 @@ public class DatabaseAdapter {
     	values.put(DatabaseHelper.TAGS_NAME, tag);
     	values.put(DatabaseHelper.PHOTO_FILE, photo);
     	
-    	long insertTest = db.insert(DatabaseHelper.TAGS_TABLE, null, values);
-    	
-    	//If the values can't be inserted into the table, throw an exception
-    	if (insertTest < 0)
-    		throw new SQLException();
+    	try {
+    		db.insert(DatabaseHelper.TAGS_TABLE, null, values);
+    	} catch (SQLException e) {
+    		//Exceptions are caused by primary key violations.  When that happens, they should be ignored.
+    	}
     }
     
     /**
@@ -357,6 +351,11 @@ public class DatabaseAdapter {
     	db.delete(DatabaseHelper.PHOTO_TABLE, DatabaseHelper.PHOTO_FILE + "=?", args);
     }
     
+    /*
+     * When a photo is deleted the corresponding lines from the conditions table are deleted unless that
+     * would remove the last instance of a condition from the table, in which case the photo's filename is instead
+     * replaced with a null string.
+     */
     private void deleteMatchingCondition(String filename) {
     	
     	String query = "SELECT " + DatabaseHelper.COND_NAME + ", COUNT(*) as c " +
