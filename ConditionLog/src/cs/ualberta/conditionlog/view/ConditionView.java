@@ -13,6 +13,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.Button;
 import android.widget.Gallery;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -32,6 +33,7 @@ public class ConditionView extends Activity {
 	 */
 	private ConditionList clist;
 	private Bitmap[] bmps;
+	private int imagePosition = 0;
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -66,10 +68,38 @@ public class ConditionView extends Activity {
 	    gallery.setOnItemClickListener(new OnItemClickListener() {
 	        public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
 	            // set the current gallery item image from the bitmap array
+	        	imagePosition = position;
 	        	ImageView iv = (ImageView) findViewById(R.id.galleryImage);
 	            iv.setImageBitmap(bmps[position]);
 	        }
 	    });
+	    
+	    Button compareButton = (Button) findViewById(R.id.compareButton);
+    	compareButton.setOnClickListener(new View.OnClickListener() {
+
+    		public void onClick(View v) {
+    			startCompareView();
+    		}
+    	});
+    	
+    	Button deleteButton = (Button) findViewById(R.id.deleteButton);
+    	deleteButton.setOnClickListener(new View.OnClickListener() {
+
+    		public void onClick(View v) {
+    			deleteImage();
+    		}
+    	});
+	}
+	
+	private void startCompareView(){
+		Intent i = new Intent(this, ComparisonView.class);
+		i.putExtra("position", imagePosition);
+		i.putExtra("name", name);
+        startActivity(i);
+	}
+	
+	private void deleteImage(){
+		
 	}
 	
 }

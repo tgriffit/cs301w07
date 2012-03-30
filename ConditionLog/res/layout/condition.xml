@@ -27,6 +27,18 @@
                 android:layout_height="300dip"
                 android:src="@drawable/ic_launcher" />
 
+            <Button
+                android:id="@+id/compareButton"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/compare" />
+            
+            <Button
+                android:id="@+id/deleteButton"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/delete" />
+
         </LinearLayout>
 
     </RelativeLayout>
