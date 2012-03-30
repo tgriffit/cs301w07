@@ -16,6 +16,7 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 import cs.ualberta.conditionlog.R;
 import cs.ualberta.conditionlog.controller.ListArrayAdapter;
@@ -39,6 +40,7 @@ public class ListSelectionView extends Activity {
 	private ListArrayAdapter condAdapter;
 	private ListArrayAdapter tagAdapter;
 	private ListView listMenu;
+	private String selectedList = null;
 	/**
 	 * @uml.property name="dbadapter"
 	 * @uml.associationEnd
@@ -46,6 +48,7 @@ public class ListSelectionView extends Activity {
 	DatabaseAdapter dbadapter;
 
 	private static final int CREATE_LOG = 0;
+	private static final int VIEW_LOG = 1;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -89,6 +92,43 @@ public class ListSelectionView extends Activity {
 				startCreateLog();
 			}
 		});
+		
+		// initialize the new log button
+		Button viewLogButton = (Button) findViewById(R.id.ViewLogButton);
+		viewLogButton.setOnClickListener(new View.OnClickListener() {
+
+			public void onClick(View v) {
+				Context context = getApplicationContext();
+				// load the condition list named listname
+				ConditionList list = new ConditionList(selectedList, context);
+				if (list.getSize() > 0) {
+					// start new activity to view the selected condition
+					viewList(selectedList);
+				} else {
+					Toast toast = Toast.makeText(context,
+							"No photos in that list to view.",
+							Toast.LENGTH_SHORT);
+					toast.show();
+				}
+			}
+		});
+		
+		// initialize the new log button
+		Button deleteLogButton = (Button) findViewById(R.id.DeleteLogButton);
+		deleteLogButton.setEnabled(false);
+		deleteLogButton.setOnClickListener(new View.OnClickListener() {
+
+			public void onClick(View v) {
+				//maybe have a popup "are you sure" button-thing
+				
+				dbadapter = new DatabaseAdapter(getApplicationContext());
+				dbadapter.open();
+				// load the initial data for the list
+				dbadapter.deleteCondition(selectedList);
+				dbadapter.close();
+				updateLists();
+			}
+		});
 
 		// initialize the list view
 		listMenu = (ListView) findViewById(R.id.list);
@@ -97,22 +137,16 @@ public class ListSelectionView extends Activity {
 			// it. If not, toast a message and do nothing.
 			public void onItemClick(AdapterView<?> parent, View view,
 					int position, long id) {
+				Button deleteLogButton = (Button) findViewById(R.id.DeleteLogButton);
+				if (!deleteLogButton.isEnabled())
+					deleteLogButton.setEnabled(true);
+				
 				ArrayList<String> target = currentLists.get(position);
 				// target.get(0) is the name, target.get(1) is a filepath to a
 				// thumbnail image
 				String listname = target.get(0);
-				Context context = getApplicationContext();
-				// load the condition list named listname
-				ConditionList list = new ConditionList(listname, context);
-				if (list.getSize() > 0) {
-					// start new activity to view the selected condition
-					viewList(listname);
-				} else {
-					Toast toast = Toast.makeText(context,
-							"No photos in that list to view.",
-							Toast.LENGTH_SHORT);
-					toast.show();
-				}
+				selectedList = listname;
+				setSelectedText(selectedList);
 			}
 		});
 	}
@@ -129,6 +163,10 @@ public class ListSelectionView extends Activity {
 				updateLists();
 			}
 			break;
+		case VIEW_LOG:
+			// on any result refresh the lists
+			updateLists();
+			break;
 		}
 	}
 
@@ -137,11 +175,16 @@ public class ListSelectionView extends Activity {
 		Intent i = new Intent(this, CreateListView.class);
 		startActivityForResult(i, CREATE_LOG);
 	}
+	
+	private void setSelectedText(String text) {
+		TextView selectedText = (TextView) findViewById(R.id.selectedListText);
+		selectedText.setText(text);
+	}
 
 	private void viewList(String lname) {
 		Intent i = new Intent(this, ConditionView.class);
 		i.putExtra("name", lname);
-		startActivity(i);
+		startActivityForResult(i, VIEW_LOG);
 	}
 	
 	private void updateLists() {
@@ -162,6 +205,8 @@ public class ListSelectionView extends Activity {
 		
 		// set the currently focused list
 		currentLists = condLists;
+		selectedList = currentLists.get(0).get(0); // get the name of the first list
+		setSelectedText(selectedList);
 	}
 
 	// unused - for use with tags

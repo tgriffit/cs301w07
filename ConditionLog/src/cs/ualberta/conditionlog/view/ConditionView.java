@@ -7,6 +7,8 @@
 package cs.ualberta.conditionlog.view;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
@@ -14,6 +16,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Gallery;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -95,6 +98,22 @@ public class ConditionView extends Activity {
     			deleteImage();
     		}
     	});
+    	
+    	Button deleteTagButton = (Button) findViewById(R.id.deleteTagButton);
+    	deleteTagButton.setOnClickListener(new View.OnClickListener() {
+
+    		public void onClick(View v) {
+    			deleteTag();
+    		}
+    	});
+    	
+    	Button addTagButton = (Button) findViewById(R.id.addTagButton);
+    	addTagButton.setOnClickListener(new View.OnClickListener() {
+
+    		public void onClick(View v) {
+    			addTag();
+    		}
+    	});
 	}
 	/**
 	 * starts the compare view
@@ -109,6 +128,37 @@ public class ConditionView extends Activity {
 	private void deleteImage(){
 		clist.deletePhoto(this, imagePosition);
 		create();
+	}
+	
+	private void addTag(){
+		AlertDialog.Builder tag = new AlertDialog.Builder(this);
+
+		tag.setTitle("Add Tag");
+		tag.setMessage("add which tag?");
+
+		// Set an EditText view to get user input 
+		final EditText input = new EditText(this);
+		tag.setView(input);
+
+		tag.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+		public void onClick(DialogInterface dialog, int whichButton) {
+		  String value = input.getText().toString();
+		  clist.addTagToPhoto(getApplicationContext(), imagePosition, value);
+		  }
+		});
+
+		tag.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+		  public void onClick(DialogInterface dialog, int whichButton) {
+		    
+		  }
+		});
+
+		tag.show();
+		
+	}
+	
+	private void deleteTag() {
+		
 	}
 	
 }
