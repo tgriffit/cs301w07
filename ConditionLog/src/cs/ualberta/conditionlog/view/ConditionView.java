@@ -21,8 +21,10 @@ import android.widget.Gallery;
 import android.widget.ImageView;
 import android.widget.Toast;
 import cs.ualberta.conditionlog.R;
-import cs.ualberta.conditionlog.model.ConditionList;
 import cs.ualberta.conditionlog.controller.ImageAdapter;
+import cs.ualberta.conditionlog.model.ConditionList;
+import cs.ualberta.conditionlog.model.PhotoList;
+import cs.ualberta.conditionlog.model.TagList;
 
 /**
  * @author     tgriffit
@@ -30,11 +32,12 @@ import cs.ualberta.conditionlog.controller.ImageAdapter;
  */
 public class ConditionView extends Activity {
 	private String name;
+	private String type;
 	/**
-	 * @uml.property  name="clist"
+	 * @uml.property  name="list"
 	 * @uml.associationEnd  
 	 */
-	private ConditionList clist;
+	private PhotoList list;
 	private Bitmap[] bmps;
 	private int imagePosition = 0;
 	
@@ -45,15 +48,23 @@ public class ConditionView extends Activity {
 	    
 	    Intent intent = getIntent();
 	    this.name = intent.getStringExtra("name");
+	    this.type = intent.getStringExtra("type");
+	    Toast toast = Toast.makeText(getApplicationContext(), "type: " + type, Toast.LENGTH_SHORT);
+	    toast.show();
 	    
 	    create();
 	}
 	
 	private void create(){
 		// load a condition list of name
-	    clist = new ConditionList(name, this);
+		if (type.equals("log")) {
+		    list = new ConditionList(name, this);
+		} else if (type.equals("tag")) {
+			list = new TagList(name, this);
+		}
+
 	    // get an array of Bitmaps from the condition list
-	    bmps = clist.toBmp();
+	    bmps = list.toBmp();
 	    
 	    ImageView iv = (ImageView) findViewById(R.id.galleryImage);
 	    if (bmps.length > 0) {
@@ -69,7 +80,7 @@ public class ConditionView extends Activity {
 	    
 	    // initialize the gallery view
 	    Gallery gallery = (Gallery) findViewById(R.id.gallery);
-	    // create and set the gallery adapter of images from clist
+	    // create and set the gallery adapter of images from list
 	    gallery.setAdapter(new ImageAdapter(this, bmps));
 
 	    gallery.setOnItemClickListener(new OnItemClickListener() {
@@ -126,7 +137,7 @@ public class ConditionView extends Activity {
 	}
 	
 	private void deleteImage(){
-		clist.deletePhoto(this, imagePosition);
+		list.deletePhoto(this, imagePosition);
 		create();
 	}
 	
@@ -143,7 +154,7 @@ public class ConditionView extends Activity {
 		tag.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
 		public void onClick(DialogInterface dialog, int whichButton) {
 		  String value = input.getText().toString();
-		  clist.addTagToPhoto(getApplicationContext(), imagePosition, value);
+		  list.addTagToPhoto(getApplicationContext(), imagePosition, value);
 		  }
 		});
 

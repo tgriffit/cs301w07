@@ -19,7 +19,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
-import android.widget.Toast;
 import cs.ualberta.conditionlog.R;
 import cs.ualberta.conditionlog.controller.PhotoUseListController;
 import cs.ualberta.conditionlog.model.DatabaseAdapter;
@@ -87,9 +86,7 @@ public class PhotoUseSelectionView extends Activity {
         	// on click this button will create a new activity that can be used to name and create a new list
 			public void onClick(View v) {
 				String rawText = tagBox.getText().toString();
-				Toast toast = Toast.makeText(getApplicationContext(), "'" + rawText + "'", Toast.LENGTH_SHORT);
-				toast.show();
-				if (rawText.equals("")) {
+				if (!rawText.equals("")) {
 					String[] tags = rawText.split("\\s+");
 					PhotoUseListController.savePhotoTags(getApplicationContext(), picFile, tags);
 				}
@@ -114,8 +111,6 @@ public class PhotoUseSelectionView extends Activity {
         case CREATE_LOG:
         	if (resultCode == RESULT_OK) {
     			// update spinner to add newly created list to the spinner menu
-        		Toast toast = Toast.makeText(getApplicationContext(), "result okay!", Toast.LENGTH_SHORT);
-        		toast.show();
         		updateSpinner();
         	} 
             break;

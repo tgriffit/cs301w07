@@ -62,8 +62,8 @@ public class ListArrayAdapter extends ArrayAdapter<ArrayList<String>> {
             	// set the icon image on the current lsit item layout
             	iv.setImageBitmap(BitmapFactory.decodeFile(imgpath));
             } else {
-            	Toast toast2 = Toast.makeText(listContext, "Null Drawable!", Toast.LENGTH_LONG);
-                toast2.show();
+            	Toast toast = Toast.makeText(listContext, "Null Drawable!", Toast.LENGTH_LONG);
+                toast.show();
             }
         }
         return v;

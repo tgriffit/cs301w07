@@ -22,6 +22,8 @@ import cs.ualberta.conditionlog.R;
 import cs.ualberta.conditionlog.controller.ListArrayAdapter;
 import cs.ualberta.conditionlog.model.ConditionList;
 import cs.ualberta.conditionlog.model.DatabaseAdapter;
+import cs.ualberta.conditionlog.model.PhotoList;
+import cs.ualberta.conditionlog.model.TagList;
 
 /**
  * @author tgriffit
@@ -41,6 +43,7 @@ public class ListSelectionView extends Activity {
 	private ListArrayAdapter tagAdapter;
 	private ListView listMenu;
 	private String selectedList = null;
+	private String listType = "log";
 	/**
 	 * @uml.property name="dbadapter"
 	 * @uml.associationEnd
@@ -65,7 +68,10 @@ public class ListSelectionView extends Activity {
 				listMenu = (ListView) findViewById(R.id.list);
 				// swap the adapter to the one filled with tag info
 				listMenu.setAdapter(tagAdapter);
-				currentLists = tagLists;
+				// get the DeleteButton
+				Button deleteButton = (Button) findViewById(R.id.DeleteLogButton);
+				// ensure the delete log button is not enabled while the list is sorted by tag
+				deleteButton.setEnabled(false);
 				swapButtonState();
 			}
 		});
@@ -79,7 +85,6 @@ public class ListSelectionView extends Activity {
 				listMenu = (ListView) findViewById(R.id.list);
 				// set the adapter to the one filled with cond info
 				listMenu.setAdapter(condAdapter);
-				currentLists = condLists;
 				swapButtonState();
 			}
 		});
@@ -99,16 +104,23 @@ public class ListSelectionView extends Activity {
 
 			public void onClick(View v) {
 				Context context = getApplicationContext();
-				// load the condition list named listname
-				ConditionList list = new ConditionList(selectedList, context);
+				PhotoList list;
+				// load the list by the selectedList name
+				if (listType.equals("log")) {
+					list = new ConditionList(selectedList, context);
+				} else {
+					// crashes with SQL exception on Taglist constructor
+					list = new TagList(selectedList, context);
+				}
+				
 				if (list.getSize() > 0) {
 					// start new activity to view the selected condition
-					viewList(selectedList);
+					viewList(listType, selectedList);
 				} else {
-					Toast toast = Toast.makeText(context,
+					Toast toast2 = Toast.makeText(context,
 							"No photos in that list to view.",
 							Toast.LENGTH_SHORT);
-					toast.show();
+					toast2.show();
 				}
 			}
 		});
@@ -120,13 +132,14 @@ public class ListSelectionView extends Activity {
 
 			public void onClick(View v) {
 				//maybe have a popup "are you sure" button-thing
-				
-				dbadapter = new DatabaseAdapter(getApplicationContext());
-				dbadapter.open();
-				// load the initial data for the list
-				dbadapter.deleteCondition(selectedList);
-				dbadapter.close();
-				updateLists();
+				if (listType.equals("log")) {
+					dbadapter = new DatabaseAdapter(getApplicationContext());
+					dbadapter.open();
+					// load the initial data for the list
+					dbadapter.deleteCondition(selectedList);
+					dbadapter.close();
+					updateLists();
+				}
 			}
 		});
 
@@ -138,7 +151,7 @@ public class ListSelectionView extends Activity {
 			public void onItemClick(AdapterView<?> parent, View view,
 					int position, long id) {
 				Button deleteLogButton = (Button) findViewById(R.id.DeleteLogButton);
-				if (!deleteLogButton.isEnabled())
+				if (!deleteLogButton.isEnabled() && listType.equals("log"))
 					deleteLogButton.setEnabled(true);
 				
 				ArrayList<String> target = currentLists.get(position);
@@ -176,23 +189,28 @@ public class ListSelectionView extends Activity {
 		startActivityForResult(i, CREATE_LOG);
 	}
 	
+	// set the selectedText TextView to show the currently selected lists' name
 	private void setSelectedText(String text) {
 		TextView selectedText = (TextView) findViewById(R.id.selectedListText);
 		selectedText.setText(text);
 	}
 
-	private void viewList(String lname) {
+	// start a ConditionView gallery and pass it relevant info
+	private void viewList(String ltype, String lname) {
 		Intent i = new Intent(this, ConditionView.class);
 		i.putExtra("name", lname);
+		i.putExtra("type", ltype);
 		startActivityForResult(i, VIEW_LOG);
 	}
 	
+	// update the lists and refresh the view of them
 	private void updateLists() {
 		dbadapter = new DatabaseAdapter(getApplicationContext());
 		dbadapter.open();
 		// load the initial data for the list
 		condLists = dbadapter.loadConditions();
 		tagLists = dbadapter.loadTags();
+
 		dbadapter.close();
 
 		condAdapter = new ListArrayAdapter(this, R.layout.listrow, condLists);
@@ -212,11 +230,24 @@ public class ListSelectionView extends Activity {
 			setSelectedText("No lists to select");
 	}
 
-	// unused - for use with tags
+	// swap button enabled states as well as all relevant list-viewing state variables
 	private void swapButtonState() {
 		Button tagButton = (Button) findViewById(R.id.TagButton);
 		Button logButton = (Button) findViewById(R.id.LogButton);
-
+		
+		if(listType.equals("log")) 
+			listType = "tag";
+		else if (listType.equals("tag"))
+			listType="log";
+		
+		if (currentLists.equals(tagLists))
+			currentLists = condLists;
+		else if (currentLists.equals(condLists))
+			currentLists = tagLists;
+		
+		selectedList = currentLists.get(0).get(0);
+		setSelectedText(selectedList);
+		
 		tagButton.setEnabled(!tagButton.isEnabled());
 		logButton.setEnabled(!logButton.isEnabled());
 	}
