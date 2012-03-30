@@ -33,7 +33,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 	private static final String CREATE_PHOTO_TABLE = "CREATE TABLE IF NOT EXISTS "+ PHOTO_TABLE +" (" +
 												  	  PHOTO_FILE + " char(256), " +
 												      PHOTO_DATE + " date, " +
-												      PHOTO_DATE_FORMATTED + " char(20 " +
+												      PHOTO_DATE_FORMATTED + " char(20" + "), " +
 												     "PRIMARY KEY (" + PHOTO_FILE + "));";
 
 	//Creates a table to store the conditions if the table does not already exist

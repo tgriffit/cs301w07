@@ -15,6 +15,7 @@ public class PasswordManager {
 	 * @return true if a password has been specified or false if not
 	 */
 	public static boolean checkIfPasswordSet() {
+		//if (getPasswordHash.equals(""))
 		return true;
 	}
 	
