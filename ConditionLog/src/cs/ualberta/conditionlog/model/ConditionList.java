@@ -39,5 +39,19 @@ public class ConditionList extends PhotoList {
 		dbA.deletePhoto(getFileName(position));
 		dbA.close();
 	}
+	
+	public void deleteTagFromPhoto(Context context, int position, String tag) {
+		DatabaseAdapter dbA = new DatabaseAdapter(context);
+		dbA.open();
+		dbA.deleteTagFromPhoto(getFileName(position), tag);
+		dbA.close();
+	}
+	
+	public void addTagToPhoto(Context context, int position, String tag) {
+		DatabaseAdapter dbA = new DatabaseAdapter(context);
+		dbA.open();
+		dbA.addTag(getFileName(position), tag);
+		dbA.close();
+	}
 
 }
