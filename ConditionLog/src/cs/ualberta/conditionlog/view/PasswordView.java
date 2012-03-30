@@ -30,7 +30,9 @@ public class PasswordView extends Activity{
 	 */
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		passwordSet = PasswordManager.checkIfPasswordSet();
+		
+		PasswordManager pm = new PasswordManager(getApplicationContext());
+		passwordSet = pm.checkIfPasswordSet();
 		
 		if (passwordSet) {
 			setContentView(R.layout.enterpassword);
@@ -48,13 +50,15 @@ public class PasswordView extends Activity{
 			public void onClick(View v) {
 
 				String passwordText = password.getText().toString();
-
+				PasswordManager pm = new PasswordManager(getApplicationContext());
+				
 				if (passwordSet) {
-					while (!PasswordManager.testPassword(passwordText)) {
+					
+					while (!pm.testPassword(passwordText)) {
 						wrongPasswordPopup();
 					}
 				} else {
-					PasswordManager.setPassword(passwordText);
+					pm.setPassword(passwordText);
 				}
 				finish();
 			}
