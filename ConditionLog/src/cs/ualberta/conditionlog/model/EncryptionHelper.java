@@ -1,6 +1,5 @@
 package cs.ualberta.conditionlog.model;
 
-import java.io.File;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.security.InvalidKeyException;
