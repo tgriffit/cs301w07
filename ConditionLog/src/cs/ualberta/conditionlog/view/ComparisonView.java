@@ -1,7 +1,7 @@
 /**
- * This view is a gallery view of the Condition list. 
- * It shows a large zoomed in image of the photo selected from the upper portion.
- * @author adneufel
+ * This view is a gallery view of the Condition list, with a image for comparison added. 
+ * It shows a large zoomed in image of the photo selected from the upper portion, and then the image to compare to.
+ * @author Jack
  * @date March 15th
  */
 package cs.ualberta.conditionlog.view;
@@ -21,7 +21,7 @@ import cs.ualberta.conditionlog.model.ConditionList;
 import cs.ualberta.conditionlog.controller.ImageAdapter;
 
 /**
- * @author     tgriffit
+ * @author     Jack
  * @uml.dependency   supplier="cs.ualberta.conditionlog.ImageAdapter"
  */
 public class ComparisonView extends Activity {

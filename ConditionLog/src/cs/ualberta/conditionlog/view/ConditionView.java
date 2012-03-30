@@ -74,6 +74,7 @@ public class ConditionView extends Activity {
 	        }
 	    });
 	    
+	    //add the button to compare to this image
 	    Button compareButton = (Button) findViewById(R.id.compareButton);
     	compareButton.setOnClickListener(new View.OnClickListener() {
 
@@ -82,6 +83,7 @@ public class ConditionView extends Activity {
     		}
     	});
     	
+    	//add the button to delete this image
     	Button deleteButton = (Button) findViewById(R.id.deleteButton);
     	deleteButton.setOnClickListener(new View.OnClickListener() {
 
@@ -90,7 +92,9 @@ public class ConditionView extends Activity {
     		}
     	});
 	}
-	
+	/**
+	 * starts the compare view
+	 */
 	private void startCompareView(){
 		Intent i = new Intent(this, ComparisonView.class);
 		i.putExtra("position", imagePosition);
