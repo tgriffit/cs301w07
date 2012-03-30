@@ -30,9 +30,10 @@ public class PhotoUseListController {
         dbadapter.open();
 
 		for (int i = 0; i < tags.length; i++) {
-			dbadapter.addTag(filename, tags[i]);
-			Toast toast = Toast.makeText(context, "tag: " + tags[i], Toast.LENGTH_LONG);
-    		toast.show();
+			Toast toast = Toast.makeText(context, "tag: " + tags[i], Toast.LENGTH_SHORT);
+			toast.show();
+			if (!tags[i].trim().equals(""))
+				dbadapter.addTag(filename, tags[i]);
 		}
         dbadapter.close();
 	}
