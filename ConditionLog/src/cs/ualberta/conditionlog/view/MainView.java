@@ -47,22 +47,6 @@ public class MainView extends Activity {
     	});
     }
 	
-	@Override
-	/**
-	 * on result, checks if a picture was taken or a list was selected and responds accordingly
-	 */
-    protected void onActivityResult(int requestCode, int resultCode, Intent intent) {
-        super.onActivityResult(requestCode, resultCode, intent);
-
-        switch(requestCode) {
-        case NEW_PHOTO:
-        	if (resultCode == RESULT_OK) {
-        		// if here then a pic was successfully taken, and stored in a condition list
-        	}
-            break;
-        }
-    }
-	
 	/**
 	 * starts a new Photo view
 	 */
