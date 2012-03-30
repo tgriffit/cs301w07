@@ -18,7 +18,7 @@ public class TagList extends PhotoList {
 	 * @param tag - the tag to load
 	 * @param context - the application context
 	 */
-	TagList(String tag, Context context) {
+	public TagList(String tag, Context context) {
 		super(tag);
 		loadPhotos(context);
 	}

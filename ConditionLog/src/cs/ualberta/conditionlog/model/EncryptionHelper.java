@@ -38,7 +38,7 @@ public class EncryptionHelper {
 	 * @param pass
 	 */
 	public static String generatePasswordHash(String pass) {
-		String hash = null;
+		String hash = "";
 		
 		try {
 			//Encrypts the password using the SHA-256 algorithm
