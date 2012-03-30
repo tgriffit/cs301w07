@@ -88,4 +88,8 @@ public class PhotoList {
 		return bmps;
 	}
 	
+	public String getFileName(int position) {
+		return filenames.get(position);
+	}
+	
 }

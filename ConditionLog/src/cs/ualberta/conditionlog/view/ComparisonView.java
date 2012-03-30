@@ -37,7 +37,7 @@ public class ComparisonView extends Activity {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 	    super.onCreate(savedInstanceState);
-	    setContentView(R.layout.condition);
+	    setContentView(R.layout.comparison);
 	    
 	    Intent intent = getIntent();
 	    this.name = intent.getStringExtra("name");
@@ -63,7 +63,7 @@ public class ComparisonView extends Activity {
 	    ImageView ivCompare = (ImageView) findViewById(R.id.compareImage);
 	    if (bmps.length > 0) {
 	    	// if there is images in the condition list set the appropriate one as our compare image
-	    	ivCompare.setImageBitmap(bmps[comparePosition]);
+	    	ivCompare.setImageBitmap(bmps[this.comparePosition]);
 	    } else {
 		    // if there is no images in the condition list state so and return accordingly
 	    	Toast toast = Toast.makeText(getApplicationContext(), "No photos to view in that list.", Toast.LENGTH_LONG);

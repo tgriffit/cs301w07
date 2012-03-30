@@ -43,7 +43,11 @@ public class ConditionView extends Activity {
 	    Intent intent = getIntent();
 	    this.name = intent.getStringExtra("name");
 	    
-	    // load a condition list of name
+	    create();
+	}
+	
+	private void create(){
+		// load a condition list of name
 	    clist = new ConditionList(name, this);
 	    // get an array of Bitmaps from the condition list
 	    bmps = clist.toBmp();
@@ -103,7 +107,8 @@ public class ConditionView extends Activity {
 	}
 	
 	private void deleteImage(){
-		
+		clist.deletePhoto(this, imagePosition);
+		create();
 	}
 	
 }

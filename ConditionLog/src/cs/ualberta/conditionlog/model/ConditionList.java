@@ -32,5 +32,12 @@ public class ConditionList extends PhotoList {
 		setFilenames(dbA.loadPhotosByCondition(getName()));
 		dbA.close();
 	}
+	
+	public void deletePhoto(Context context, int position) {
+		DatabaseAdapter dbA = new DatabaseAdapter(context);
+		dbA.open();
+		dbA.deletePhoto(getFileName(position));
+		dbA.close();
+	}
 
 }
