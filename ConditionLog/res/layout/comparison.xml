@@ -24,14 +24,16 @@
             <ImageView
                 android:id="@+id/galleryImage"
                 android:layout_width="280dip"
-                android:layout_height="150dip"
-                android:src="@drawable/ic_launcher" />
+                android:layout_height="190dip"
+                android:src="@drawable/ic_launcher"
+                android:padding="6dip"  />
 
            <ImageView
                android:id="@+id/compareImage"
                android:layout_width="280dip"
-               android:layout_height="150dip"
-               android:src="@drawable/ic_launcher" />
+               android:layout_height="190dip"
+               android:src="@drawable/ic_launcher" 
+               android:padding="6dip" />
 
         </LinearLayout>
 

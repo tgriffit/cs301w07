@@ -49,6 +49,7 @@ public class CreateListView extends Activity {
 				dbadapter.close();
 				
 				setResult(RESULT_OK);
+				getIntent().putExtra("name", nameText);
 				finish();
 			}
 		});
