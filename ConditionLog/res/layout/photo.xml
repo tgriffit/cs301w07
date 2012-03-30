@@ -33,7 +33,7 @@
             android:text="@string/TagDescr" />
 
         <EditText
-            android:id="@+id/editText1"
+            android:id="@+id/tagBox"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:hint="@string/tagEx"

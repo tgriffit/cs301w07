@@ -4,6 +4,10 @@ package cs.ualberta.conditionlog.controller;
 
 import java.util.ArrayList;
 
+import android.content.Context;
+import android.widget.Toast;
+import cs.ualberta.conditionlog.model.DatabaseAdapter;
+
 /**
  * An adapter for item list data of the ListSelectionView class. Uses the Adapter design pattern.
  * date: March 14
@@ -19,5 +23,17 @@ public class PhotoUseListController {
 			list[i] = lists.get(i).get(0);
 		}
 		return list;
+	}
+	
+	static public void savePhotoTags(Context context, String filename, String[] tags) {
+		DatabaseAdapter dbadapter = new DatabaseAdapter(context);
+        dbadapter.open();
+
+		for (int i = 0; i < tags.length; i++) {
+			dbadapter.addTag(filename, tags[i]);
+			Toast toast = Toast.makeText(context, "tag: " + tags[i], Toast.LENGTH_LONG);
+    		toast.show();
+		}
+        dbadapter.close();
 	}
 }

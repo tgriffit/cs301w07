@@ -6,6 +6,7 @@
 package cs.ualberta.conditionlog.view;
 
 import java.util.ArrayList;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.BitmapFactory;
@@ -15,6 +16,7 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import cs.ualberta.conditionlog.R;
@@ -38,9 +40,12 @@ public class PhotoUseSelectionView extends Activity {
 	 * @uml.property  name="dbadapter"
 	 * @uml.associationEnd  
 	 */
-	DatabaseAdapter dbadapter;
+	private DatabaseAdapter dbadapter;
+	private String[] namesList;
 	private String picFile;
-	String selectedList = null;
+	private String selectedList = null;
+	
+	private EditText tagBox;
 	
 	private static final int CREATE_LOG = 0;
 	
@@ -58,10 +63,12 @@ public class PhotoUseSelectionView extends Activity {
         lists =  dbadapter.loadConditions();
         dbadapter.close();
         // fill m_adapter with values from the database that are in lists
-        String[] nameList = PhotoUseListController.getNamesFromListArray(lists);
+        namesList = PhotoUseListController.getNamesFromListArray(lists);
 
-        m_adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, nameList);
+        m_adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, namesList);
         m_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        
+        tagBox = (EditText) findViewById(R.id.tagBox);
         
         // initialize the listview
         Spinner listMenu = (Spinner) findViewById(R.id.spinner);
@@ -82,12 +89,22 @@ public class PhotoUseSelectionView extends Activity {
 			}
 		});
         
-        Button SaveButton = (Button) findViewById(R.id.SavePhotoButton);
-        SaveButton.setOnClickListener(new View.OnClickListener() {
+        Button saveButton = (Button) findViewById(R.id.SavePhotoButton);
+        saveButton.setOnClickListener(new View.OnClickListener() {
 			
         	// on click this button will create a new activity that can be used to name and create a new list
 			public void onClick(View v) {
-				// save photo etc
+				String[] tags = tagBox.getText().toString().split("\\s+");
+				PhotoUseListController.savePhotoTags(getApplicationContext(), picFile, tags);
+				
+				// and now return the list name and finish
+				if (selectedList != null) {
+					returnNameFinish(selectedList);
+				} else {
+					// get first name from the list to return as the default value if no new list is selected
+					String defaultName = namesList[0];
+					returnNameFinish(defaultName);
+				}
 			}
 		});
     }
@@ -123,12 +140,12 @@ public class PhotoUseSelectionView extends Activity {
     	finish();
 	}
 	
-	// tiny class needed for the spinner
+	// tiny class needed for the spinner item selection
 	private class MyOnItemSelectedListener implements OnItemSelectedListener {
 
 	    public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
-	    	// enable the OK button
-	    	selectedList = parent.getItemAtPosition(pos).toString(); 
+	    	// get tags from the EditText 
+	    	selectedList = parent.getItemAtPosition(pos).toString();
 	    }
 
 	    public void onNothingSelected(AdapterView<?> parent) {

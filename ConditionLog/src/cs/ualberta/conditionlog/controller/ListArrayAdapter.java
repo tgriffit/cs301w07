@@ -43,19 +43,23 @@ public class ListArrayAdapter extends ArrayAdapter<ArrayList<String>> {
         View v = convertView;
         if (v == null) {
             LayoutInflater vi = (LayoutInflater) listContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            // get one list item layout to populate
             v = vi.inflate(R.layout.listrow, null);
         }
         ArrayList<String> item = items.get(position);
         if (item != null) {
             TextView tt = (TextView) v.findViewById(R.id.toptext);
             ImageView iv = (ImageView) v.findViewById(R.id.icon);
+            // get the name and image filepath from the data object
             String name = item.get(0);
             String imgpath = item.get(1);
 
             if (tt != null) {
+            	// set the name text on the current list item layout
                 tt.setText("Name: " + name);
             }
             if (iv != null) {
+            	// set the icon image on the current lsit item layout
             	iv.setImageBitmap(BitmapFactory.decodeFile(imgpath));
             } else {
             	Toast toast2 = Toast.makeText(listContext, "Null Drawable!", Toast.LENGTH_LONG);
