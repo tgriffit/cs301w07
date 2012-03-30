@@ -2,10 +2,22 @@ package cs.ualberta.conditionlog.test;
 
 import org.junit.Test;
 
+import android.graphics.Bitmap;
+
 import cs.ualberta.conditionlog.controller.*;
 
 public class ControllerTesting {
 
+	/**
+	 * Tests BogoPicGen
+	 */
+	@Test
+	public void testBogoPicGen(){
+		Bitmap bmp = BogoPicGen.generateBitmap(10,10);
+		assert(bmp.getHeight() > 0);
+		assert(bmp.getWidth() > 0);
+	}
+	
 	/**
 	 * NewPhotoController
 	 */
@@ -23,7 +35,6 @@ public class ControllerTesting {
 	/**
 	 * LogArrayAdapter
 	 */
-	
 	@Test
 	public void testLogArrayAdapter(){
 		ListArrayAdapter adapter = new ListArrayAdapter(null, 0, null);
