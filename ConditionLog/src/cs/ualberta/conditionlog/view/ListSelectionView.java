@@ -205,8 +205,11 @@ public class ListSelectionView extends Activity {
 		
 		// set the currently focused list
 		currentLists = condLists;
-		selectedList = currentLists.get(0).get(0); // get the name of the first list
-		setSelectedText(selectedList);
+		if (currentLists.size() > 0) {
+			selectedList = currentLists.get(0).get(0); // get the name of the first list
+			setSelectedText(selectedList);
+		} else
+			setSelectedText("No lists to select");
 	}
 
 	// unused - for use with tags
