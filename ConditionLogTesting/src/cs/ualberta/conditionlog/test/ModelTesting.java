@@ -2,7 +2,6 @@ package cs.ualberta.conditionlog.test;
 
 import static org.junit.Assert.assertEquals;
 
-import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.PipedInputStream;
@@ -12,6 +11,12 @@ import java.util.ArrayList;
 import org.junit.Test;
 
 import cs.ualberta.conditionlog.model.*;
+
+/**
+ * Tests the public methods of all the classes in the model package.
+ * @author tgriffit
+ * @date March 30, 2012
+ */
 
 public class ModelTesting {
 
@@ -56,7 +61,6 @@ public class ModelTesting {
 	public void testDatabaseHelper(){
 		DatabaseHelper helper = new DatabaseHelper(null);
 		assertEquals("_photo", helper.PHOTO_TABLE);
-		
 	}
 	
 	
@@ -95,7 +99,17 @@ public class ModelTesting {
 	}
 	
 	/**
-	 * Specific tests for TagLists.
+	 * Specific tests for ConditionLists
+	 */
+	@Test
+	public void testConditionList(){
+		TagList list = new TagList("cond", null);
+		assert(list != null);
+		assert(list.getName().equals("cond"));
+	}
+	
+	/**
+	 * Specific tests for TagLists
 	 */
 	@Test
 	public void testTagList(){

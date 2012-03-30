@@ -15,6 +15,7 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
 
+import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 
@@ -91,5 +92,27 @@ public class PhotoList {
 	public String getFileName(int position) {
 		return filenames.get(position);
 	}
+	
+	public void deletePhoto(Context context, int position) {
+		DatabaseAdapter dbA = new DatabaseAdapter(context);
+		dbA.open();
+		dbA.deletePhoto(getFileName(position));
+		dbA.close();
+	}
+	
+	public void deleteTagFromPhoto(Context context, int position, String tag) {
+		DatabaseAdapter dbA = new DatabaseAdapter(context);
+		dbA.open();
+		dbA.deleteTagFromPhoto(getFileName(position), tag);
+		dbA.close();
+	}
+	
+	public void addTagToPhoto(Context context, int position, String tag) {
+		DatabaseAdapter dbA = new DatabaseAdapter(context);
+		dbA.open();
+		dbA.addTag(getFileName(position), tag);
+		dbA.close();
+	}
+
 	
 }
