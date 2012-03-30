@@ -14,6 +14,7 @@ public final class R {
         public static final int ic_launcher=0x7f020000;
     }
     public static final class id {
+<<<<<<< HEAD
         public static final int Accept=0x7f05001e;
         public static final int Cancel=0x7f05001f;
         public static final int CreateLogButton=0x7f050009;
@@ -51,6 +52,46 @@ public final class R {
         public static final int textView1=0x7f050007;
         public static final int textView2=0x7f05000a;
         public static final int toptext=0x7f050016;
+=======
+        public static final int Accept=0x7f05001f;
+        public static final int Cancel=0x7f050020;
+        public static final int CreateLogButton=0x7f05000c;
+        public static final int LinearLayout2=0x7f05001e;
+        public static final int LogButton=0x7f050012;
+        public static final int MainTitle=0x7f05001a;
+        public static final int NewLogButton=0x7f050015;
+        public static final int NewPhotoLogButton=0x7f050024;
+        public static final int PhotoUsePreview=0x7f050021;
+        public static final int SavePhotoButton=0x7f050025;
+        public static final int TagButton=0x7f050011;
+        public static final int TakeAPhoto=0x7f05001d;
+        public static final int TakePhotoButton=0x7f050019;
+        public static final int ViewLogsButton=0x7f050018;
+        public static final int acceptEnteredPassword=0x7f05000f;
+        public static final int acceptNewPassword=0x7f05001c;
+        public static final int addTagButton=0x7f050009;
+        public static final int compareButton=0x7f050006;
+        public static final int compareImage=0x7f050004;
+        public static final int deleteButton=0x7f050007;
+        public static final int deleteTagButton=0x7f050008;
+        public static final int editName=0x7f05000b;
+        public static final int empty=0x7f050014;
+        public static final int enteredPassword=0x7f05000e;
+        public static final int gallery=0x7f050001;
+        public static final int galleryImage=0x7f050003;
+        public static final int icon=0x7f050016;
+        public static final int linearLayout1=0x7f050002;
+        public static final int linearLayout2=0x7f050005;
+        public static final int list=0x7f050013;
+        public static final int listTitle=0x7f050010;
+        public static final int newPassword=0x7f05001b;
+        public static final int relativeLayout1=0x7f050000;
+        public static final int spinner=0x7f050023;
+        public static final int tagBox=0x7f050022;
+        public static final int textView1=0x7f05000a;
+        public static final int textView2=0x7f05000d;
+        public static final int toptext=0x7f050017;
+>>>>>>> 733062722996c87831a29030e423c3bf3056be49
     }
     public static final class layout {
         public static final int comparison=0x7f030000;
@@ -73,7 +114,9 @@ public final class R {
         public static final int TagDescr=0x7f040013;
         public static final int TakePhoto=0x7f040001;
         public static final int ViewLogs=0x7f040002;
+        public static final int addTag=0x7f04001d;
         public static final int app_name=0x7f040000;
+<<<<<<< HEAD
         public static final int compare=0x7f04001c;
         public static final int createLog=0x7f04000f;
         public static final int createLogDesc=0x7f040010;
@@ -81,6 +124,15 @@ public final class R {
         public static final int delete=0x7f04001d;
         public static final int deleteLog=0x7f04000c;
         public static final int enterPassword=0x7f04001b;
+=======
+        public static final int compare=0x7f04001a;
+        public static final int createLog=0x7f04000d;
+        public static final int createLogDesc=0x7f04000e;
+        public static final int createLogTitle=0x7f04000f;
+        public static final int delete=0x7f04001b;
+        public static final int deleteTag=0x7f04001c;
+        public static final int enterPassword=0x7f040019;
+>>>>>>> 733062722996c87831a29030e423c3bf3056be49
         public static final int listNameLabel=0x7f040005;
         public static final int nameHint=0x7f04000e;
         public static final int newLog=0x7f04000b;

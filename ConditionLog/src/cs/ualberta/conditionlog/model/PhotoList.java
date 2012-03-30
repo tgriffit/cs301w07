@@ -32,7 +32,7 @@ public class PhotoList {
 	 * Constructor that initializes the instance variables.
 	 * @param name - the condition or tag for the list
 	 */
-	PhotoList(String name) {
+	public PhotoList(String name) {
 		this.name = name;
 		filenames = new ArrayList<String>();
 	}

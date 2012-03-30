@@ -41,11 +41,12 @@ public class PasswordManager {
 	 * @return true if the password is correct or false if it isn't
 	 */
 	public boolean testPassword(String pass) {
-		//load password hash from db
 		String dbHash = "";
 		
+		//Generates the hash of the given password
 		String encHash = EncryptionHelper.generatePasswordHash(pass);
 		
+		//If the hash matches the password hash stored in the database then the passwords are the same
 		if (dbHash.equals(encHash)) {
 			EncryptionHelper.init(pass);
 			return true;
