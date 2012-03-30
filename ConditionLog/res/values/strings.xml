@@ -26,7 +26,9 @@
     <string name="SaveLabel">Save Photo</string>
     <string name="newPassword">Please enter a password:</string>
     <string name="enterPassword">Please enter your password:</string>
-    <string name="compare">compare</string>
+    <string name="compare">Compare</string>
     <string name="delete">Delete</string>
+    <string name="deleteTag">Delete Tag</string>
+    <string name="addTag">Add Tag</string>
 
 </resources>

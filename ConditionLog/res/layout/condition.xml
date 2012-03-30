@@ -2,7 +2,8 @@
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/relativeLayout1"
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent" >
+        android:layout_height="fill_parent" 
+        android:padding="4dip">
 
         <Gallery
             android:id="@+id/gallery"
@@ -10,7 +11,8 @@
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="18dp" />
+            android:layout_marginTop="18dp"
+            android:gravity="top" />
 
         <LinearLayout
             android:id="@+id/linearLayout1"
@@ -18,27 +20,67 @@
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
+            android:gravity="center"
             android:orientation="vertical"
-            android:padding="20dip" >
+            android:padding="10dip" >
 
             <ImageView
                 android:id="@+id/galleryImage"
-                android:layout_width="280dip"
-                android:layout_height="300dip"
-                android:src="@drawable/ic_launcher" />
-
-            <Button
-                android:id="@+id/compareButton"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/compare" />
+                android:layout_width="300dip"
+                android:layout_height="270dip"
+                android:layout_weight="0.07"
+                android:src="@drawable/ic_launcher"
+                android:padding="10dip"  />
             
-            <Button
-                android:id="@+id/deleteButton"
+            <LinearLayout
+                android:id="@+id/linearLayout2"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/delete" />
+                android:layout_alignParentBottom="true"
+                android:layout_centerVertical="true"
+                android:gravity="center"
+                android:orientation="horizontal" >
 
+                <Button
+                    android:id="@+id/compareButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:text="@string/compare" />
+
+                <Button
+                    android:id="@+id/deleteButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:text="@string/delete" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linearLayout2"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_centerVertical="true"
+                android:gravity="center"
+                android:orientation="horizontal" >
+
+                <Button
+                    android:id="@+id/deleteTagButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:text="@string/deleteTag" />
+
+                <Button
+                    android:id="@+id/addTagButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:text="@string/addTag" />
+            </LinearLayout>
+            
+            
         </LinearLayout>
 
     </RelativeLayout>
