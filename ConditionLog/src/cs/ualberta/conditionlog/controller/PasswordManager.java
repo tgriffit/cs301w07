@@ -1,21 +1,37 @@
 package cs.ualberta.conditionlog.controller;
 
+import android.content.Context;
 import cs.ualberta.conditionlog.model.EncryptionHelper;
 import cs.ualberta.conditionlog.model.DatabaseAdapter;
+
 /**
  * Provides methods for checking whether a password has been specified, creating a
  * password, and testing whether a password is valid.
  * @author tgriffit
  * @date March 29
  */
+
 public class PasswordManager {
+	
+	Context context;
+	
+	public PasswordManager(Context context) {
+		this.context = context;
+	}
 	
 	/**
 	 * Checks whether or not a password has been saved in the database
 	 * @return true if a password has been specified or false if not
 	 */
-	public static boolean checkIfPasswordSet() {
-		//if (getPasswordHash.equals(""))
+	public boolean checkIfPasswordSet() {
+		DatabaseAdapter db = new DatabaseAdapter(context);
+		
+		db.open();
+		String pass = db.getPasswordHash();
+		db.close();
+		
+		if (pass.equals(""))
+			return false;
 		return true;
 	}
 	
@@ -24,7 +40,7 @@ public class PasswordManager {
 	 * @param pass
 	 * @return true if the password is correct or false if it isn't
 	 */
-	public static boolean testPassword(String pass) {
+	public boolean testPassword(String pass) {
 		//load password hash from db
 		String dbHash = "";
 		
@@ -42,10 +58,13 @@ public class PasswordManager {
 	 * Saves a hashed password in the database.
 	 * @param pass
 	 */
-	public static void setPassword(String pass) {
+	public void setPassword(String pass) {
 		String hash = EncryptionHelper.generatePasswordHash(pass);
+		DatabaseAdapter db = new DatabaseAdapter(context);
 		
-		//save hash to db
+		db.open();
+		db.setPasswordHash(hash);
+		db.close();
 		
 		EncryptionHelper.init(pass);
 		
