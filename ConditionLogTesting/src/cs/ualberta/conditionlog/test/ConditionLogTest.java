@@ -1,8 +1,15 @@
 package cs.ualberta.conditionlog.test;
 
+import cs.ualberta.conditionlog.view.*;
+import cs.ualberta.conditionlog.controller.*;
+import cs.ualberta.conditionlog.model.*;
+
 import android.app.Instrumentation.ActivityMonitor;
 import android.test.ActivityInstrumentationTestCase2;
 import android.widget.Button;
+
+
+
 /**
  * @author   Jack  a class to test some ativities in the ConditionLog
  */
