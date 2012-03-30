@@ -32,7 +32,6 @@ public final class R {
         public static final int acceptEnteredPassword=0x7f050009;
         public static final int acceptNewPassword=0x7f050017;
         public static final int editName=0x7f050005;
-        public static final int editText1=0x7f05001d;
         public static final int empty=0x7f05000f;
         public static final int enteredPassword=0x7f050008;
         public static final int gallery=0x7f050001;
@@ -44,6 +43,7 @@ public final class R {
         public static final int newPassword=0x7f050016;
         public static final int relativeLayout1=0x7f050000;
         public static final int spinner=0x7f05001e;
+        public static final int tagBox=0x7f05001d;
         public static final int textView1=0x7f050004;
         public static final int textView2=0x7f050007;
         public static final int toptext=0x7f050012;

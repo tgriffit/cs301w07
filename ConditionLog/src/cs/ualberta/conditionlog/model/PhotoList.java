@@ -10,6 +10,8 @@
 
 package cs.ualberta.conditionlog.model;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
 
@@ -67,11 +69,20 @@ public class PhotoList {
 	 */
 	public Bitmap[] toBmp() {
 		Bitmap[] bmps = new Bitmap[filenames.size()];
-		FileController fController = new FileController();
 		
 		//Iterates through the list of filenames and loads each bmp
 		for (int i = 0; i < filenames.size(); i++) {
-			bmps[i] = fController.load(filenames.get(i));
+			try {
+			FileInputStream in = new FileInputStream(filenames.get(i));
+			
+			EncryptionHelper decrypt = new EncryptionHelper();
+			decrypt.getDecryptionStream(in);
+			
+			bmps[i] = BitmapFactory.decodeStream(in);
+			
+			} catch (FileNotFoundException e) {
+				break;
+			}
 		}
 		
 		return bmps;
