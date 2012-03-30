@@ -3,12 +3,14 @@ package cs.ualberta.conditionlog.controller;
 import android.content.Context;
 import cs.ualberta.conditionlog.model.EncryptionHelper;
 import cs.ualberta.conditionlog.model.DatabaseAdapter;
+
 /**
  * Provides methods for checking whether a password has been specified, creating a
  * password, and testing whether a password is valid.
  * @author tgriffit
  * @date March 29
  */
+
 public class PasswordManager {
 	
 	Context context;

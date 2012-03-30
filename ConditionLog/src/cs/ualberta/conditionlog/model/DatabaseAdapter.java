@@ -1,25 +1,3 @@
-/**
- * 
- * This class acts as an interface for manipulating the database.
- * 
- * After creating a DatabaseAdapter object, call open() on it before using it or you will
- * get Null Pointer Exceptions.
- * Once you are done with the DatabaseAdapter, call close() on it.
- * 
- * To add a condition to the database use addCondition(String condition)
- * To add a photo to the database use addPhoto(String filepath, String condition)
- * To get a list of all conditions use loadConditions()
- * To get a list of all tags use loadTags()
- * To get a list of all photos of a condition use loadPhotosByCondition(String condition)
- * To get a list of all photos with a tag use loadPhotosByTag(String tag)
- * To add a tag to a photo use addTag(String filepath, String tag)
- * To delete a condition, use deleteCondition(String condition)
- * 
- * @author tgriffit
- * @date March 15, 2012
- *
- */
-
 package cs.ualberta.conditionlog.model;
 
 import java.text.SimpleDateFormat;
@@ -33,7 +11,16 @@ import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 
 /**
- * @author   tgriffit
+ * 
+ * This class acts as an interface for manipulating the database.
+ * 
+ * After creating a DatabaseAdapter object, call open() on it before using it or you will
+ * get Null Pointer Exceptions.
+ * Once you are done with the DatabaseAdapter, call close() on it.
+
+ * @author tgriffit
+ * @date March 15, 2012
+ *
  */
 public class DatabaseAdapter {
 	

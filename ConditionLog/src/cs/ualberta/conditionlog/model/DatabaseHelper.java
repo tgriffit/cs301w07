@@ -1,14 +1,14 @@
-/**
-* Controls the ConditionLog's database, allowing connections to be made with it.
-* @author tgriffit
-* @date March 15, 2012
-*/
-
 package cs.ualberta.conditionlog.model;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+
+/**
+* Controls the ConditionLog's database, allowing connections to be made with it.
+* @author tgriffit
+* @date March 15, 2012
+*/
 
 
 public class DatabaseHelper extends SQLiteOpenHelper {
