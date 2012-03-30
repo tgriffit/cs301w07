@@ -11,7 +11,9 @@
     <string name="sortTime">Time</string>
     <string name="sortBy">Sort by:"</string>
     <string name="sortLabel">Select or create a condition list:</string>
-    <string name="newLog">Create New Condition Log</string>
+    <string name="newLog">Create Log</string>
+    <string name="deleteLog">Delete Log</string>
+    <string name="viewLog">View Log</string>
     <string name="nameHint">Name the new Condition Log</string>
     <string name="createLog">Create Condition Log</string>
     <string name="createLogDesc">Please type in the name that you wish to call the new Condition Log. </string>
@@ -28,5 +30,6 @@
     <string name="enterPassword">Please enter your password:</string>
     <string name="compare">compare</string>
     <string name="delete">Delete</string>
+    <string name="selectedLabel">"Selected List Name: "</string>
 
 </resources>

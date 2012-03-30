@@ -19,6 +19,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
+import android.widget.Toast;
 import cs.ualberta.conditionlog.R;
 import cs.ualberta.conditionlog.controller.PhotoUseListController;
 import cs.ualberta.conditionlog.model.DatabaseAdapter;
@@ -56,24 +57,11 @@ public class PhotoUseSelectionView extends Activity {
         
         Intent i = getIntent();
         picFile = i.getStringExtra("filename");
-        
-        dbadapter = new DatabaseAdapter(getApplicationContext());
-        dbadapter.open();
-        // load the initial data for the listview from the database
-        lists =  dbadapter.loadConditions();
-        dbadapter.close();
-        // fill m_adapter with values from the database that are in lists
-        namesList = PhotoUseListController.getNamesFromListArray(lists);
 
-        m_adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, namesList);
-        m_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        
         tagBox = (EditText) findViewById(R.id.tagBox);
         
-        // initialize the listview
         Spinner listMenu = (Spinner) findViewById(R.id.spinner);
-        // set the adapter that will fill the list with the data
-        listMenu.setAdapter(this.m_adapter);
+        updateSpinner();
         listMenu.setOnItemSelectedListener(new MyOnItemSelectedListener());
         
         ImageView photo = (ImageView) findViewById(R.id.PhotoUsePreview);
@@ -98,8 +86,13 @@ public class PhotoUseSelectionView extends Activity {
 			
         	// on click this button will create a new activity that can be used to name and create a new list
 			public void onClick(View v) {
-				String[] tags = tagBox.getText().toString().split("\\s+");
-				PhotoUseListController.savePhotoTags(getApplicationContext(), picFile, tags);
+				String rawText = tagBox.getText().toString();
+				Toast toast = Toast.makeText(getApplicationContext(), "'" + rawText + "'", Toast.LENGTH_SHORT);
+				toast.show();
+				if (rawText.equals("")) {
+					String[] tags = rawText.split("\\s+");
+					PhotoUseListController.savePhotoTags(getApplicationContext(), picFile, tags);
+				}
 				
 				// and now return the list name and finish
 				if (selectedList != null) {
@@ -119,20 +112,36 @@ public class PhotoUseSelectionView extends Activity {
 
         switch(requestCode) {
         case CREATE_LOG:
-        	String lname = "";
         	if (resultCode == RESULT_OK) {
-    			lname = intent.getStringExtra("name");
-    			// return the name of the newly created condition list to the parent activity
-    			returnNameFinish(lname);
+    			// update spinner to add newly created list to the spinner menu
+        		Toast toast = Toast.makeText(getApplicationContext(), "result okay!", Toast.LENGTH_SHORT);
+        		toast.show();
+        		updateSpinner();
         	} 
             break;
         }
     }
 	
+	private void updateSpinner() {
+        dbadapter = new DatabaseAdapter(getApplicationContext());
+        dbadapter.open();
+        // load the initial data for the listview from the database
+        lists =  dbadapter.loadConditions();
+        dbadapter.close();
+        // fill m_adapter with values from the database that are in lists
+        namesList = PhotoUseListController.getNamesFromListArray(lists);
+		// initialize the listview
+        Spinner listMenu = (Spinner) findViewById(R.id.spinner);
+        // set the adapter that will fill the list with the data
+        m_adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, namesList);
+        m_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        listMenu.setAdapter(this.m_adapter);
+	}
+	
 	// create a new activity of CreateListView
 	private void startCreateLog() {
 		Intent i = new Intent(this, CreateListView.class);
-        startActivity(i);
+        startActivityForResult(i, CREATE_LOG);
 	}
 	
 	// return and pass the selected name through an intent
