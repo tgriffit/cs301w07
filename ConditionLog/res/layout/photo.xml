@@ -5,42 +5,81 @@
     android:gravity="bottom|center|top"
     android:orientation="vertical" >
 
+    <LinearLayout
+        android:id="@+id/linearLayout1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:padding="15dip" >
 
-	<LinearLayout
-	    android:layout_width="fill_parent"
-	    android:layout_height="wrap_content"
-	    android:gravity="center"
-	    android:orientation="horizontal"
-	    android:padding="10dip" >
+        <ImageView
+            android:id="@+id/PhotoUsePreview"
+            android:layout_width="250dip"
+            android:layout_height="250dip" />
 
-	    <TextView
-	        android:id="@+id/sortLabel"
-	        android:layout_width="wrap_content"
-	        android:layout_height="wrap_content"
-	        android:text="@string/sortLabel" />
-		<LinearLayout 
-		    android:orientation="horizontal"
-		    android:layout_width="fill_parent"
-		    android:layout_height="wrap_content"
-		    android:visibility="invisible">
-		</LinearLayout>
+    </LinearLayout>
 
-	</LinearLayout>
-<ListView
-    android:id="@+id/list"
-    android:layout_width="fill_parent"
-    android:layout_height="355dp" />
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="2dip" >
+        
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/TagDescr" />
 
-<TextView
-    android:id="@+id/empty"
-    android:layout_width="fill_parent"
-    android:layout_height="wrap_content"
-    android:text="@string/EmptyList"
-    android:visibility="invisible" />
+        <EditText
+            android:id="@+id/editText1"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/tagEx"
+            android:singleLine="true" >
 
-<Button
-   android:id="@+id/NewLogButton"
-   android:layout_width="wrap_content"
-   android:layout_height="wrap_content"
-   android:text="@string/newLog" />
+            <requestFocus />
+        </EditText>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/ListDescr" />
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal" 
+            android:padding="5dip">
+
+            <Spinner
+                android:id="@+id/spinner"
+                android:layout_width="170dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:prompt="@string/spinner_prompt" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/CreateDescr" />
+
+            <Button
+                android:id="@+id/NewPhotoLogButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/newPhotoLog" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/SavePhotoButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/SaveLabel" />
+
 </LinearLayout>

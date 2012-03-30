@@ -8,6 +8,8 @@
     <string name="listNameLabel">Skin Condition Log Name</string>
     <string name="sortLog">Log</string>
     <string name="sortTag">Tag</string>
+    <string name="sortTime">Time</string>
+    <string name="sortBy">Sort by:"</string>
     <string name="sortLabel">Select or create a condition list:</string>
     <string name="newLog">Create New Condition Log</string>
     <string name="nameHint">Name the new Condition Log</string>
@@ -15,6 +17,13 @@
     <string name="createLogDesc">Please type in the name that you wish to call the new Condition Log. </string>
     <string name="createLogTitle">New Condition Log</string>
     <string name="newPicDesc">Tap the middle to generate a new picture.</string>
+    <string name="TagDescr">Add tags to the photo, separated by spaces.</string>
+    <string name="spinner_prompt">Select a list</string>
+    <string name="ListDescr">And select a list or add to a new one.</string>
+    <string name="CreateDescr">or</string>
+    <string name="newPhotoLog">Create New Log</string>
+    <string name="tagEx">tag1 tag2 etc</string>
+    <string name="SaveLabel">Save Photo</string>
     <string name="newPassword">Please enter a password:</string>
     <string name="enterPassword">Please enter your password:</string>
 

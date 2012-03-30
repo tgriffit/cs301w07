@@ -6,21 +6,23 @@
 package cs.ualberta.conditionlog.view;
 
 import java.util.ArrayList;
-
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
+import android.widget.AdapterView.OnItemSelectedListener;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.ListView;
+import android.widget.ImageView;
+import android.widget.Spinner;
 import cs.ualberta.conditionlog.R;
-import cs.ualberta.conditionlog.controller.ListArrayAdapter;
+import cs.ualberta.conditionlog.controller.PhotoUseListController;
 import cs.ualberta.conditionlog.model.DatabaseAdapter;
 
 /**
- * @author         tgriffit
+ * @author           tgriffit
  * @uml.dependency   supplier="cs.ualberta.conditionlog.CreateListView"
  * @uml.dependency   supplier="cs.ualberta.conditionlog.ConditionView"
  */
@@ -31,13 +33,14 @@ public class PhotoUseSelectionView extends Activity {
 	 * @uml.property  name="m_adapter"
 	 * @uml.associationEnd  
 	 */
-	private ListArrayAdapter m_adapter;
-	private ListView listMenu;
+	private ArrayAdapter<String> m_adapter;
 	/**
 	 * @uml.property  name="dbadapter"
 	 * @uml.associationEnd  
 	 */
 	DatabaseAdapter dbadapter;
+	private String picFile;
+	String selectedList = null;
 	
 	private static final int CREATE_LOG = 0;
 	
@@ -46,16 +49,31 @@ public class PhotoUseSelectionView extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.photo);
         
+        Intent i = getIntent();
+        picFile = i.getStringExtra("filename");
+        
         dbadapter = new DatabaseAdapter(getApplicationContext());
         dbadapter.open();
         // load the initial data for the listview from the database
         lists =  dbadapter.loadConditions();
         dbadapter.close();
         // fill m_adapter with values from the database that are in lists
-        m_adapter = new ListArrayAdapter(this, R.layout.listrow, lists);
+        String[] nameList = PhotoUseListController.getNamesFromListArray(lists);
+
+        m_adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, nameList);
+        m_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        
+        // initialize the listview
+        Spinner listMenu = (Spinner) findViewById(R.id.spinner);
+        // set the adapter that will fill the list with the data
+        listMenu.setAdapter(this.m_adapter);
+        listMenu.setOnItemSelectedListener(new MyOnItemSelectedListener());
+        
+        ImageView photo = (ImageView) findViewById(R.id.PhotoUsePreview);
+        photo.setImageBitmap(BitmapFactory.decodeFile(picFile));
         
         // initialize the newLogButton
-        Button newLogButton = (Button) findViewById(R.id.NewLogButton);
+        Button newLogButton = (Button) findViewById(R.id.NewPhotoLogButton);
         newLogButton.setOnClickListener(new View.OnClickListener() {
 			
         	// on click this button will create a new activity that can be used to name and create a new list
@@ -64,18 +82,14 @@ public class PhotoUseSelectionView extends Activity {
 			}
 		});
         
-        // initialize the listview
-        listMenu = (ListView) findViewById(R.id.list);
-        // set the adapter that will fill the list with the data
-        listMenu.setAdapter(this.m_adapter);
-        listMenu.setOnItemClickListener(new OnItemClickListener() {
-        	// on click the selected list will be returned to the parent activity
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-            	ArrayList<String> target = lists.get(position);
-            	String listname = target.get(0);
-        		returnNameFinish(listname);
-            }
-        });
+        Button SaveButton = (Button) findViewById(R.id.SavePhotoButton);
+        SaveButton.setOnClickListener(new View.OnClickListener() {
+			
+        	// on click this button will create a new activity that can be used to name and create a new list
+			public void onClick(View v) {
+				// save photo etc
+			}
+		});
     }
 	
 	@Override
@@ -87,7 +101,6 @@ public class PhotoUseSelectionView extends Activity {
         	String lname = "";
         	if (resultCode == RESULT_OK) {
     			lname = intent.getStringExtra("name");
-    			
     			// return the name of the newly created condition list to the parent activity
     			returnNameFinish(lname);
         	} 
@@ -110,5 +123,17 @@ public class PhotoUseSelectionView extends Activity {
     	finish();
 	}
 	
+	// tiny class needed for the spinner
+	private class MyOnItemSelectedListener implements OnItemSelectedListener {
+
+	    public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
+	    	// enable the OK button
+	    	selectedList = parent.getItemAtPosition(pos).toString(); 
+	    }
+
+	    public void onNothingSelected(AdapterView<?> parent) {
+	    	// do nothing
+	    }
+	}
 }
 
