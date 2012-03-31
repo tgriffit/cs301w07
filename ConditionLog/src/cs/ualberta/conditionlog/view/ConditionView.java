@@ -6,6 +6,8 @@
  */
 package cs.ualberta.conditionlog.view;
 
+import java.util.ArrayList;
+
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -19,10 +21,12 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Gallery;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 import cs.ualberta.conditionlog.R;
 import cs.ualberta.conditionlog.controller.ImageAdapter;
 import cs.ualberta.conditionlog.model.ConditionList;
+import cs.ualberta.conditionlog.model.DatabaseAdapter;
 import cs.ualberta.conditionlog.model.PhotoList;
 import cs.ualberta.conditionlog.model.TagList;
 
@@ -49,18 +53,24 @@ public class ConditionView extends Activity {
 	    Intent intent = getIntent();
 	    this.name = intent.getStringExtra("name");
 	    this.type = intent.getStringExtra("type");
-	    Toast toast = Toast.makeText(getApplicationContext(), "type: " + type, Toast.LENGTH_SHORT);
-	    toast.show();
 	    
 	    create();
 	}
 	
 	private void create(){
 		// load a condition list of name
-		if (type.equals("log")) {
+		if (type.equals("log"))
 		    list = new ConditionList(name, this);
-		} else if (type.equals("tag")) {
+		else if (type.equals("tag"))
 			list = new TagList(name, this);
+		else if (type.equals("time")) {
+			ArrayList<String> filenames;
+			DatabaseAdapter dba = new DatabaseAdapter(getApplicationContext());
+			dba.open();
+			filenames = dba.loadPhotosByTime();
+			dba.close();
+			list = new PhotoList("time");
+			list.setFilenames(filenames);
 		}
 
 	    // get an array of Bitmaps from the condition list
@@ -70,6 +80,7 @@ public class ConditionView extends Activity {
 	    if (bmps.length > 0) {
 	    	// if there is images in the condition list set the first as a thumbnail
 	    	iv.setImageBitmap(bmps[0]);
+	    	displayTimestamp(0);
 	    } else {
 		    // if there is no images in the condition list state so and return accordingly
 	    	Toast toast = Toast.makeText(getApplicationContext(), "No photos to view in that list.", Toast.LENGTH_LONG);
@@ -86,9 +97,11 @@ public class ConditionView extends Activity {
 	    gallery.setOnItemClickListener(new OnItemClickListener() {
 	        public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
 	            // set the current gallery item image from the bitmap array
+	        	
 	        	imagePosition = position;
 	        	ImageView iv = (ImageView) findViewById(R.id.galleryImage);
 	            iv.setImageBitmap(bmps[position]);
+	            displayTimestamp(position);
 	        }
 	    });
 	    
@@ -166,6 +179,17 @@ public class ConditionView extends Activity {
 
 		tag.show();
 		
+	}
+	
+	private void displayTimestamp(int position) {
+		String filename = list.getFileName(position);
+    	String timestamp;
+    	DatabaseAdapter dba = new DatabaseAdapter(getApplicationContext());
+		dba.open();
+		timestamp = dba.getPhotoTimestamp(filename);
+		dba.close();
+		TextView tv = (TextView) findViewById(R.id.timestampText);
+		tv.setText(timestamp);
 	}
 	
 	private void deleteTag() {

@@ -89,6 +89,15 @@ public class ListSelectionView extends Activity {
 			}
 		});
 
+		Button timeButton = (Button) findViewById(R.id.TimeButton);
+		timeButton.setOnClickListener(new View.OnClickListener() {
+
+			public void onClick(View v) {
+				// load the ListView with the params to load the timestamp list in ConditionView
+				viewList("time", "name");
+			}
+		});
+		
 		// initialize the new log button
 		Button newLogButton = (Button) findViewById(R.id.NewLogButton);
 		newLogButton.setOnClickListener(new View.OnClickListener() {
@@ -244,10 +253,10 @@ public class ListSelectionView extends Activity {
 			currentLists = condLists;
 		else if (currentLists.equals(condLists))
 			currentLists = tagLists;
-		
-		selectedList = currentLists.get(0).get(0);
-		setSelectedText(selectedList);
-		
+		if (currentLists.size() > 0) {
+			selectedList = currentLists.get(0).get(0);
+			setSelectedText(selectedList);
+		}
 		tagButton.setEnabled(!tagButton.isEnabled());
 		logButton.setEnabled(!logButton.isEnabled());
 	}
