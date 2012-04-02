@@ -476,4 +476,30 @@ public class DatabaseAdapter {
     	
     	return date;
     }
+    
+    /**
+     * Loads a list containing all the tags for a given photo.
+     * @param filename
+     * @return an ArrayList of strings
+     */
+    public ArrayList<String> loadTagsForPhoto(String filename) {
+	ArrayList<String> list = new ArrayList<String>();
+
+	String[] cols = {DatabaseHelper.TAGS_NAME};
+	String[] args = {filename};
+
+	Cursor c = db.query(DatabaseHelper.TAGS_TABLE, cols, DatabaseHelper.PHOTO_FILE + "=?", args,
+    			            null, null, null);
+
+	c.moveToFirst();
+
+	while(!c.isAfterLast()) {
+		list.add(c.getString(0));
+		c.moveToNext();
+	}
+
+	c.close();
+
+	return list;
+    }
 }
