@@ -127,7 +127,7 @@ public class ListSelectionView extends Activity {
 					viewList(listType, selectedList);
 				} else {
 					Toast toast2 = Toast.makeText(context,
-							"No photos in that list to view.",
+							listType + " No photos in that list to view. size: " + Integer.toString(list.getSize()),
 							Toast.LENGTH_SHORT);
 					toast2.show();
 				}
@@ -228,10 +228,17 @@ public class ListSelectionView extends Activity {
 		// get the listMenu view
 		listMenu = (ListView) findViewById(R.id.list);
 		// set the adapter that will be used by the list view
-		listMenu.setAdapter(this.condAdapter);
+		if (listType.equals("log"))
+			listMenu.setAdapter(this.condAdapter);
+		else
+			listMenu.setAdapter(this.tagAdapter);
 		
 		// set the currently focused list
-		currentLists = condLists;
+		if (listType.equals("tag"))
+			currentLists = tagLists;
+		else
+			currentLists = condLists;
+		
 		if (currentLists.size() > 0) {
 			selectedList = currentLists.get(0).get(0); // get the name of the first list
 			setSelectedText(selectedList);
