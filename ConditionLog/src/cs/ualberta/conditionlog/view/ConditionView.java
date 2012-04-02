@@ -221,12 +221,12 @@ public class ConditionView extends Activity {
 	
 	private void displayTags(int position) {
 		String filename = list.getFileName(position);
-    	String tags;
+    	String tags = "";
     	DatabaseAdapter dba = new DatabaseAdapter(getApplicationContext());
 		dba.open();
 		//tags = dba.
 		dba.close();
 		TextView tv = (TextView) findViewById(R.id.timestampText);
-		tv.setText(timestamp);
+		tv.setText(tags);
 	}
 }
