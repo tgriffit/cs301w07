@@ -10,6 +10,8 @@ import java.util.ArrayList;
 
 import org.junit.Test;
 
+import android.test.AndroidTestCase;
+
 import cs.ualberta.conditionlog.model.*;
 
 /**
@@ -18,14 +20,14 @@ import cs.ualberta.conditionlog.model.*;
  * @date March 30, 2012
  */
 
-public class ModelTesting {
+public class ModelTesting extends AndroidTestCase {
 
 	/**
 	 * DatabaseAdapter
 	 */
 	@Test
 	public void testDatabaseAdapter(){
-		DatabaseAdapter adapter = new DatabaseAdapter(null);
+		DatabaseAdapter adapter = new DatabaseAdapter(getContext());
 		adapter.open();
 		
 		assert(adapter.loadTags() != null);
@@ -59,7 +61,7 @@ public class ModelTesting {
 	@SuppressWarnings("static-access")
 	@Test
 	public void testDatabaseHelper(){
-		DatabaseHelper helper = new DatabaseHelper(null);
+		DatabaseHelper helper = new DatabaseHelper(getContext());
 		assertEquals("_photo", helper.PHOTO_TABLE);
 	}
 	
@@ -103,7 +105,7 @@ public class ModelTesting {
 	 */
 	@Test
 	public void testConditionList(){
-		TagList list = new TagList("cond", null);
+		TagList list = new TagList("cond", getContext());
 		assert(list != null);
 		assert(list.getName().equals("cond"));
 	}
@@ -113,7 +115,7 @@ public class ModelTesting {
 	 */
 	@Test
 	public void testTagList(){
-		TagList list = new TagList("tag", null);
+		TagList list = new TagList("tag", getContext());
 		assert(list != null);
 		assert(list.getName().equals("tag"));
 	}

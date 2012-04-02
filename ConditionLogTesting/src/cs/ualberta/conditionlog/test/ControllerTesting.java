@@ -1,12 +1,15 @@
 package cs.ualberta.conditionlog.test;
 
+import java.util.ArrayList;
+
 import org.junit.Test;
 
 import android.graphics.Bitmap;
+import android.test.AndroidTestCase;
 
 import cs.ualberta.conditionlog.controller.*;
 
-public class ControllerTesting {
+public class ControllerTesting extends AndroidTestCase {
 
 	/**
 	 * Tests BogoPicGen
@@ -37,7 +40,9 @@ public class ControllerTesting {
 	 */
 	@Test
 	public void testLogArrayAdapter(){
-		ListArrayAdapter adapter = new ListArrayAdapter(null, 0, null);
+		ArrayList<ArrayList<String>> testArray = new ArrayList<ArrayList<String>>();
+		
+		ListArrayAdapter adapter = new ListArrayAdapter(getContext(), 0, testArray);
 		assert(adapter.getView(0, null, null) != null);
 	}
 }
