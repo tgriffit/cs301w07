@@ -6,6 +6,8 @@
  */
 package cs.ualberta.conditionlog.view;
 
+import java.util.ArrayList;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -18,6 +20,9 @@ import android.widget.ImageView;
 import android.widget.Toast;
 import cs.ualberta.conditionlog.R;
 import cs.ualberta.conditionlog.model.ConditionList;
+import cs.ualberta.conditionlog.model.DatabaseAdapter;
+import cs.ualberta.conditionlog.model.PhotoList;
+import cs.ualberta.conditionlog.model.TagList;
 import cs.ualberta.conditionlog.controller.ImageAdapter;
 
 /**
@@ -30,9 +35,10 @@ public class ComparisonView extends Activity {
 	 * @uml.property  name="clist"
 	 * @uml.associationEnd  
 	 */
-	private ConditionList clist;
+	private PhotoList list;
 	private Bitmap[] bmps;
 	private int comparePosition;
+	private String type;
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -42,11 +48,24 @@ public class ComparisonView extends Activity {
 	    Intent intent = getIntent();
 	    this.name = intent.getStringExtra("name");
 	    this.comparePosition = intent.getIntExtra("position", 0);
+	    this.type = intent.getStringExtra("type");
 	    
-	    // load a condition list of name
-	    clist = new ConditionList(name, this);
+	 // load a condition list of name
+		if (type.equals("log"))
+		    list = new ConditionList(name, this);
+		else if (type.equals("tag"))
+			list = new TagList(name, this);
+		else if (type.equals("time")) {
+			ArrayList<String> filenames;
+			DatabaseAdapter dba = new DatabaseAdapter(getApplicationContext());
+			dba.open();
+			filenames = dba.loadPhotosByTime();
+			dba.close();
+			list = new PhotoList("time");
+			list.setFilenames(filenames);
+		}
 	    // get an array of Bitmaps from the condition list
-	    bmps = clist.toBmp();
+	    bmps = list.toBmp();
 	    
 	    ImageView iv = (ImageView) findViewById(R.id.galleryImage);
 	    if (bmps.length > 0) {

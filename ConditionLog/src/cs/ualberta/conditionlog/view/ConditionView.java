@@ -146,6 +146,7 @@ public class ConditionView extends Activity {
 		Intent i = new Intent(this, ComparisonView.class);
 		i.putExtra("position", imagePosition);
 		i.putExtra("name", name);
+		i.putExtra("type", type);
         startActivity(i);
 	}
 	
@@ -181,6 +182,32 @@ public class ConditionView extends Activity {
 		
 	}
 	
+	private void deleteTag() {
+		AlertDialog.Builder tag = new AlertDialog.Builder(this);
+
+		tag.setTitle("Delete Tag");
+		tag.setMessage("Delete which tag?");
+
+		// Set an EditText view to get user input 
+		final EditText input = new EditText(this);
+		tag.setView(input);
+
+		tag.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+		public void onClick(DialogInterface dialog, int whichButton) {
+		  String value = input.getText().toString();
+		  list.deleteTagFromPhoto(getApplicationContext(), imagePosition, value);
+		  }
+		});
+
+		tag.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+		  public void onClick(DialogInterface dialog, int whichButton) {
+		    
+		  }
+		});
+
+		tag.show();
+	}
+	
 	private void displayTimestamp(int position) {
 		String filename = list.getFileName(position);
     	String timestamp;
@@ -192,8 +219,14 @@ public class ConditionView extends Activity {
 		tv.setText(timestamp);
 	}
 	
-	private void deleteTag() {
-		
+	private void displayTags(int position) {
+		String filename = list.getFileName(position);
+    	String tags;
+    	DatabaseAdapter dba = new DatabaseAdapter(getApplicationContext());
+		dba.open();
+		//tags = dba.
+		dba.close();
+		TextView tv = (TextView) findViewById(R.id.timestampText);
+		tv.setText(timestamp);
 	}
-	
 }
