@@ -40,15 +40,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 	private static final String CREATE_COND_TABLE = "CREATE TABLE IF NOT EXISTS " + COND_TABLE + " (" +
 												     COND_NAME + " char(50), " +
 												     PHOTO_FILE + " char(256), " +
-												    "PRIMARY KEY (" + COND_NAME + ", " + PHOTO_FILE + "), " +
-											     	"FOREIGN KEY (" + PHOTO_FILE + ") REFERENCES " + PHOTO_TABLE + ");";
+												    "PRIMARY KEY (" + COND_NAME + ", " + PHOTO_FILE + "))";
 
 	//Creates a table to store the tags if the table does not already exist
 	private static final String CREATE_TAGS_TABLE = "CREATE TABLE IF NOT EXISTS " + TAGS_TABLE + " (" +
 												     TAGS_NAME + " char(50), " +
 											     	 PHOTO_FILE + " char(256), " +
-												    "PRIMARY KEY (" + TAGS_NAME + ", " + PHOTO_FILE + "), " +
-												    "FOREIGN KEY (" + PHOTO_FILE + ") REFERENCES " + PHOTO_TABLE + " ON DELETE CASCADE);";
+												    "PRIMARY KEY (" + TAGS_NAME + ", " + PHOTO_FILE + "))";
 
 	//Creates a table to store a password hash
 	private static final String CREATE_PASS_TABLE = "CREATE TABLE IF NOT EXISTS " + PASS_TABLE + " (" +

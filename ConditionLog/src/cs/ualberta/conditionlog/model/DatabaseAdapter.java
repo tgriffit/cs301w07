@@ -92,13 +92,11 @@ public class DatabaseAdapter {
     public ArrayList<String> loadPhotosByTag(String tag) {
     	ArrayList<String> photoList = new ArrayList<String>();
     	
-    	//Default query commands do not like selecting from multiple tables, so use rawQuery
-    	String q = "SELECT ? FROM ?, ? WHERE ?=? ODER BY ? ASC";
-    	String[] args = {DatabaseHelper.PHOTO_TABLE + "." + DatabaseHelper.PHOTO_FILE,
-    	                 DatabaseHelper.PHOTO_TABLE, DatabaseHelper.TAGS_TABLE,
-    	                 DatabaseHelper.TAGS_NAME, tag, DatabaseHelper.PHOTO_DATE};
-    	
-    	Cursor c = db.rawQuery(q, args);
+    	String q = "SELECT "+DatabaseHelper.PHOTO_FILE+" " +
+		   		   "FROM "+DatabaseHelper.TAGS_TABLE+" INNER JOIN "+DatabaseHelper.PHOTO_TABLE+" USING ("+DatabaseHelper.PHOTO_FILE+") " +
+		   		   "WHERE "+DatabaseHelper.TAGS_NAME+"='"+tag+"' ORDER BY "+DatabaseHelper.PHOTO_DATE+" ASC";
+
+    	Cursor c = db.rawQuery(q, null);
     	c.moveToFirst();
     	
     	//Add each entry to the list
@@ -193,13 +191,13 @@ public class DatabaseAdapter {
     /*
      * Adds a photo to the photos table in the database.
      */
-    private void addPhotoToDB(String filepath) {
+    private void addPhotoToDB(String filename) {
     	SimpleDateFormat format = new SimpleDateFormat("d MMM yyyy HH:mm:ss");
     	Date date = new Date();
     	
     	//Inserts the new photo into the photos table
     	ContentValues values = new ContentValues();
-    	values.put(DatabaseHelper.PHOTO_FILE, filepath);
+    	values.put(DatabaseHelper.PHOTO_FILE, filename);
     	//Uses the SQLite function date() to set the photo's date to the current time
     	values.put(DatabaseHelper.PHOTO_DATE, "date('now')");
     	//Enters the date as a pre-formatted string because it's much easier than dealing with sql date formatting
@@ -283,12 +281,13 @@ public class DatabaseAdapter {
     	//The name of the condition to store the photo under
     	values.put(DatabaseHelper.TAGS_NAME, tag);
     	values.put(DatabaseHelper.PHOTO_FILE, photo);
-    	
+
     	try {
     		db.insert(DatabaseHelper.TAGS_TABLE, null, values);
     	} catch (SQLException e) {
     		//Exceptions are caused by primary key violations.  When that happens, they should be ignored.
     	}
+    	
     }
     
     /**
@@ -345,6 +344,7 @@ public class DatabaseAdapter {
      */
     public void deletePhoto(String filename) {
     	deleteMatchingCondition(filename);
+    	deleteMatchingTags(filename);
     	
     	String[] args = {filename};
     	
@@ -387,6 +387,18 @@ public class DatabaseAdapter {
     	}
     	
     	c.close();
+    }
+    
+    /*
+     * Since this version of SQLite doesn't support foreign key constraints,
+     * this method is used to delete all instances of a photo from the tags
+     * table when it is deleted from the photo table.
+     */
+    private void deleteMatchingTags(String filename) {
+    	String[] args = {filename};
+    	
+    	db.delete(DatabaseHelper.TAGS_TABLE, DatabaseHelper.PHOTO_FILE + "=?", args);
+    
     }
     
     /**
