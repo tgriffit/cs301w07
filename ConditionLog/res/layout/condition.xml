@@ -33,30 +33,6 @@
                 android:padding="3dip"  />
 
             <LinearLayout
-                android:id="@+id/linearLayout4"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.07" >
-
-                <TextView
-                    android:id="@+id/textView2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.07"
-                    android:text="@string/tagtitle"
-                    android:textAppearance="?android:attr/textAppearanceMedium" />
-
-                <TextView
-                    android:id="@+id/tagsText"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.07"
-                    android:text=""
-                    android:textAppearance="?android:attr/textAppearanceSmall" />
-
-            </LinearLayout>
-
-            <LinearLayout
                 android:id="@+id/linearLayout3"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
@@ -77,13 +53,33 @@
                     android:textAppearance="?android:attr/textAppearanceSmall" />
 
             </LinearLayout>
-            
+
+            <LinearLayout
+                android:id="@+id/linearLayout4"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.07" >
+
+                <TextView
+                    android:id="@+id/textView2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.07"
+                    android:text="@string/tagtitle"
+                    android:textAppearance="?android:attr/textAppearanceMedium" />
+
+                <TextView
+                    android:id="@+id/tagsText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:textAppearance="?android:attr/textAppearanceSmall" />
+            </LinearLayout>
+
             <LinearLayout
                 android:id="@+id/linearLayout2"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:layout_centerVertical="true"
                 android:gravity="center"
                 android:orientation="horizontal" >
 
@@ -106,8 +102,6 @@
                 android:id="@+id/linearLayout2"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:layout_centerVertical="true"
                 android:gravity="center"
                 android:orientation="horizontal" >
 
@@ -125,7 +119,6 @@
                     android:layout_weight="0.5"
                     android:text="@string/addTag" />
             </LinearLayout>
-            
             
         </LinearLayout>
 
