@@ -185,7 +185,7 @@ public class DatabaseAdapter {
      */
     public void addPhoto(String photo, String cond) {
     	addPhotoToDB(photo);
-    	addPhotoToCondition(photo, cond);
+    	addPhotoToCondition(photo, cond.trim());
     }
     
     /*
@@ -240,7 +240,7 @@ public class DatabaseAdapter {
     	//Inserts a tuple representing the relationship in the conditions table
     	ContentValues values = new ContentValues();
     	//The name of the condition to store the photo under
-    	values.put(DatabaseHelper.COND_NAME, cond);
+    	values.put(DatabaseHelper.COND_NAME, cond.trim());
     	
     	try {
     		db.insert(DatabaseHelper.COND_TABLE, null, values);
@@ -277,17 +277,19 @@ public class DatabaseAdapter {
      * @param tag - the tag to add
      */
     public void addTag(String photo, String tag) {
-    	ContentValues values = new ContentValues();
-    	//The name of the condition to store the photo under
-    	values.put(DatabaseHelper.TAGS_NAME, tag);
-    	values.put(DatabaseHelper.PHOTO_FILE, photo);
+    	//If the tag is just whitespace ignore it
+    	if (tag.trim().length() > 0) {
+    		ContentValues values = new ContentValues();
+    		//The name of the condition to store the photo under
+    		values.put(DatabaseHelper.TAGS_NAME, tag.trim());
+    		values.put(DatabaseHelper.PHOTO_FILE, photo);
 
-    	try {
-    		db.insert(DatabaseHelper.TAGS_TABLE, null, values);
-    	} catch (SQLException e) {
-    		//Exceptions are caused by primary key violations.  When that happens, they should be ignored.
+    		try {
+    			db.insert(DatabaseHelper.TAGS_TABLE, null, values);
+    		} catch (SQLException e) {
+    			//Exceptions are caused by primary key violations.  When that happens, they should be ignored.
+    		}
     	}
-    	
     }
     
     /**
@@ -501,5 +503,12 @@ public class DatabaseAdapter {
 	c.close();
 
 	return list;
+    }
+    
+    /**
+     * Clears the password table.  Used for testing purposes.
+     */
+    public void deletePassword() {
+    	db.delete(DatabaseHelper.PASS_TABLE, "1=1", null);
     }
 }

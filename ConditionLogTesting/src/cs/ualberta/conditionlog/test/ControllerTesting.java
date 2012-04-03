@@ -45,4 +45,28 @@ public class ControllerTesting extends AndroidTestCase {
 		ListArrayAdapter adapter = new ListArrayAdapter(getContext(), 0, testArray);
 		assert(adapter.getView(0, null, null) != null);
 	}
+	
+	/**
+	 * Tests PasswordManager without deleting the old password
+	 */
+	@Test
+	public void testPasswordManager(){
+		PasswordManager manager = new PasswordManager(getContext());
+		String oldPass = "";
+		//save old password
+		if (manager.checkIfPasswordSet())
+			oldPass = manager.getHashForTesting();
+		
+		manager.resetPassword();
+		assertFalse(manager.checkIfPasswordSet());
+		
+		manager.setPassword("password");
+		assertTrue(manager.checkIfPasswordSet());
+		assertTrue(manager.testPassword("password"));
+		manager.resetPassword();
+		
+		//restore old password
+		if (!oldPass.equals(""))
+			manager.setHashAfterTesting(oldPass);
+	}
 }
