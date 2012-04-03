@@ -319,7 +319,7 @@ public class DatabaseAdapter {
      * @param cond
      */
     public void deleteConditionFromPhoto(String filename, String cond) {
-    	String[] args = {filename, cond};
+    	String[] args = {cond, filename};
     	
     	db.delete(DatabaseHelper.COND_TABLE, DatabaseHelper.COND_NAME + "=? AND " + DatabaseHelper.PHOTO_FILE + "=?", args);
     }
@@ -331,7 +331,7 @@ public class DatabaseAdapter {
      * @param tag
      */
     public void deleteTagFromPhoto(String filename, String tag) {
-    	String[] args = {filename, tag};
+    	String[] args = {tag, filename};
     	
     	db.delete(DatabaseHelper.TAGS_TABLE, DatabaseHelper.TAGS_NAME + "=? AND " + DatabaseHelper.PHOTO_FILE + "=?", args);
     }
@@ -475,5 +475,31 @@ public class DatabaseAdapter {
     	c.close();
     	
     	return date;
+    }
+    
+    /**
+     * Loads a list containing all the tags for a given photo.
+     * @param filename
+     * @return an ArrayList of strings
+     */
+    public ArrayList<String> loadTagsForPhoto(String filename) {
+	ArrayList<String> list = new ArrayList<String>();
+
+	String[] cols = {DatabaseHelper.TAGS_NAME};
+	String[] args = {filename};
+
+	Cursor c = db.query(DatabaseHelper.TAGS_TABLE, cols, DatabaseHelper.PHOTO_FILE + "=?", args,
+    			            null, null, null);
+
+	c.moveToFirst();
+
+	while(!c.isAfterLast()) {
+		list.add(c.getString(0));
+		c.moveToNext();
+	}
+
+	c.close();
+
+	return list;
     }
 }
