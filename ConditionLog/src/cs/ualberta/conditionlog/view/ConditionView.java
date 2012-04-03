@@ -81,7 +81,7 @@ public class ConditionView extends Activity {
 	    	// if there is images in the condition list set the first as a thumbnail
 	    	iv.setImageBitmap(bmps[0]);
 	    	displayTimestamp(0);
-	    	displayTags(position);
+	    	displayTags(0);
 	    } else {
 		    // if there is no images in the condition list state so and return accordingly
 	    	Toast toast = Toast.makeText(getApplicationContext(), "No photos to view in that list.", Toast.LENGTH_LONG);
@@ -171,6 +171,8 @@ public class ConditionView extends Activity {
 		public void onClick(DialogInterface dialog, int whichButton) {
 		  String value = input.getText().toString();
 		  list.addTagToPhoto(getApplicationContext(), imagePosition, value);
+			displayTags(imagePosition);
+
 		  }
 		});
 
@@ -198,6 +200,7 @@ public class ConditionView extends Activity {
 		public void onClick(DialogInterface dialog, int whichButton) {
 		  String value = input.getText().toString();
 		  list.deleteTagFromPhoto(getApplicationContext(), imagePosition, value);
+		  displayTags(imagePosition);
 		  }
 		});
 
@@ -208,6 +211,8 @@ public class ConditionView extends Activity {
 		});
 
 		tag.show();
+		
+
 	}
 	
 	private void displayTimestamp(int position) {
@@ -223,16 +228,12 @@ public class ConditionView extends Activity {
 	
 	private void displayTags(int position) {
 		String filename = list.getFileName(position);
-    	ArrayList<String> taglist;
-    	String tags = "";
+    	ArrayList<String> tags;
     	DatabaseAdapter dba = new DatabaseAdapter(getApplicationContext());
 		dba.open();
-		taglist = dba.loadTagsForPhoto(filename);
+		tags = dba.loadTagsForPhoto(filename);
 		dba.close();
-		for(int i = 0; i < taglist.size(); i++){
-		tags.concat(taglist.get(i));
-		}
 		TextView tv = (TextView) findViewById(R.id.tagsText);
-		tv.setText(tags);
+		tv.setText(tags.toString());
 	}
 }
