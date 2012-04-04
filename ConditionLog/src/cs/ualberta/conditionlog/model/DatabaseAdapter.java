@@ -185,7 +185,7 @@ public class DatabaseAdapter {
      */
     public void addPhoto(String photo, String cond) {
     	addPhotoToDB(photo);
-    	addPhotoToCondition(photo, cond);
+    	addPhotoToCondition(photo, cond.trim());
     }
     
     /*
@@ -240,7 +240,7 @@ public class DatabaseAdapter {
     	//Inserts a tuple representing the relationship in the conditions table
     	ContentValues values = new ContentValues();
     	//The name of the condition to store the photo under
-    	values.put(DatabaseHelper.COND_NAME, cond);
+    	values.put(DatabaseHelper.COND_NAME, cond.trim());
     	
     	try {
     		db.insert(DatabaseHelper.COND_TABLE, null, values);
@@ -277,17 +277,19 @@ public class DatabaseAdapter {
      * @param tag - the tag to add
      */
     public void addTag(String photo, String tag) {
-    	ContentValues values = new ContentValues();
-    	//The name of the condition to store the photo under
-    	values.put(DatabaseHelper.TAGS_NAME, tag);
-    	values.put(DatabaseHelper.PHOTO_FILE, photo);
+    	//If the tag is just whitespace ignore it
+    	if (tag.trim().length() > 0) {
+    		ContentValues values = new ContentValues();
+    		//The name of the condition to store the photo under
+    		values.put(DatabaseHelper.TAGS_NAME, tag.trim());
+    		values.put(DatabaseHelper.PHOTO_FILE, photo);
 
-    	try {
-    		db.insert(DatabaseHelper.TAGS_TABLE, null, values);
-    	} catch (SQLException e) {
-    		//Exceptions are caused by primary key violations.  When that happens, they should be ignored.
+    		try {
+    			db.insert(DatabaseHelper.TAGS_TABLE, null, values);
+    		} catch (SQLException e) {
+    			//Exceptions are caused by primary key violations.  When that happens, they should be ignored.
+    		}
     	}
-    	
     }
     
     /**
@@ -319,7 +321,7 @@ public class DatabaseAdapter {
      * @param cond
      */
     public void deleteConditionFromPhoto(String filename, String cond) {
-    	String[] args = {filename, cond};
+    	String[] args = {cond, filename};
     	
     	db.delete(DatabaseHelper.COND_TABLE, DatabaseHelper.COND_NAME + "=? AND " + DatabaseHelper.PHOTO_FILE + "=?", args);
     }
@@ -331,7 +333,7 @@ public class DatabaseAdapter {
      * @param tag
      */
     public void deleteTagFromPhoto(String filename, String tag) {
-    	String[] args = {filename, tag};
+    	String[] args = {tag, filename};
     	
     	db.delete(DatabaseHelper.TAGS_TABLE, DatabaseHelper.TAGS_NAME + "=? AND " + DatabaseHelper.PHOTO_FILE + "=?", args);
     }
@@ -475,5 +477,38 @@ public class DatabaseAdapter {
     	c.close();
     	
     	return date;
+    }
+    
+    /**
+     * Loads a list containing all the tags for a given photo.
+     * @param filename
+     * @return an ArrayList of strings
+     */
+    public ArrayList<String> loadTagsForPhoto(String filename) {
+	ArrayList<String> list = new ArrayList<String>();
+
+	String[] cols = {DatabaseHelper.TAGS_NAME};
+	String[] args = {filename};
+
+	Cursor c = db.query(DatabaseHelper.TAGS_TABLE, cols, DatabaseHelper.PHOTO_FILE + "=?", args,
+    			            null, null, null);
+
+	c.moveToFirst();
+
+	while(!c.isAfterLast()) {
+		list.add(c.getString(0));
+		c.moveToNext();
+	}
+
+	c.close();
+
+	return list;
+    }
+    
+    /**
+     * Clears the password table.  Used for testing purposes.
+     */
+    public void deletePassword() {
+    	db.delete(DatabaseHelper.PASS_TABLE, "1=1", null);
     }
 }

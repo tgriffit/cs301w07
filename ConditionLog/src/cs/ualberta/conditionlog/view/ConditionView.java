@@ -81,6 +81,7 @@ public class ConditionView extends Activity {
 	    	// if there is images in the condition list set the first as a thumbnail
 	    	iv.setImageBitmap(bmps[0]);
 	    	displayTimestamp(0);
+	    	displayTags(0);
 	    } else {
 		    // if there is no images in the condition list state so and return accordingly
 	    	Toast toast = Toast.makeText(getApplicationContext(), "No photos to view in that list.", Toast.LENGTH_LONG);
@@ -102,6 +103,7 @@ public class ConditionView extends Activity {
 	        	ImageView iv = (ImageView) findViewById(R.id.galleryImage);
 	            iv.setImageBitmap(bmps[position]);
 	            displayTimestamp(position);
+	            displayTags(position);
 	        }
 	    });
 	    
@@ -146,6 +148,7 @@ public class ConditionView extends Activity {
 		Intent i = new Intent(this, ComparisonView.class);
 		i.putExtra("position", imagePosition);
 		i.putExtra("name", name);
+		i.putExtra("type", type);
         startActivity(i);
 	}
 	
@@ -168,6 +171,8 @@ public class ConditionView extends Activity {
 		public void onClick(DialogInterface dialog, int whichButton) {
 		  String value = input.getText().toString();
 		  list.addTagToPhoto(getApplicationContext(), imagePosition, value);
+			displayTags(imagePosition);
+
 		  }
 		});
 
@@ -181,6 +186,35 @@ public class ConditionView extends Activity {
 		
 	}
 	
+	private void deleteTag() {
+		AlertDialog.Builder tag = new AlertDialog.Builder(this);
+
+		tag.setTitle("Delete Tag");
+		tag.setMessage("Delete which tag?");
+
+		// Set an EditText view to get user input 
+		final EditText input = new EditText(this);
+		tag.setView(input);
+
+		tag.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+		public void onClick(DialogInterface dialog, int whichButton) {
+		  String value = input.getText().toString();
+		  list.deleteTagFromPhoto(getApplicationContext(), imagePosition, value);
+		  displayTags(imagePosition);
+		  }
+		});
+
+		tag.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+		  public void onClick(DialogInterface dialog, int whichButton) {
+		    
+		  }
+		});
+
+		tag.show();
+		
+
+	}
+	
 	private void displayTimestamp(int position) {
 		String filename = list.getFileName(position);
     	String timestamp;
@@ -192,8 +226,14 @@ public class ConditionView extends Activity {
 		tv.setText(timestamp);
 	}
 	
-	private void deleteTag() {
-		
+	private void displayTags(int position) {
+		String filename = list.getFileName(position);
+    	ArrayList<String> tags;
+    	DatabaseAdapter dba = new DatabaseAdapter(getApplicationContext());
+		dba.open();
+		tags = dba.loadTagsForPhoto(filename);
+		dba.close();
+		TextView tv = (TextView) findViewById(R.id.tagsText);
+		tv.setText(tags.toString());
 	}
-	
 }

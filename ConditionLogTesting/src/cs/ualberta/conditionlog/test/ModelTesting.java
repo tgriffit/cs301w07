@@ -84,6 +84,12 @@ public class ModelTesting extends AndroidTestCase {
 		
 		assert(helper.getEncryptionStream(out) != null);
 		assert(helper.getDecryptionStream(in) != null);
+		
+		String hash1 = EncryptionHelper.generatePasswordHash("password");
+		String hash2 = EncryptionHelper.generatePasswordHash("password");
+		String hash3 = EncryptionHelper.generatePasswordHash("notpassword");
+		assertEquals(hash1, hash2);
+		assertFalse(hash1.equals(hash3));
 	}
 	
 

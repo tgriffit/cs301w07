@@ -34,5 +34,7 @@
     <string name="deleteTag">Delete Tag</string>
     <string name="addTag">Add Tag</string>
     <string name="timeLabel">"timestamp: "</string>
+    <string name="tagtitle">Tags:</string>
+    <string name="tags"></string>
 
 </resources>
