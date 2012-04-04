@@ -34,7 +34,7 @@ public class ListSelectionView extends Activity {
 	private ArrayList<ArrayList<String>> condLists;
 	private ArrayList<ArrayList<String>> tagLists;
 	private ArrayList<ArrayList<String>> currentLists;
-	// private ArrayList<ArrayList<String>> timeLists;
+
 	/**
 	 * @uml.property name="condAdapter"
 	 * @uml.associationEnd
@@ -127,10 +127,8 @@ public class ListSelectionView extends Activity {
 					// start new activity to view the selected condition
 					viewList(listType, selectedList);
 				} else {
-					Toast toast2 = Toast.makeText(context,
-							listType + " No photos in that list to view. size: " + Integer.toString(list.getSize()),
-							Toast.LENGTH_SHORT);
-					toast2.show();
+					Toast toast = Toast.makeText(context, "No photos in that list to view.", Toast.LENGTH_SHORT);
+					toast.show();
 				}
 			}
 		});

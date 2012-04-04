@@ -211,8 +211,6 @@ public class ConditionView extends Activity {
 		});
 
 		tag.show();
-		
-
 	}
 	
 	private void displayTimestamp(int position) {
