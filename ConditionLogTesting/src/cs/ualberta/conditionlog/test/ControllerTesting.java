@@ -22,6 +22,31 @@ public class ControllerTesting extends AndroidTestCase {
 	}
 	
 	/**
+	 * ImageAdapter
+	 */
+	@Test
+	public void testImageAdapter(){
+		Bitmap[] bmps = {BogoPicGen.generateBitmap(10,10), BogoPicGen.generateBitmap(10,10),
+				         BogoPicGen.generateBitmap(10,10), BogoPicGen.generateBitmap(10,10)};
+		
+		ImageAdapter adapter = new ImageAdapter(getContext(), bmps);
+		assertEquals(adapter.getCount(), 4);
+		assert(adapter.getItem(0) != null);
+		assertEquals(adapter.getItemId(0), 0);
+	}
+	
+	/**
+	 * ListArrayAdapter
+	 */
+	@Test
+	public void testListArrayAdapter(){
+		ArrayList<ArrayList<String>> testArray = new ArrayList<ArrayList<String>>();
+		
+		ListArrayAdapter adapter = new ListArrayAdapter(getContext(), 0, testArray);
+		assert(adapter.getView(0, null, null) != null);
+	}
+	
+	/**
 	 * NewPhotoController
 	 */
 	@Test
@@ -33,17 +58,6 @@ public class ControllerTesting extends AndroidTestCase {
 			// TODO Auto-generated catch block
 			System.out.print("NewPhotoController.getPath threw exception\n");
 		}	
-	}
-	
-	/**
-	 * LogArrayAdapter
-	 */
-	@Test
-	public void testLogArrayAdapter(){
-		ArrayList<ArrayList<String>> testArray = new ArrayList<ArrayList<String>>();
-		
-		ListArrayAdapter adapter = new ListArrayAdapter(getContext(), 0, testArray);
-		assert(adapter.getView(0, null, null) != null);
 	}
 	
 	/**
@@ -68,5 +82,19 @@ public class ControllerTesting extends AndroidTestCase {
 		//restore old password
 		if (!oldPass.equals(""))
 			manager.setHashAfterTesting(oldPass);
+	}
+	
+	/**
+	 * PhotoUseListController
+	 */
+	public void testPhotoUseListController(){
+		ArrayList<ArrayList<String>> list = new ArrayList<ArrayList<String>>();
+		ArrayList<String> l = new ArrayList<String>();
+		l.add("tag"); 
+		l.add("nottag");
+		list.add(l);
+		
+		String[] testlist = PhotoUseListController.getNamesFromListArray(list);
+		assertEquals(testlist[0], "tag");
 	}
 }
