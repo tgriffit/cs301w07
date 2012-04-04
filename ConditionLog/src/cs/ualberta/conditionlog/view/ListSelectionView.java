@@ -76,6 +76,7 @@ public class ListSelectionView extends Activity {
 			}
 		});
 
+		
 		Button logButton = (Button) findViewById(R.id.LogButton);
 		logButton.setEnabled(false);
 		logButton.setOnClickListener(new View.OnClickListener() {

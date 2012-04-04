@@ -14,6 +14,11 @@ import cs.ualberta.conditionlog.model.DatabaseAdapter;
  */
 public class PhotoUseListController {
 	
+	/**
+	 * Extract the log names from the list of lists
+	 * @param lists A lists containing lists that contain name, imgFilepath
+	 * @return 
+	 */
 	static public String[] getNamesFromListArray(ArrayList<ArrayList<String>> lists) {
 		int len = lists.size();
 		String[] list = new String[len];
@@ -24,6 +29,12 @@ public class PhotoUseListController {
 		return list;
 	}
 	
+	/**
+	 * Given a list of tags save each to the database for the photo given in filename
+	 * @param context Application context for the database adapter
+	 * @param filename Filename of the photo to add tags to
+	 * @param tags String array with the relevant tags
+	 */
 	static public void savePhotoTags(Context context, String filename, String[] tags) {
 		DatabaseAdapter dbadapter = new DatabaseAdapter(context);
         dbadapter.open();
