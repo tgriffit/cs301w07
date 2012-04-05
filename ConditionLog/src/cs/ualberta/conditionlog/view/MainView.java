@@ -70,6 +70,8 @@ public class MainView extends Activity{
 					}
 				} else {
 					pm.setPassword(passwordText);
+					Intent i = new Intent(getApplicationContext(), MainMenuView.class);
+					startActivity(i);
 				}
 				
 			}
