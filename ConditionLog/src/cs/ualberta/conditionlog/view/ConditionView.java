@@ -87,7 +87,7 @@ public class ConditionView extends Activity {
 		    // if there is no images in the condition list state so and return accordingly
 	    	Toast toast = Toast.makeText(getApplicationContext(), "No photos to view in that list.", Toast.LENGTH_LONG);
 	    	toast.show();
-	    	setResult(MainView.RESULT_NOSELECT);
+	    	setResult(MainMenuView.RESULT_NOSELECT);
 	    	finish();
 	    }
 	    
