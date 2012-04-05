@@ -108,7 +108,7 @@ public class PhotoList {
 	}
 	
 	public void addTagToPhoto(Context context, int position, String tag) {
-		DatabaseInputManager dbA = new DatabaseInputManager(context);
+		DatabaseAdapter dbA = new DatabaseAdapter (context);
 		dbA.open();
 		dbA.addTag(getFileName(position), tag);
 		dbA.close();
