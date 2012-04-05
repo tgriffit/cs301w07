@@ -73,7 +73,6 @@ public class MainView extends Activity{
 					Intent i = new Intent(getApplicationContext(), MainMenuView.class);
 					startActivity(i);
 				}
-				
 			}
 		});
 
