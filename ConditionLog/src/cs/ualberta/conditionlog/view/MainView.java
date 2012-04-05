@@ -50,6 +50,7 @@ public class MainView extends Activity{
 			password = (EditText) findViewById(R.id.newPassword);
 			newButton = (Button) findViewById(R.id.acceptNewPassword);
 		}
+	
 		
 		newButton.setEnabled(false);
 		newButton.setOnClickListener(new View.OnClickListener() {

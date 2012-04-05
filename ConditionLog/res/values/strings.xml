@@ -36,5 +36,6 @@
     <string name="timeLabel">"timestamp: "</string>
     <string name="tagtitle">Tags:</string>
     <string name="tags"></string>
+    <string name="newPassText">Please set a password for this application</string>
 
 </resources>
