@@ -19,6 +19,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
+import android.widget.Toast;
 import cs.ualberta.conditionlog.R;
 import cs.ualberta.conditionlog.controller.PhotoUseListController;
 import cs.ualberta.conditionlog.model.DatabaseOutputAdapter;
@@ -85,6 +86,12 @@ public class PhotoUseSelectionView extends Activity {
 			
         	// on click this button will create a new activity that can be used to name and create a new list
 			public void onClick(View v) {
+				if (selectedList == null) {
+					Toast toast = Toast.makeText(getApplicationContext(), "Select or create a condition log", Toast.LENGTH_SHORT);
+					toast.show();
+					return;
+				}
+				
 				String rawText = tagBox.getText().toString();
 				if (!rawText.equals("")) {
 					String[] tags = rawText.split("\\s+");
