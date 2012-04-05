@@ -26,7 +26,7 @@
         <activity android:name=".view.NewPhotoView"></activity>
         <activity android:name=".view.PhotoUseSelectionView"></activity>
         <activity android:name=".view.CreateListView"></activity>
-        <activity android:name=".view.PasswordView"></activity>
+        <activity android:name=".view.MainMenuView"></activity>
     </application>
 
 </manifest>
