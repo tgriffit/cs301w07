@@ -215,22 +215,14 @@ public class ConditionView extends Activity {
 	
 	private void displayTimestamp(int position) {
 		String filename = list.getFileName(position);
-    	String timestamp;
-    	DatabaseAdapter dba = new DatabaseAdapter(getApplicationContext());
-		dba.open();
-		timestamp = dba.getPhotoTimestamp(filename);
-		dba.close();
+    	String timestamp = list.getTimestamp(filename, getApplicationContext());
 		TextView tv = (TextView) findViewById(R.id.timestampText);
 		tv.setText(timestamp);
 	}
 	
 	private void displayTags(int position) {
 		String filename = list.getFileName(position);
-    	ArrayList<String> tags;
-    	DatabaseAdapter dba = new DatabaseAdapter(getApplicationContext());
-		dba.open();
-		tags = dba.loadTagsForPhoto(filename);
-		dba.close();
+    	ArrayList<String> tags = list.getTags(filename, getApplicationContext());
 		TextView tv = (TextView) findViewById(R.id.tagsText);
 		tv.setText(tags.toString());
 	}
