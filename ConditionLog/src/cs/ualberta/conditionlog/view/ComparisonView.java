@@ -21,6 +21,7 @@ import android.widget.Toast;
 import cs.ualberta.conditionlog.R;
 import cs.ualberta.conditionlog.model.ConditionList;
 import cs.ualberta.conditionlog.model.DatabaseAdapter;
+import cs.ualberta.conditionlog.model.DatabaseOutputAdapter;
 import cs.ualberta.conditionlog.model.PhotoList;
 import cs.ualberta.conditionlog.model.TagList;
 import cs.ualberta.conditionlog.controller.ImageAdapter;
@@ -57,7 +58,7 @@ public class ComparisonView extends Activity {
 			list = new TagList(name, this);
 		else if (type.equals("time")) {
 			ArrayList<String> filenames;
-			DatabaseAdapter dba = new DatabaseAdapter(getApplicationContext());
+			DatabaseOutputAdapter dba = new DatabaseOutputAdapter(getApplicationContext());
 			dba.open();
 			filenames = dba.loadPhotosByTime();
 			dba.close();

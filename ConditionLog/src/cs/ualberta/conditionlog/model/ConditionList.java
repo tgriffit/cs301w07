@@ -27,7 +27,7 @@ public class ConditionList extends PhotoList {
 	 */
 	private void loadPhotos(Context context) {
 		//Loads each photo that matches the condition name into the list
-		DatabaseAdapter dbA = new DatabaseAdapter(context);
+		DatabaseOutputAdapter dbA = new DatabaseOutputAdapter(context);
 		dbA.open();
 		setFilenames(dbA.loadPhotosByCondition(getName()));
 		dbA.close();

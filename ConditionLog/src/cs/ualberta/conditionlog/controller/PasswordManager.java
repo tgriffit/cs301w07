@@ -1,8 +1,10 @@
 package cs.ualberta.conditionlog.controller;
 
 import android.content.Context;
+import cs.ualberta.conditionlog.model.DatabaseDeletionAdapter;
+import cs.ualberta.conditionlog.model.DatabaseInputAdapter;
 import cs.ualberta.conditionlog.model.EncryptionHelper;
-import cs.ualberta.conditionlog.model.DatabaseAdapter;
+import cs.ualberta.conditionlog.model.DatabaseOutputAdapter;
 
 /**
  * Provides methods for checking whether a password has been specified, creating a
@@ -20,7 +22,7 @@ public class PasswordManager {
 	}
 	
 	private String getPassword() {
-		DatabaseAdapter db = new DatabaseAdapter(context);
+		DatabaseOutputAdapter db = new DatabaseOutputAdapter(context);
 		
 		db.open();
 		String pass = db.getPasswordHash();
@@ -67,7 +69,7 @@ public class PasswordManager {
 	 */
 	public void setPassword(String pass) {
 		String hash = EncryptionHelper.generatePasswordHash(pass);
-		DatabaseAdapter db = new DatabaseAdapter(context);
+		DatabaseInputAdapter db = new DatabaseInputAdapter(context);
 		
 		db.open();
 		db.setPasswordHash(hash);
@@ -84,7 +86,7 @@ public class PasswordManager {
 	 * purposes.
 	 */
 	public void resetPassword() {
-		DatabaseAdapter db = new DatabaseAdapter(context);
+		DatabaseDeletionAdapter db = new DatabaseDeletionAdapter(context);
 		
 		db.open();
 		db.deletePassword();
@@ -109,7 +111,7 @@ public class PasswordManager {
 	 * @return
 	 */
 	public void setHashAfterTesting(String hash) {
-		DatabaseAdapter db = new DatabaseAdapter(context);
+		DatabaseInputAdapter db = new DatabaseInputAdapter(context);
 		
 		db.open();
 		db.setPasswordHash(hash);

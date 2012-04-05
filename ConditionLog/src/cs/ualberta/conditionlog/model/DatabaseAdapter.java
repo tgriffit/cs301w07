@@ -28,8 +28,8 @@ public class DatabaseAdapter {
 	 * @uml.property name="dbHelper"
 	 * @uml.associationEnd aggregation="shared"
 	 */
-	private DatabaseHelper dbHelper;
-	private SQLiteDatabase db;
+	protected DatabaseHelper dbHelper;
+	protected SQLiteDatabase db;
 	
 	/**
 	 * Constructor for the adapter.  It sets up a DatabaseHelper to maintain the
@@ -61,7 +61,7 @@ public class DatabaseAdapter {
      * to an ArrayList, sorted by the date the photo was created
 	 * @param cond - the condition to search for
 	 * @return An ArrayList containing the filepaths to all photos matching the condition
-	 */
+	 *//*
     public ArrayList<String> loadPhotosByCondition(String cond) {
     	ArrayList<String> photoList = new ArrayList<String>();
     	
@@ -83,12 +83,12 @@ public class DatabaseAdapter {
     	return photoList;
     }
     
-    /**
+    *//**
      * Adds all filepaths corresponding to photos with a given tag to an
      * ArrayList, sorted by the date the photo was created
      * @param tag - the photo tag to search for
      * @return An ArrayList containing the filepaths to all photos marked with the tag
-     */
+     *//*
     public ArrayList<String> loadPhotosByTag(String tag) {
     	ArrayList<String> photoList = new ArrayList<String>();
     	
@@ -110,11 +110,11 @@ public class DatabaseAdapter {
     	return photoList;
     }
     
-    /**
+    *//**
      * Returns a list containing all conditions added to the database so far and a photo
      * from each to use as a thumbnail
      * @return An ArrayList of ArrayLists, each of which contains a condition and a photo filepath
-     */
+     *//*
     public ArrayList<ArrayList<String>> loadConditions() {
     	ArrayList<ArrayList<String>> conds = new ArrayList<ArrayList<String>>();
     	
@@ -145,12 +145,12 @@ public class DatabaseAdapter {
     	return conds;
     }
     
-    /**
+    *//**
      * Loads every tag that has been added to the database so far and a thumbnail
      * for each one.  Assumes that a tag must be associated with a photo, and thus
      * the photo entry cannot be null
      * @return An ArrayList of ArrayLists, each of which contains a tag and a photo filepath
-     */
+     *//*
     public ArrayList<ArrayList<String>> loadTags() {
     	ArrayList<ArrayList<String>> tags = new ArrayList<ArrayList<String>>();
     	
@@ -175,7 +175,7 @@ public class DatabaseAdapter {
     	c.close();
     	
     	return tags;
-    }
+    }*/
     
     /**
      * Adds a photo to the photos table and to the conditions table with its
@@ -183,15 +183,15 @@ public class DatabaseAdapter {
      * @param photo - a filepath to a .bmp file
      * @param cond
      */
-    public void addPhoto(String photo, String cond) {
+  /*  public void addPhoto(String photo, String cond) {
     	addPhotoToDB(photo);
     	addPhotoToCondition(photo, cond.trim());
-    }
+    } */
     
     /*
      * Adds a photo to the photos table in the database.
      */
-    private void addPhotoToDB(String filename) {
+ /*   private void addPhotoToDB(String filename) {
     	SimpleDateFormat format = new SimpleDateFormat("d MMM yyyy HH:mm:ss");
     	Date date = new Date();
     	
@@ -204,13 +204,13 @@ public class DatabaseAdapter {
     	values.put(DatabaseHelper.PHOTO_DATE_FORMATTED, format.format(date));
     	
     	db.insert(DatabaseHelper.PHOTO_TABLE, null, values);
-    }
+    } */
     
     /*
      * Adds a photo to the conditions table, making that photo part of the condition's list.
      * If the condition does not exist, this creates it.
      */
-    private void addPhotoToCondition(String photo, String cond) {
+  /*  private void addPhotoToCondition(String photo, String cond) {
     	ContentValues values = new ContentValues();
     	values.put(DatabaseHelper.PHOTO_FILE, photo);
     	values.put(DatabaseHelper.COND_NAME, cond);
@@ -228,14 +228,14 @@ public class DatabaseAdapter {
     	} catch (SQLException e) {
     		//Exceptions are caused by primary key violations.  When that happens, they should be ignored.
     	}
-    }
+    } */
 
     /**
      * Adds a new condition to the conditions table with no associated photo.  The next
      * photo added to the condition will be added to this line in the table.
      * @param cond - the condition to create
      */
-    public void addCondition(String cond)
+ /*   public void addCondition(String cond)
     {
     	//Inserts a tuple representing the relationship in the conditions table
     	ContentValues values = new ContentValues();
@@ -247,13 +247,13 @@ public class DatabaseAdapter {
     	} catch (SQLException e) {
     		//Exceptions are caused by primary key violations.  When that happens, they should be ignored.
     	}
-    }
+    } */
     
     /*
      * If the conditions table contains a tuple containing the condition and a null
      * photo, returns true, otherwise returns false
      */
-    private boolean findNullCond(String cond)
+/*    private boolean findNullCond(String cond)
     {
     	String[] cols = {"COUNT (*)"};
     	String[] args = {DatabaseHelper.COND_NAME, cond, DatabaseHelper.PHOTO_FILE}; 
@@ -269,14 +269,14 @@ public class DatabaseAdapter {
     		return true;
     	else
     		return false;
-    }
+    } */
     
     /**
      * Adds a line to the tags table which marks a photo with a certain tag
      * @param photo - a filepath to a .bmp file
      * @param tag - the tag to add
      */
-    public void addTag(String photo, String tag) {
+ /*   public void addTag(String photo, String tag) {
     	//If the tag is just whitespace ignore it
     	if (tag.trim().length() > 0) {
     		ContentValues values = new ContentValues();
@@ -290,60 +290,60 @@ public class DatabaseAdapter {
     			//Exceptions are caused by primary key violations.  When that happens, they should be ignored.
     		}
     	}
-    }
+    }*/
     
     /**
      * Removes all lines associated condition from the conditions table.  The photos
      * still exist, and can still be associated with tags, but will not be found by
      * searching for condition.
      * @param cond - the condition to remove.
-     */
+     *//*
     public void deleteCondition(String cond) {
     	String[] args = {cond};
     	
     	db.delete(DatabaseHelper.COND_TABLE, DatabaseHelper.COND_NAME + "=?", args);
     }
     
-    /**
+    *//**
      * Removes all lines associated with a tag from the tags table.
      * @param tag
-     */
+     *//*
     public void deleteTag(String tag) {
     	String[] args = {tag};
     	
     	db.delete(DatabaseHelper.TAGS_TABLE, DatabaseHelper.TAGS_NAME + "=?", args);
     }
     
-    /**
+    *//**
      * Removes a condition from the given photo.  There is a database trigger to ensure
      * that this will not completely delete the condition.
      * @param filename
      * @param cond
-     */
+     *//*
     public void deleteConditionFromPhoto(String filename, String cond) {
     	String[] args = {cond, filename};
     	
     	db.delete(DatabaseHelper.COND_TABLE, DatabaseHelper.COND_NAME + "=? AND " + DatabaseHelper.PHOTO_FILE + "=?", args);
     }
     
-    /**
+    *//**
      * Removes a tag from the given photo.  If no more photos have that tag,
      * the tag no longer exists.
      * @param filename
      * @param tag
-     */
+     *//*
     public void deleteTagFromPhoto(String filename, String tag) {
     	String[] args = {tag, filename};
     	
     	db.delete(DatabaseHelper.TAGS_TABLE, DatabaseHelper.TAGS_NAME + "=? AND " + DatabaseHelper.PHOTO_FILE + "=?", args);
     }
     
-    /**
+    *//**
      * Deletes a photo from the photos table and removes all instances of it from
      * the conditions and tags tables.  There is a trigger in the database that
      * prevents a condition from being deleted when its last photo is deleted.
      * @param filename
-     */
+     *//*
     public void deletePhoto(String filename) {
     	deleteMatchingCondition(filename);
     	deleteMatchingTags(filename);
@@ -353,11 +353,11 @@ public class DatabaseAdapter {
     	db.delete(DatabaseHelper.PHOTO_TABLE, DatabaseHelper.PHOTO_FILE + "=?", args);
     }
     
-    /*
+    
      * When a photo is deleted the corresponding lines from the conditions table are deleted unless that
      * would remove the last instance of a condition from the table, in which case the photo's filename is instead
      * replaced with a null string.
-     */
+     
     private void deleteMatchingCondition(String filename) {
     	
     	String query = "SELECT " + DatabaseHelper.COND_NAME + ", COUNT(*) as c " +
@@ -391,22 +391,22 @@ public class DatabaseAdapter {
     	c.close();
     }
     
-    /*
+    
      * Since this version of SQLite doesn't support foreign key constraints,
      * this method is used to delete all instances of a photo from the tags
      * table when it is deleted from the photo table.
-     */
+     
     private void deleteMatchingTags(String filename) {
     	String[] args = {filename};
     	
     	db.delete(DatabaseHelper.TAGS_TABLE, DatabaseHelper.PHOTO_FILE + "=?", args);
     
-    }
+    }*/
     
     /**
      * Retrieves the stored password hash.
      * @return the password hash or an empty string if the table is empty
-     */
+     *//*
     public String getPasswordHash() {
     	String[] cols = {DatabaseHelper.PASS};
     	String hash = "";
@@ -420,24 +420,24 @@ public class DatabaseAdapter {
     	c.close();
     	
     	return hash;
-    }
+    }*/
     
     /**
      * Adds the given password hash to the database
      * @param hash
-     */
+     *//*
     public void setPasswordHash(String hash) {
     	ContentValues values = new ContentValues();
     	
     	values.put(DatabaseHelper.PASS, hash);
     	
     	db.insert(DatabaseHelper.PASS_TABLE, null, values);
-    }
+    }*/
     
     /**
      * Finds the filenames of every photo in the database sorted by time
      * @return an ArrayList of filename strings
-     */
+     *//*
     public ArrayList<String> loadPhotosByTime() {
     	ArrayList<String> photoList = new ArrayList<String>();
     	
@@ -455,13 +455,13 @@ public class DatabaseAdapter {
     	c.close();
     	
     	return photoList;
-    }
+    }*/
     
     /**
      * Finds the timestamp for a given photo
      * @param filename
      * @return the timestamp as a string
-     */
+     *//*
     public String getPhotoTimestamp(String filename) {
     	String[] cols = {DatabaseHelper.PHOTO_DATE_FORMATTED};
     	String[] args = {filename};
@@ -477,13 +477,13 @@ public class DatabaseAdapter {
     	c.close();
     	
     	return date;
-    }
+    }*/
     
     /**
      * Loads a list containing all the tags for a given photo.
      * @param filename
      * @return an ArrayList of strings
-     */
+     *//*
     public ArrayList<String> loadTagsForPhoto(String filename) {
 	ArrayList<String> list = new ArrayList<String>();
 
@@ -503,12 +503,12 @@ public class DatabaseAdapter {
 	c.close();
 
 	return list;
-    }
+    }*/
     
     /**
      * Clears the password table.  Used for testing purposes.
-     */
+     *//*
     public void deletePassword() {
     	db.delete(DatabaseHelper.PASS_TABLE, "1=1", null);
-    }
+    }*/
 }
