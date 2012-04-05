@@ -14,7 +14,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import cs.ualberta.conditionlog.R;
-import cs.ualberta.conditionlog.model.DatabaseAdapter;
+import cs.ualberta.conditionlog.model.DatabaseInputAdapter;
 
 /**
  * @uml.dependency   supplier="cs.ualberta.conditionlog.PhotoUseSelectionView"
@@ -43,7 +43,7 @@ public class CreateListView extends Activity {
 				String nameText = name.getText().toString();
 				
 				// create the log in the database
-				DatabaseAdapter dbadapter = new DatabaseAdapter(getApplicationContext());
+				DatabaseInputAdapter dbadapter = new DatabaseInputAdapter(getApplicationContext());
 				dbadapter.open();
 				dbadapter.addCondition(nameText);
 				dbadapter.close();

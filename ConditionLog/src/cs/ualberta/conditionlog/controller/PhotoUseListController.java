@@ -5,7 +5,7 @@ package cs.ualberta.conditionlog.controller;
 import java.util.ArrayList;
 
 import android.content.Context;
-import cs.ualberta.conditionlog.model.DatabaseAdapter;
+import cs.ualberta.conditionlog.model.DatabaseInputAdapter;
 
 /**
  * An adapter for item list data of the ListSelectionView class. Uses the Adapter design pattern.
@@ -36,7 +36,7 @@ public class PhotoUseListController {
 	 * @param tags String array with the relevant tags
 	 */
 	static public void savePhotoTags(Context context, String filename, String[] tags) {
-		DatabaseAdapter dbadapter = new DatabaseAdapter(context);
+		DatabaseInputAdapter dbadapter = new DatabaseInputAdapter(context);
         dbadapter.open();
 
 		for (int i = 0; i < tags.length; i++) {

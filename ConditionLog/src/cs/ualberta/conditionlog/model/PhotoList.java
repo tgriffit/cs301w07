@@ -94,28 +94,28 @@ public class PhotoList {
 	}
 	
 	public void deletePhoto(Context context, int position) {
-		DatabaseAdapter dbA = new DatabaseAdapter(context);
+		DatabaseDeletionAdapter dbA = new DatabaseDeletionAdapter(context);
 		dbA.open();
 		dbA.deletePhoto(getFileName(position));
 		dbA.close();
 	}
 	
 	public void deleteTagFromPhoto(Context context, int position, String tag) {
-		DatabaseAdapter dbA = new DatabaseAdapter(context);
+		DatabaseDeletionAdapter dbA = new DatabaseDeletionAdapter(context);
 		dbA.open();
 		dbA.deleteTagFromPhoto(getFileName(position), tag);
 		dbA.close();
 	}
 	
 	public void addTagToPhoto(Context context, int position, String tag) {
-		DatabaseAdapter dbA = new DatabaseAdapter (context);
+		DatabaseInputAdapter dbA = new DatabaseInputAdapter(context);
 		dbA.open();
 		dbA.addTag(getFileName(position), tag);
 		dbA.close();
 	}
 	
 	public String getTimestamp(String filename, Context context){
-		DatabaseAdapter dba = new DatabaseAdapter(context);
+		DatabaseOutputAdapter dba = new DatabaseOutputAdapter(context);
 		dba.open();
 		String timestamp = dba.getPhotoTimestamp(filename);
 		dba.close();
@@ -123,7 +123,7 @@ public class PhotoList {
 	}
 	
 	public ArrayList<String> getTags(String filename, Context context){
-		DatabaseAdapter dba = new DatabaseAdapter(context);
+		DatabaseOutputAdapter dba = new DatabaseOutputAdapter(context);
 		dba.open();
 		ArrayList<String> tags = dba.loadTagsForPhoto(filename);
 		dba.close();

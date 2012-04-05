@@ -18,6 +18,7 @@ import android.widget.ImageButton;
 import cs.ualberta.conditionlog.R;
 import cs.ualberta.conditionlog.controller.NewPhotoController;
 import cs.ualberta.conditionlog.model.DatabaseAdapter;
+import cs.ualberta.conditionlog.model.DatabaseInputAdapter;
 
 /**
  * This view handles the creation of new photos and then adds them to a condition list.
@@ -83,7 +84,7 @@ public class NewPhotoView extends Activity {
         	
         	if (resultCode == RESULT_OK) {
     			lname = intent.getStringExtra("name");
-    			DatabaseAdapter dbadapter = new DatabaseAdapter(getApplicationContext());
+    			DatabaseInputAdapter dbadapter = new DatabaseInputAdapter(getApplicationContext());
     			dbadapter.open();
     			dbadapter.addPhoto(filepath.getAbsolutePath(), lname);
     			dbadapter.close();

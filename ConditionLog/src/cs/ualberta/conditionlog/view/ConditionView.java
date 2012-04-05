@@ -27,6 +27,7 @@ import cs.ualberta.conditionlog.R;
 import cs.ualberta.conditionlog.controller.ImageAdapter;
 import cs.ualberta.conditionlog.model.ConditionList;
 import cs.ualberta.conditionlog.model.DatabaseAdapter;
+import cs.ualberta.conditionlog.model.DatabaseOutputAdapter;
 import cs.ualberta.conditionlog.model.PhotoList;
 import cs.ualberta.conditionlog.model.TagList;
 
@@ -65,7 +66,7 @@ public class ConditionView extends Activity {
 			list = new TagList(name, this);
 		else if (type.equals("time")) {
 			ArrayList<String> filenames;
-			DatabaseAdapter dba = new DatabaseAdapter(getApplicationContext());
+			DatabaseOutputAdapter dba = new DatabaseOutputAdapter(getApplicationContext());
 			dba.open();
 			filenames = dba.loadPhotosByTime();
 			dba.close();

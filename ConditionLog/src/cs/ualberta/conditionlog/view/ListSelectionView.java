@@ -22,6 +22,8 @@ import cs.ualberta.conditionlog.R;
 import cs.ualberta.conditionlog.controller.ListArrayAdapter;
 import cs.ualberta.conditionlog.model.ConditionList;
 import cs.ualberta.conditionlog.model.DatabaseAdapter;
+import cs.ualberta.conditionlog.model.DatabaseDeletionAdapter;
+import cs.ualberta.conditionlog.model.DatabaseOutputAdapter;
 import cs.ualberta.conditionlog.model.PhotoList;
 import cs.ualberta.conditionlog.model.TagList;
 
@@ -141,10 +143,10 @@ public class ListSelectionView extends Activity {
 			public void onClick(View v) {
 				//maybe have a popup "are you sure" button-thing
 				if (listType.equals("log")) {
-					dbadapter = new DatabaseAdapter(getApplicationContext());
+					dbadapter = new DatabaseDeletionAdapter(getApplicationContext());
 					dbadapter.open();
 					// load the initial data for the list
-					dbadapter.deleteCondition(selectedList);
+					((DatabaseDeletionAdapter) dbadapter).deleteCondition(selectedList);
 					dbadapter.close();
 					updateLists();
 				}
@@ -213,11 +215,11 @@ public class ListSelectionView extends Activity {
 	
 	// update the lists and refresh the view of them
 	private void updateLists() {
-		dbadapter = new DatabaseAdapter(getApplicationContext());
+		dbadapter = new DatabaseOutputAdapter(getApplicationContext());
 		dbadapter.open();
 		// load the initial data for the list
-		condLists = dbadapter.loadConditions();
-		tagLists = dbadapter.loadTags();
+		condLists = ((DatabaseOutputAdapter) dbadapter).loadConditions();
+		tagLists = ((DatabaseOutputAdapter) dbadapter).loadTags();
 
 		dbadapter.close();
 

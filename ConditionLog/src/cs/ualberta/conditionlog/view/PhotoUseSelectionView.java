@@ -21,7 +21,7 @@ import android.widget.ImageView;
 import android.widget.Spinner;
 import cs.ualberta.conditionlog.R;
 import cs.ualberta.conditionlog.controller.PhotoUseListController;
-import cs.ualberta.conditionlog.model.DatabaseAdapter;
+import cs.ualberta.conditionlog.model.DatabaseOutputAdapter;
 
 /**
  * @author           tgriffit
@@ -40,7 +40,7 @@ public class PhotoUseSelectionView extends Activity {
 	 * @uml.property  name="dbadapter"
 	 * @uml.associationEnd  
 	 */
-	private DatabaseAdapter dbadapter;
+	//private DatabaseAdapter dbadapter;
 	private String[] namesList;
 	private String picFile;
 	private String selectedList = null;
@@ -118,7 +118,7 @@ public class PhotoUseSelectionView extends Activity {
     }
 	
 	private void updateSpinner() {
-        dbadapter = new DatabaseAdapter(getApplicationContext());
+        DatabaseOutputAdapter dbadapter = new DatabaseOutputAdapter(getApplicationContext());
         dbadapter.open();
         // load the initial data for the listview from the database
         lists =  dbadapter.loadConditions();
