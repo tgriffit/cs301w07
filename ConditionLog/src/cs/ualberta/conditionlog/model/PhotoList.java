@@ -113,6 +113,23 @@ public class PhotoList {
 		dbA.addTag(getFileName(position), tag);
 		dbA.close();
 	}
+	
+	public String getTimestamp(String filename, Context context){
+		DatabaseAdapter dba = new DatabaseAdapter(context);
+		dba.open();
+		String timestamp = dba.getPhotoTimestamp(filename);
+		dba.close();
+		return timestamp;
+	}
+	
+	public ArrayList<String> getTags(String filename, Context context){
+		DatabaseAdapter dba = new DatabaseAdapter(context);
+		dba.open();
+		ArrayList<String> tags = dba.loadTagsForPhoto(filename);
+		dba.close();
+		
+		return tags;
+	}
 
 	
 }
