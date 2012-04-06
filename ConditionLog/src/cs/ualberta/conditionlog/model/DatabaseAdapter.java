@@ -17,9 +17,9 @@ import android.database.sqlite.SQLiteDatabase;
  */
 public class DatabaseAdapter {
 	
-	/** 
-	 * @uml.property name="dbHelper"
-	 * @uml.associationEnd aggregation="shared"
+	/**
+	 * @uml.property  name="dbHelper"
+	 * @uml.associationEnd  
 	 */
 	protected DatabaseHelper dbHelper;
 	protected SQLiteDatabase db;

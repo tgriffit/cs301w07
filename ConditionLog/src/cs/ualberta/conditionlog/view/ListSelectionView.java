@@ -1,8 +1,4 @@
-/**
- * This view class allows a view to be selected and viewed, or allows a condition list to be created.
- * @author adneufel
- * @date March 15th
- */
+
 package cs.ualberta.conditionlog.view;
 
 import java.util.ArrayList;
@@ -28,8 +24,10 @@ import cs.ualberta.conditionlog.model.PhotoList;
 import cs.ualberta.conditionlog.model.TagList;
 
 /**
- * @author tgriffit
- * @uml.dependency supplier="cs.ualberta.conditionlog.CreateListView"
+ * This view class allows a view to be selected and viewed, or allows a condition list to be created.
+ * @author   adneufel
+ * @date   March 15th
+ * @uml.dependency  supplier="cs.ualberta.conditionlog.CreateListView"
  */
 public class ListSelectionView extends Activity {
 
@@ -38,23 +36,30 @@ public class ListSelectionView extends Activity {
 	private ArrayList<ArrayList<String>> currentLists;
 
 	/**
-	 * @uml.property name="condAdapter"
-	 * @uml.associationEnd
+	 * @uml.property  name="condAdapter"
+	 * @uml.associationEnd  
 	 */
 	private ListArrayAdapter condAdapter;
+	/**
+	 * @uml.property  name="tagAdapter"
+	 * @uml.associationEnd  
+	 */
 	private ListArrayAdapter tagAdapter;
 	private ListView listMenu;
 	private String selectedList = null;
 	private String listType = "log";
 	/**
-	 * @uml.property name="dbadapter"
-	 * @uml.associationEnd
+	 * @uml.property  name="dbadapter"
+	 * @uml.associationEnd  
 	 */
 	DatabaseAdapter dbadapter;
 
 	private static final int CREATE_LOG = 0;
 	private static final int VIEW_LOG = 1;
 
+	/**
+	 * An initializer method that creates the objects for the user interface and is only called internally
+	 */
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -174,6 +179,9 @@ public class ListSelectionView extends Activity {
 		});
 	}
 
+	/**
+	 * This method is called upon a sub-activity calling finish and returning back to this activity. Then it deals with it.
+	 */
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode,
 			Intent intent) {

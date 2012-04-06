@@ -1,7 +1,5 @@
 package cs.ualberta.conditionlog.test;
 
-import static org.junit.Assert.assertEquals;
-
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.PipedInputStream;
@@ -11,30 +9,30 @@ import java.util.ArrayList;
 import org.junit.Test;
 
 import android.test.AndroidTestCase;
-
-import cs.ualberta.conditionlog.model.*;
+import cs.ualberta.conditionlog.model.DatabaseDeletionAdapter;
+import cs.ualberta.conditionlog.model.DatabaseHelper;
+import cs.ualberta.conditionlog.model.DatabaseInputAdapter;
+import cs.ualberta.conditionlog.model.DatabaseOutputAdapter;
+import cs.ualberta.conditionlog.model.EncryptionHelper;
+import cs.ualberta.conditionlog.model.PhotoList;
+import cs.ualberta.conditionlog.model.TagList;
 
 /**
  * Tests the public methods of all the classes in the model package.
  * @author tgriffit
  * @date March 30, 2012
  */
-
 public class ModelTesting extends AndroidTestCase {
 
 	/**
-	 * DatabaseAdapter
+	 * Tests for DatabaseInputAdapter
 	 */
 	@Test
-	public void testDatabaseAdapter(){
-		DatabaseAdapter adapter = new DatabaseAdapter(getContext());
+	public void testDatabaseInputAdapter(){
+		DatabaseInputAdapter adapter = new DatabaseInputAdapter(getContext());
+
 		adapter.open();
 		
-		assert(adapter.loadTags() != null);
-		assert(adapter.loadConditions() != null);
-		assert(adapter.loadPhotosByTag("tag") != null);
-		assert(adapter.loadPhotosByCondition("cond")!= null);
-		assert(adapter.loadPhotosByTime() != null);
 		try{
 			adapter.addCondition("cond");
 		}catch(Exception e){
@@ -43,26 +41,72 @@ public class ModelTesting extends AndroidTestCase {
 		try{
 			adapter.addPhoto("photo", "cond");
 		}catch(Exception e){
-			System.out.print("add condition threw exception\n");
+			System.out.print("add photo threw exception\n");
 		}
 		try{
 			adapter.addTag("photo", "tag");
 		}catch(Exception e){
-			System.out.print("add condition threw exception\n");
+			System.out.print("add tag threw exception\n");
 		}
-			
+		
 		adapter.close();
 	}
 	
+	/**
+	 * Tests for DatabaseOutputAdapter
+	 */
+	@Test
+	public void testDatabaseOutputAdapter(){
+		DatabaseOutputAdapter adapter = new DatabaseOutputAdapter(getContext());
+		adapter.open();
+		
+		assert(adapter.loadTags() != null);
+		assert(adapter.loadConditions() != null);
+		assert(adapter.loadPhotosByTag("tag") != null);
+		assert(adapter.loadPhotosByCondition("cond")!= null);
+		assert(adapter.loadPhotosByTime() != null);
+		
+		adapter.close();
+	}
+	
+	/**
+	 * Tests for DatabaseDeletionAdapter
+	 */
+	@Test
+	public void testDatabaseDeletionAdapter(){
+		DatabaseDeletionAdapter adapter = new DatabaseDeletionAdapter(getContext());
+		adapter.open();
+		
+		try{
+			adapter.deleteCondition("cond");
+		}catch(Exception e){
+			System.out.print("delete condition threw exception\n");
+		}
+		try{
+			adapter.deletePhoto("photo");
+		}catch(Exception e){
+			System.out.print("delete photo threw exception\n");
+		}
+		try{
+			adapter.deleteTagFromPhoto("photo", "tag");
+		}catch(Exception e){
+			System.out.print("delete tag from photo threw exception\n");
+		}
+		
+		adapter.close();
+	}
 
 	/**
-	 * Tests to ensure the DatabaseHelper is created properly
+	 * Tests to ensure the DatabaseHelper constructs properly
 	 */
-	@SuppressWarnings("static-access")
 	@Test
 	public void testDatabaseHelper(){
-		DatabaseHelper helper = new DatabaseHelper(getContext());
-		assertEquals("_photo", helper.PHOTO_TABLE);
+		try {
+			DatabaseHelper helper = new DatabaseHelper(getContext());
+			helper.toString(); // get rid of warnings...
+		} catch (Exception e) {
+			System.out.println("DatabaseHelper did not constuct properly");
+		}
 	}
 	
 	

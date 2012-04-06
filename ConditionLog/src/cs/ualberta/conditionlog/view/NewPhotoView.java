@@ -1,9 +1,3 @@
-/*
- * author: Andrew Neufeld
- * description: View to capture new photo and delegate what list to add it to.
- * date: March 14
- */
-
 package cs.ualberta.conditionlog.view;
 
 import java.io.File;
@@ -20,7 +14,7 @@ import cs.ualberta.conditionlog.controller.NewPhotoController;
 import cs.ualberta.conditionlog.model.DatabaseInputAdapter;
 
 /**
- * This view handles the creation of new photos and then adds them to a condition list.
+ * This view handles the creation of new photos and then opens another activity that allows the photo use to be selected.
  * @author   adneufel
  */
 public class NewPhotoView extends Activity {
@@ -37,6 +31,9 @@ public class NewPhotoView extends Activity {
 	 */
 	private NewPhotoController controller;
 	
+	/**
+	 * This is the initializer method that creates the interface objects and is only called internally
+	 */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -72,6 +69,9 @@ public class NewPhotoView extends Activity {
     	});
     }
     
+    /**
+     * This method is called when a sub-activity finishes and returns back here. Then it deals with the returns data.
+     */
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent intent) {
         super.onActivityResult(requestCode, resultCode, intent);

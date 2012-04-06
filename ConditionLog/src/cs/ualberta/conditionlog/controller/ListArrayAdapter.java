@@ -24,7 +24,7 @@ public class ListArrayAdapter extends ArrayAdapter<ArrayList<String>> {
     private Context listContext;
 
     /**
-     * 
+     * Constructor for ListArrayAdapter that saves the app context and saves the passed list of lists of strings
      * @param context				the context for the adapter
      * @param textViewResourceId	id for the text view to be passed to super
      * @param items 				an ArrayList<ArrayList<String>>
@@ -34,10 +34,12 @@ public class ListArrayAdapter extends ArrayAdapter<ArrayList<String>> {
         listContext = context;
         this.items = items;
     }
-
-    @Override
     /**
-     * returns the view for an item in the list
+     * Creates and returns a list item with a thumbnail image and a text portion. This method is only used internally.
+     * @param position Position in the list of items in the ListView
+     * @param convertView View that ensures the list item is valid
+     * @param parent A ViewGroup for the parent list 
+     * @return View A specific view for use in the list
      */
     public View getView(int position, View convertView, ViewGroup parent) {
         View v = convertView;

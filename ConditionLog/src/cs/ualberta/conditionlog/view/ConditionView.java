@@ -1,9 +1,3 @@
-/**
- * This view is a gallery view of the Condition list. 
- * It shows a large zoomed in image of the photo selected from the upper portion.
- * @author adneufel
- * @date March 15th
- */
 package cs.ualberta.conditionlog.view;
 
 import java.util.ArrayList;
@@ -31,8 +25,10 @@ import cs.ualberta.conditionlog.model.PhotoList;
 import cs.ualberta.conditionlog.model.TagList;
 
 /**
- * @author     tgriffit
- * @uml.dependency   supplier="cs.ualberta.conditionlog.ImageAdapter"
+ * This view is a gallery view of the Condition list. 
+ * It shows a large zoomed in image of the photo selected from the upper portion.
+ * @author adneufel
+ * @date March 15th
  */
 public class ConditionView extends Activity {
 	private String name;
@@ -45,6 +41,9 @@ public class ConditionView extends Activity {
 	private Bitmap[] bmps;
 	private int imagePosition = 0;
 	
+	/**
+	 * An initializer method that is called internally.
+	 */
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 	    super.onCreate(savedInstanceState);
@@ -57,6 +56,9 @@ public class ConditionView extends Activity {
 	    create();
 	}
 	
+	/**
+	 * An extension to the initializer method that is separate to allow for it to be re-called to update the visible data
+	 */
 	private void create(){
 		// load a condition list of name
 		if (type.equals("log"))
@@ -141,9 +143,7 @@ public class ConditionView extends Activity {
     		}
     	});
 	}
-	/**
-	 * starts the compare view
-	 */
+	
 	private void startCompareView(){
 		Intent i = new Intent(this, ComparisonView.class);
 		i.putExtra("position", imagePosition);

@@ -1,1 +1,3 @@
-cs.ualberta.conditionlog
+cs.ualberta.conditionlog.controller
+cs.ualberta.conditionlog.model
+cs.ualberta.conditionlog.view

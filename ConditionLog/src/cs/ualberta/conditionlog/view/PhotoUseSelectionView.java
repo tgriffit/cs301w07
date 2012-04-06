@@ -1,8 +1,4 @@
-/**
- * This view class selects or creates a view for the photo to be placed within.
- * @author adneufel
- * @date March 15th
- */
+
 package cs.ualberta.conditionlog.view;
 
 import java.util.ArrayList;
@@ -25,9 +21,10 @@ import cs.ualberta.conditionlog.model.DatabaseOutputAdapter;
 import cs.ualberta.conditionlog.model.EncryptionHelper;
 
 /**
- * @author           tgriffit
- * @uml.dependency   supplier="cs.ualberta.conditionlog.CreateListView"
- * @uml.dependency   supplier="cs.ualberta.conditionlog.ConditionView"
+ * This view class selects or creates a view for the photo to be placed within and allows the user to tag the photo also
+ * @author   adneufel
+ * @uml.dependency  supplier="cs.ualberta.conditionlog.CreateListView"
+ * @uml.dependency  supplier="cs.ualberta.conditionlog.ConditionView"
  */
 public class PhotoUseSelectionView extends Activity {
 	
@@ -50,6 +47,9 @@ public class PhotoUseSelectionView extends Activity {
 	
 	private static final int CREATE_LOG = 0;
 	
+	/**
+	 * This is the activity's initializer method that creates the object for the interface and is only called internally.
+	 */
 	@Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -110,6 +110,9 @@ public class PhotoUseSelectionView extends Activity {
 		});
     }
 	
+	/**
+	 * This method handles the return data from any activities created in this activity
+	 */
 	@Override
     protected void onActivityResult(int requestCode, int resultCode, Intent intent) {
         super.onActivityResult(requestCode, resultCode, intent);

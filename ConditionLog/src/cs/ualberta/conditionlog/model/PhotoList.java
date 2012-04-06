@@ -1,13 +1,3 @@
-/**
- * This class stores an ArrayList consisting of the filepaths of photos.
- * There are two classes that extend PhotoList.  Both ConditionList and TagList
- * use most of PhotoList's methods, but they have different constructors that
- * load photos from their respective databases.
- * @author tgriffit
- * @date March 15, 2012
- *
- */
-
 package cs.ualberta.conditionlog.model;
 
 import java.util.ArrayList;
@@ -16,7 +6,13 @@ import android.content.Context;
 import android.graphics.Bitmap;
 
 /**
- * @author   tgriffit
+ * This class stores an ArrayList consisting of the filepaths of photos.
+ * There are two classes that extend PhotoList.  Both ConditionList and TagList
+ * use most of PhotoList's methods, but they have different constructors that
+ * load photos from their respective databases.
+ * @author tgriffit
+ * @date March 15, 2012
+ *
  */
 public class PhotoList {
 	/**

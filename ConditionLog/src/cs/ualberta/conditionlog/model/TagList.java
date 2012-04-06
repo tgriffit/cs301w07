@@ -1,3 +1,6 @@
+package cs.ualberta.conditionlog.model;
+
+import android.content.Context;
 /**
  * A list that stores the filepaths of photos of a certain skin condition.  It has a different
  * way of loading filenames than a TagList, but otherwise uses the methods from PhotoList.
@@ -5,11 +8,6 @@
  * @author tgriffit
  * @date March 15, 2012
  */
-
-package cs.ualberta.conditionlog.model;
-
-import android.content.Context;
-
 public class TagList extends PhotoList {
 	
 	/**

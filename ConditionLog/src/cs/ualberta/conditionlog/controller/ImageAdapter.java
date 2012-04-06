@@ -10,9 +10,8 @@ import android.widget.Gallery;
 import android.widget.ImageView;
 import cs.ualberta.conditionlog.R;
 /**
- * 
+ * An adapter that deals with images for the Gallery view object in the interface Views of ConditionView and ComparisonView
  * @author Jack
- *	an adapter for images for the gallery
  */
 public class ImageAdapter extends BaseAdapter {
     int mGalleryItemBackground;
@@ -20,9 +19,9 @@ public class ImageAdapter extends BaseAdapter {
     Bitmap[] bmps;
 
     /**
-     *  constructor for the image adapter
-     * @param c		the context
-     * @param bmps	a Bitmap[]
+     *  Creation of an ImageAdapter requires the context of the app and a list of images to be shown in the gallery
+     * @param c		the context of the current application
+     * @param bmps	an array of bitmaps that will be used to create the gallery view
      */
     public ImageAdapter(Context c, Bitmap[] bmps) {
         mContext = c;
@@ -34,25 +33,30 @@ public class ImageAdapter extends BaseAdapter {
     }
 
     /**
-     * @return the length of the bitmap[]
+     * Total number of images in the bitmap array
+     * @return the number of images in the gallery view
      */
     public int getCount() {
         return bmps.length;
     }
 
     /**
-     * @return the position argument
+     * Used for inner workings of the gallery for image positions
      */
     public Object getItem(int position) {
         return position;
     }
-
+    
+    /**
+     * Used for inner workings of the gallery for image positions
+     */
     public long getItemId(int position) {
         return position;
     }
 
     /**
-     * returns the imageView
+     * Creates and returns a small view containing a specific image for use in the gallery view
+     * @return A view of an individual image in the gallery
      */
     public View getView(int position, View convertView, ViewGroup parent) {
         ImageView imageView = new ImageView(mContext);

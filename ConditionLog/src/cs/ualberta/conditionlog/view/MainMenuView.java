@@ -9,18 +9,20 @@ import android.widget.Button;
 import cs.ualberta.conditionlog.R;
 
 /**
- * @uml.dependency   supplier="cs.ualberta.conditionlog.PhotoUseSelectionView"
- * @uml.dependency   supplier="cs.ualberta.conditionlog.ListSelectionView"
+ * This activity is the main menu for the application and is the main point in the app that the user returns to after doing anything.
+ * @author   jack
+ * @uml.dependency  supplier="cs.ualberta.conditionlog.ListSelectionView"
+ * @uml.dependency  supplier="cs.ualberta.conditionlog.PhotoUseSelectionView"
  */
 public class MainMenuView extends Activity {
 	
 	static final int NEW_PHOTO = 0;
 	static final int RESULT_NOSELECT = 1;
 	
-	@Override
 	/**
-	 * adds the buttons to the main view, sets listeners
+	 * This is the initializer method that creates the objects for the interface and is only called internally
 	 */
+	@Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
@@ -60,7 +62,7 @@ public class MainMenuView extends Activity {
 
 	/**
 	 * @uml.property  name="newPhotoView"
-	 * @uml.associationEnd  inverse="mainView:cs.ualberta.conditionlog.NewPhotoView"
+	 * @uml.associationEnd  
 	 */
 	private NewPhotoView newPhotoView;
 
