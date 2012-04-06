@@ -6,8 +6,6 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
 import java.security.InvalidAlgorithmParameterException;
 import java.security.InvalidKeyException;
 import java.security.MessageDigest;
@@ -94,14 +92,6 @@ public class EncryptionHelper {
 		} catch (InvalidAlgorithmParameterException e) {
 			e.printStackTrace();
 		}
-	}
-
-	public CipherOutputStream getEncryptionStream(OutputStream out) {
-		return new CipherOutputStream(out, ecipher);
-	}
-	
-	public CipherInputStream getDecryptionStream(InputStream in) {
-		return new CipherInputStream(in, dcipher);
 	}
 	
 	public static Bitmap loadBMP(String filename) {

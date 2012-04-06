@@ -1,14 +1,15 @@
 package cs.ualberta.conditionlog.test;
 
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.io.PipedInputStream;
-import java.io.PipedOutputStream;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.util.ArrayList;
 
 import org.junit.Test;
 
+import android.graphics.Bitmap;
 import android.test.AndroidTestCase;
+import cs.ualberta.conditionlog.controller.BogoPicGen;
 import cs.ualberta.conditionlog.model.DatabaseDeletionAdapter;
 import cs.ualberta.conditionlog.model.DatabaseHelper;
 import cs.ualberta.conditionlog.model.DatabaseInputAdapter;
@@ -120,14 +121,17 @@ public class ModelTesting extends AndroidTestCase {
 		//Initialize the static variables of the encryption handler so further testing can be done
 		EncryptionHelper.init("Password");
 		
-		EncryptionHelper helper = new EncryptionHelper();
-		
-		//Creates input/output streams that don't connect to anything
-		OutputStream out = new PipedOutputStream();
-		InputStream in = new PipedInputStream();
-		
-		assert(helper.getEncryptionStream(out) != null);
-		assert(helper.getDecryptionStream(in) != null);
+		Bitmap bmp = BogoPicGen.generateBitmap(10,10);
+		File testBMP = new File("test_bmp");
+		try {
+			FileOutputStream out = new FileOutputStream(testBMP);
+			EncryptionHelper.saveBMP(out, bmp);
+			Bitmap decryptedBMP = EncryptionHelper.loadBMP("test_bmp");
+			assert(decryptedBMP != null);
+			
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
 		
 		String hash1 = EncryptionHelper.generatePasswordHash("password");
 		String hash2 = EncryptionHelper.generatePasswordHash("password");
