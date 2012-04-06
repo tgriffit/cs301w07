@@ -1,9 +1,3 @@
-/**
- * author: Andrew Neufeld
- * description: Main opening start view
- * date: March 10
- */
-
 package cs.ualberta.conditionlog.view;
 
 import android.app.Activity;
@@ -23,18 +17,17 @@ import cs.ualberta.conditionlog.controller.PasswordManager;
  * This is the view for querying the user for either a new password or to enter a set password
  * @author     rleung
  */
-
 public class MainView extends Activity{
 
   	private EditText password;
 	private Button newButton;
 	private boolean passwordSet;
 
-	@Override
 	/**
 	 * on create, creates the buttons and their listeners
 	 * checks for a set password and loads appropriate layout
 	 */
+	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		

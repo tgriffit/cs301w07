@@ -94,6 +94,7 @@ public final class R {
         public static final int listNameLabel=0x7f040005;
         public static final int nameHint=0x7f04000e;
         public static final int newLog=0x7f04000b;
+        public static final int newPassText=0x7f040024;
         public static final int newPassword=0x7f04001a;
         public static final int newPhotoLog=0x7f040017;
         public static final int newPicDesc=0x7f040012;

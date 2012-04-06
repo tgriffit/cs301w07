@@ -71,8 +71,8 @@ public class NewPhotoController extends BogoPicGen {
 	/**
 	 * Returns a File with a filepath that is created from the current time.
 	 * 
-	 * @return File
-	 * @throws Exception
+	 * @return File File path to the image
+	 * @throws Exception Exception upon error in creating file/directories for the picture
 	 */
 	public File getPicturePath() throws Exception {
 		Time now = new Time();

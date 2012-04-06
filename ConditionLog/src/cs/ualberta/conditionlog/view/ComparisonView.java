@@ -1,9 +1,4 @@
-/**
- * This view is a gallery view of the Condition list, with a image for comparison added. 
- * It shows a large zoomed in image of the photo selected from the upper portion, and then the image to compare to.
- * @author Jack
- * @date March 15th
- */
+
 package cs.ualberta.conditionlog.view;
 
 import java.util.ArrayList;
@@ -27,8 +22,10 @@ import cs.ualberta.conditionlog.model.TagList;
 import cs.ualberta.conditionlog.controller.ImageAdapter;
 
 /**
- * @author     Jack
- * @uml.dependency   supplier="cs.ualberta.conditionlog.ImageAdapter"
+ * This view is a gallery view of the Condition list, with a image for comparison added. 
+ * It shows a large zoomed in image of the photo selected from the upper portion, and then the image to compare to.
+ * @author Jack
+ * @date March 15th
  */
 public class ComparisonView extends Activity {
 	private String name;
@@ -41,6 +38,9 @@ public class ComparisonView extends Activity {
 	private int comparePosition;
 	private String type;
 	
+	/**
+	 * The initializer method for the view that is called internally
+	 */
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 	    super.onCreate(savedInstanceState);

@@ -1,9 +1,3 @@
-/**
- * author: Andrew Neufeld
- * description: View to name and create a new List
- * date: March 14
- */
-
 package cs.ualberta.conditionlog.view;
 
 import android.app.Activity;
@@ -17,17 +11,18 @@ import cs.ualberta.conditionlog.R;
 import cs.ualberta.conditionlog.model.DatabaseInputAdapter;
 
 /**
+ * An activity view that allows a new condition log to be created.
+ * @author Andrew Neufeld
  * @uml.dependency   supplier="cs.ualberta.conditionlog.PhotoUseSelectionView"
  */
 public class CreateListView extends Activity {
 	private EditText name;
 	private Button newButton;
 	
-	@Override
 	/**
-	 * on create, creates the buttons and their listeners
-	 * creates a database adapter to be used
+	 * An initializer method that creates the view objects for the interface buttons and is only called internally.
 	 */
+	@Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.create);
@@ -60,21 +55,15 @@ public class CreateListView extends Activity {
     }
 	
 	/**
-	 * enables the button
+	 * Check to see if the 
 	 */
 	private void updateButtonState() {
-		boolean enabled = checkForText(name);
+		boolean enabled;
+		if (!name.getText().toString().equals("")) {
+			enabled = true; 
+		}
+	    enabled = false;
 		newButton.setEnabled(enabled);
-	}
-	
-	/**
-	 * checks if the edit text is empty
-	 * @param edit	text to check
-	 * @return 	true or false
-	 */
-	private boolean checkForText(EditText edit) {
-		if (!edit.getText().toString().equals("")) { return true; }
-	    return false;
 	}
 	
 	/**

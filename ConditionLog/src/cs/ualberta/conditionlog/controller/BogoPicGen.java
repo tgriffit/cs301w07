@@ -1,20 +1,21 @@
-/**
- * author: from lab class, created here by Andrew Neufeld
- * description: Class to generate a random picture
- * date: March 14
- */
+
 
 package cs.ualberta.conditionlog.controller;
 
 import android.graphics.Bitmap;
 import android.graphics.Color;
 
+/**
+ * description: Class to generate a random bitmap picture
+ * date: March 14
+ * @author from lab class, created here by Andrew Neufeld
+ */
 public class BogoPicGen {
 	
 	/**
 	 * Returns a randomly generated Bitmap image of given width and height
-	 * @param width
-	 * @param height
+	 * @param width Width of the wanted bitmap
+	 * @param height Height of the wanted bitmap
 	 * @return Bitmap
 	 * @see Bitmap
 	 */
