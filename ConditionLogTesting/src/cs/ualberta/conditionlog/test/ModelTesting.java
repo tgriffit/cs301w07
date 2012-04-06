@@ -22,7 +22,6 @@ import cs.ualberta.conditionlog.model.TagList;
  * @author tgriffit
  * @date March 30, 2012
  */
-
 public class ModelTesting extends AndroidTestCase {
 
 	/**
@@ -104,6 +103,7 @@ public class ModelTesting extends AndroidTestCase {
 	public void testDatabaseHelper(){
 		try {
 			DatabaseHelper helper = new DatabaseHelper(getContext());
+			helper.toString(); // get rid of warnings...
 		} catch (Exception e) {
 			System.out.println("DatabaseHelper did not constuct properly");
 		}

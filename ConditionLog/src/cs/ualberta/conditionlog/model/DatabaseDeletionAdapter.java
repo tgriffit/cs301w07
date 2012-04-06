@@ -4,6 +4,13 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 
+/**
+ * Contains methods for deleting entries to the database.  It inherits the open() and close()
+ * methods from DatabaseAdapter, which are used in the same way.
+ * @author tgriffit
+ * @date April 5, 2012
+ *
+ */
 public class DatabaseDeletionAdapter extends DatabaseAdapter {
 
 	public DatabaseDeletionAdapter(Context context) {

@@ -10,9 +10,9 @@ import cs.ualberta.conditionlog.R;
 
 /**
  * This activity is the main menu for the application and is the main point in the app that the user returns to after doing anything.
- * @author jack
- * @uml.dependency   supplier="cs.ualberta.conditionlog.PhotoUseSelectionView"
- * @uml.dependency   supplier="cs.ualberta.conditionlog.ListSelectionView"
+ * @author  jack
+ * @uml.dependency  supplier="cs.ualberta.conditionlog.ListSelectionView"
+ * @uml.dependency  supplier="cs.ualberta.conditionlog.PhotoUseSelectionView"
  */
 public class MainMenuView extends Activity {
 	
@@ -62,7 +62,7 @@ public class MainMenuView extends Activity {
 
 	/**
 	 * @uml.property  name="newPhotoView"
-	 * @uml.associationEnd  inverse="mainView:cs.ualberta.conditionlog.NewPhotoView"
+	 * @uml.associationEnd  
 	 */
 	private NewPhotoView newPhotoView;
 

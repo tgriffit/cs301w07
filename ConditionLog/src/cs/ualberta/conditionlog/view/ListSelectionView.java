@@ -25,9 +25,9 @@ import cs.ualberta.conditionlog.model.TagList;
 
 /**
  * This view class allows a view to be selected and viewed, or allows a condition list to be created.
- * @author adneufel
- * @date March 15th
- * @uml.dependency supplier="cs.ualberta.conditionlog.CreateListView"
+ * @author  adneufel
+ * @date  March 15th
+ * @uml.dependency  supplier="cs.ualberta.conditionlog.CreateListView"
  */
 public class ListSelectionView extends Activity {
 
@@ -36,17 +36,21 @@ public class ListSelectionView extends Activity {
 	private ArrayList<ArrayList<String>> currentLists;
 
 	/**
-	 * @uml.property name="condAdapter"
-	 * @uml.associationEnd
+	 * @uml.property  name="condAdapter"
+	 * @uml.associationEnd  
 	 */
 	private ListArrayAdapter condAdapter;
+	/**
+	 * @uml.property  name="tagAdapter"
+	 * @uml.associationEnd  
+	 */
 	private ListArrayAdapter tagAdapter;
 	private ListView listMenu;
 	private String selectedList = null;
 	private String listType = "log";
 	/**
-	 * @uml.property name="dbadapter"
-	 * @uml.associationEnd
+	 * @uml.property  name="dbadapter"
+	 * @uml.associationEnd  
 	 */
 	DatabaseAdapter dbadapter;
 

@@ -1,13 +1,6 @@
 package cs.ualberta.conditionlog.model;
 
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-
-import android.content.ContentValues;
 import android.content.Context;
-import android.database.Cursor;
-import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 
 /**
@@ -24,9 +17,9 @@ import android.database.sqlite.SQLiteDatabase;
  */
 public class DatabaseAdapter {
 	
-	/** 
-	 * @uml.property name="dbHelper"
-	 * @uml.associationEnd aggregation="shared"
+	/**
+	 * @uml.property  name="dbHelper"
+	 * @uml.associationEnd  
 	 */
 	protected DatabaseHelper dbHelper;
 	protected SQLiteDatabase db;

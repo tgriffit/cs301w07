@@ -12,8 +12,8 @@ import cs.ualberta.conditionlog.model.DatabaseInputAdapter;
 
 /**
  * An activity view that allows a new condition log to be created.
- * @author Andrew Neufeld
- * @uml.dependency   supplier="cs.ualberta.conditionlog.PhotoUseSelectionView"
+ * @author  Andrew Neufeld
+ * @uml.dependency  supplier="cs.ualberta.conditionlog.PhotoUseSelectionView"
  */
 public class CreateListView extends Activity {
 	private EditText name;
@@ -56,10 +56,11 @@ public class CreateListView extends Activity {
 
 	private void updateButtonState() {
 		boolean enabled;
-		if (!name.getText().toString().equals("")) {
-			enabled = true; 
-		}
-	    enabled = false;
+		String boxText = name.getText().toString();
+		if (boxText.equals(""))
+			enabled = false;
+		else
+			enabled = true;
 		newButton.setEnabled(enabled);
 	}
 	

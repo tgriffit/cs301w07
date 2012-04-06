@@ -16,8 +16,8 @@ import android.text.format.Time;
 
 /**
  * A controller for the NewPhotoView activity class that helps handle photos
- * @author Andrew Neufeld
- * @uml.dependency   supplier="cs.ualberta.conditionlog.BogoPicGen"
+ * @author  Andrew Neufeld
+ * @uml.dependency  supplier="cs.ualberta.conditionlog.BogoPicGen"
  */
 public class NewPhotoController extends BogoPicGen {
 
