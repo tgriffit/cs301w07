@@ -22,9 +22,9 @@ import cs.ualberta.conditionlog.model.DatabaseOutputAdapter;
 
 /**
  * This view class selects or creates a view for the photo to be placed within and allows the user to tag the photo also
- * @author  adneufel
- * @uml.dependency  supplier="cs.ualberta.conditionlog.ConditionView"
+ * @author   adneufel
  * @uml.dependency  supplier="cs.ualberta.conditionlog.CreateListView"
+ * @uml.dependency  supplier="cs.ualberta.conditionlog.ConditionView"
  */
 public class PhotoUseSelectionView extends Activity {
 	

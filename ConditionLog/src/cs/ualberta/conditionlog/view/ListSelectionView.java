@@ -25,8 +25,8 @@ import cs.ualberta.conditionlog.model.TagList;
 
 /**
  * This view class allows a view to be selected and viewed, or allows a condition list to be created.
- * @author  adneufel
- * @date  March 15th
+ * @author   adneufel
+ * @date   March 15th
  * @uml.dependency  supplier="cs.ualberta.conditionlog.CreateListView"
  */
 public class ListSelectionView extends Activity {

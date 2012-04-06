@@ -12,7 +12,7 @@ import cs.ualberta.conditionlog.model.DatabaseInputAdapter;
 
 /**
  * An activity view that allows a new condition log to be created.
- * @author  Andrew Neufeld
+ * @author   Andrew Neufeld
  * @uml.dependency  supplier="cs.ualberta.conditionlog.PhotoUseSelectionView"
  */
 public class CreateListView extends Activity {

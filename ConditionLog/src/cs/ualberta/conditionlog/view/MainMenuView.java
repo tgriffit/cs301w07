@@ -10,7 +10,7 @@ import cs.ualberta.conditionlog.R;
 
 /**
  * This activity is the main menu for the application and is the main point in the app that the user returns to after doing anything.
- * @author  jack
+ * @author   jack
  * @uml.dependency  supplier="cs.ualberta.conditionlog.ListSelectionView"
  * @uml.dependency  supplier="cs.ualberta.conditionlog.PhotoUseSelectionView"
  */
