@@ -4,7 +4,6 @@ package cs.ualberta.conditionlog.controller;
 import java.util.ArrayList;
 
 import android.content.Context;
-import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -54,7 +53,7 @@ public class ListArrayAdapter extends ArrayAdapter<ArrayList<String>> {
             ImageView iv = (ImageView) v.findViewById(R.id.icon);
             // get the name and image filepath from the data object
             String name = item.get(0);
-            String imgpath = item.get(1);
+            //String imgpath = item.get(1);
 
             if (tt != null) {
             	// set the name text on the current list item layout
@@ -62,7 +61,7 @@ public class ListArrayAdapter extends ArrayAdapter<ArrayList<String>> {
             }
             if (iv != null) {
             	// set the icon image on the current lsit item layout
-            	iv.setImageBitmap(BitmapFactory.decodeFile(imgpath));
+            	//iv.setImageBitmap(BitmapFactory.decodeFile(imgpath));
             } else {
             	Toast toast = Toast.makeText(listContext, "Null Drawable!", Toast.LENGTH_LONG);
                 toast.show();

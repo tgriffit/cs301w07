@@ -61,11 +61,13 @@ public class MainView extends Activity{
 					else{
 						Intent i = new Intent(getApplicationContext(), MainMenuView.class);
 						startActivity(i);
+						finish();
 					}
 				} else {
 					pm.setPassword(passwordText);
 					Intent i = new Intent(getApplicationContext(), MainMenuView.class);
 					startActivity(i);
+					finish();
 				}
 			}
 		});
