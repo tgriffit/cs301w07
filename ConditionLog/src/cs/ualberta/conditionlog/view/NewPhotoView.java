@@ -17,7 +17,6 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import cs.ualberta.conditionlog.R;
 import cs.ualberta.conditionlog.controller.NewPhotoController;
-import cs.ualberta.conditionlog.model.DatabaseAdapter;
 import cs.ualberta.conditionlog.model.DatabaseInputAdapter;
 
 /**

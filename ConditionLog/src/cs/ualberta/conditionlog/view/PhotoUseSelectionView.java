@@ -9,7 +9,6 @@ import java.util.ArrayList;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -23,6 +22,7 @@ import android.widget.Toast;
 import cs.ualberta.conditionlog.R;
 import cs.ualberta.conditionlog.controller.PhotoUseListController;
 import cs.ualberta.conditionlog.model.DatabaseOutputAdapter;
+import cs.ualberta.conditionlog.model.EncryptionHelper;
 
 /**
  * @author           tgriffit
@@ -65,7 +65,7 @@ public class PhotoUseSelectionView extends Activity {
         listMenu.setOnItemSelectedListener(new MyOnItemSelectedListener());
         
         ImageView photo = (ImageView) findViewById(R.id.PhotoUsePreview);
-        photo.setImageBitmap(BitmapFactory.decodeFile(picFile));
+        photo.setImageBitmap(EncryptionHelper.loadBMP(picFile));
         
         // initialize the newLogButton
         Button newLogButton = (Button) findViewById(R.id.NewPhotoLogButton);

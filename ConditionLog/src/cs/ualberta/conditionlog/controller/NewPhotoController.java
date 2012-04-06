@@ -9,9 +9,6 @@ package cs.ualberta.conditionlog.controller;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.OutputStream;
-
 import cs.ualberta.conditionlog.model.EncryptionHelper;
 
 import android.graphics.Bitmap;
@@ -48,22 +45,15 @@ public class NewPhotoController extends BogoPicGen {
 	 * @return boolean
 	 */
 	public boolean saveBMP(File filepath, Bitmap ourBMP) {
-		OutputStream out;
+		FileOutputStream out;
 		try {
 			out = new FileOutputStream(filepath);
-			ourBMP.compress(Bitmap.CompressFormat.PNG, 100, out);
 			
-			//Encrypts the output stream
-			EncryptionHelper encrypt = new EncryptionHelper();
-			out = encrypt.getEncryptionStream(out);
+			EncryptionHelper.saveBMP(out, ourBMP);
 			
-			out.flush();
-			out.close();
 			return true;
 
 		} catch (FileNotFoundException e) {
-			return false;
-		} catch (IOException e) {
 			return false;
 		}
 	}
