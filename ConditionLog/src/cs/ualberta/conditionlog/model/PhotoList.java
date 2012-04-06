@@ -10,14 +10,10 @@
 
 package cs.ualberta.conditionlog.model;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.util.ArrayList;
-
 
 import android.content.Context;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 
 /**
  * @author   tgriffit
@@ -72,19 +68,8 @@ public class PhotoList {
 		Bitmap[] bmps = new Bitmap[filenames.size()];
 		
 		//Iterates through the list of filenames and loads each bmp
-		for (int i = 0; i < filenames.size(); i++) {
-			try {
-			FileInputStream in = new FileInputStream(filenames.get(i));
-			
-			EncryptionHelper decrypt = new EncryptionHelper();
-			decrypt.getDecryptionStream(in);
-			
-			bmps[i] = BitmapFactory.decodeStream(in);
-			
-			} catch (FileNotFoundException e) {
-				break;
-			}
-		}
+		for (int i = 0; i < filenames.size(); i++)
+			bmps[i] = EncryptionHelper.loadBMP(filenames.get(i));
 		
 		return bmps;
 	}
