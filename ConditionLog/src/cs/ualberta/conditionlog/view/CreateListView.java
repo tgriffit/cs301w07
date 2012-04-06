@@ -53,10 +53,7 @@ public class CreateListView extends Activity {
 	    name.addTextChangedListener(watcher);
 	    updateButtonState();
     }
-	
-	/**
-	 * Check to see if the 
-	 */
+
 	private void updateButtonState() {
 		boolean enabled;
 		if (!name.getText().toString().equals("")) {

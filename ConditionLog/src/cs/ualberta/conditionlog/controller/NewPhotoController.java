@@ -1,8 +1,4 @@
-/**
- * author: Andrew Neufeld
- * description: View to create a new image and then select a list to add it to. Uses Method Wrapper design pattern
- * date: March 14
- */
+
 
 package cs.ualberta.conditionlog.controller;
 
@@ -19,6 +15,8 @@ import android.os.Environment;
 import android.text.format.Time;
 
 /**
+ * A controller for the NewPhotoView activity class that helps handle photos
+ * @author Andrew Neufeld
  * @uml.dependency   supplier="cs.ualberta.conditionlog.BogoPicGen"
  */
 public class NewPhotoController extends BogoPicGen {

@@ -20,7 +20,6 @@ import android.widget.Toast;
 import cs.ualberta.conditionlog.R;
 import cs.ualberta.conditionlog.controller.ImageAdapter;
 import cs.ualberta.conditionlog.model.ConditionList;
-import cs.ualberta.conditionlog.model.DatabaseAdapter;
 import cs.ualberta.conditionlog.model.DatabaseOutputAdapter;
 import cs.ualberta.conditionlog.model.PhotoList;
 import cs.ualberta.conditionlog.model.TagList;
